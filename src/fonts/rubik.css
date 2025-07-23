@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./rubik-cyrillic_latin-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./rubik-cyrillic_latin-500.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0400-04FF;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./rubik-cyrillic_latin-600.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0400-04FF;
+}

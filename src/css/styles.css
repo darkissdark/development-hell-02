@@ -5,14 +5,21 @@
   |============================
 */
 /* Common styles */
-@import url('./reset.css');
-@import url('./base.css');
-@import url('./container.css');
-@import url('./animations.css');
+@import url('./base/reset.css');
+@import url('./base/base.css');
+@import url('./base/container.css');
 
 /* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
+@import url('./sections/header.css');
+@import url('./sections/hero.css');
+@import url('./sections/article.css');
+@import url('./sections/books.css');
+@import url('./sections/events.css');
+@import url('./sections/location.css');
+@import url('./sections/feedbacks.css');
+@import url('./sections/footer.css');
+
+/* Modals style */
+@import url('./modals/modalBase.css');
+@import url('./modals/modalBook.css');
+@import url('./modals/modalContacts.css');

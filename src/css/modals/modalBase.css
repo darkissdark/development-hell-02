@@ -1,0 +1,35 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.show-modal {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal {
+  background-color: #fceee6;
+  padding: 64px 32px 64px 64px;
+  max-width: 1300px;
+  border-radius: 16px;
+  flex-grow: 1;
+  margin: 64px 70px;
+}
+
+.scroll {
+  overflow-y: auto;
+  padding-right: 32px;
+  max-height: calc(100vh - 70px * 2 - 64px * 1.5);
+}
