@@ -25,6 +25,10 @@ input {
   padding: 8px 12px;
 }
 
+input:focus {
+  outline: none;
+}
+
 textarea {
   resize: none;
   padding: 12px;
