@@ -9,6 +9,7 @@
   font-weight: 400;
   background-color: #fceee6;
   color: #0b0500;
+  scroll-behavior: smooth;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

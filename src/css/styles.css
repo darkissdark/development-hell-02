@@ -8,6 +8,8 @@
 @import url('./base/reset.css');
 @import url('./base/base.css');
 @import url('./base/container.css');
+@import url('./base/buttons.css');
+@import url('./base/form.css');
 
 /* Sections style */
 @import url('./sections/header.css');
@@ -21,5 +23,6 @@
 
 /* Modals style */
 @import url('./modals/modalBase.css');
+@import url('./modals/modalMobileMenu.css');
 @import url('./modals/modalBook.css');
 @import url('./modals/modalContacts.css');
