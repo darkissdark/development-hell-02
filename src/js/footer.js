@@ -3,6 +3,9 @@ import { showToast } from './common';
 const form = document.querySelector('.footer-join-form');
 const validationMessage = document.querySelector('.footer-form-validation');
 const input = document.querySelector('.footer-email');
+const copyYear = document.querySelector('#copy-year');
+
+const COPYRIGHT_START_YEAR = 2025;
 
 if (!form || !validationMessage || !input) {
   console.warn('Form or input elements not found.');
@@ -44,3 +47,9 @@ function clearError(message) {
   validationMessage.classList.remove('color-error');
   input.classList.remove('error');
 }
+
+const currentYear = new Date().getFullYear();
+copyYear.textContent =
+  currentYear > COPYRIGHT_START_YEAR
+    ? `${COPYRIGHT_START_YEAR}-${currentYear}`
+    : COPYRIGHT_START_YEAR;
