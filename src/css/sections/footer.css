@@ -1,3 +1,83 @@
 .footer {
   background: #ea8d50;
+  padding: 80px 0;
+}
+
+.footer-logo {
+  width: 84px;
+  height: 36px;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 32px;
+  align-items: center;
+}
+
+.footer-join-form {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-email {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.footer-form-validation {
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+.footer-divider {
+  margin: 80px 0 32px;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-copyright {
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Styles for Tablet devices */
+@media only screen and (min-width: 768px) {
+  .footer-nav {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .footer-nav-item:first-child {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer {
+    padding: 80px 48px;
+  }
+  .footer-join-form,
+  .footer-form-validation {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* Styles for Desktop devices */
+@media only screen and (min-width: 1440px) {
+  .footer-nav {
+    justify-content: start;
+    float: left;
+  }
+
+  .footer-nav-item:first-child {
+    text-align: left;
+  }
+  .footer-join-form,
+  .footer-form-validation {
+    margin-left: auto;
+    margin-right: 0;
+  }
 }
