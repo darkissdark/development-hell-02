@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Booksy</title>
     <script type="module" crossorigin src="/development-hell-02/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/development-hell-02/assets/index-CR_LQMqG.css">
+    <link rel="stylesheet" crossorigin href="/development-hell-02/assets/index-CyikVRHV.css">
     <link rel="stylesheet" crossorigin href="/development-hell-02/assets/vendor-ClUZctLU.css">
   </head>
   <body>
@@ -196,23 +196,43 @@
 
     <footer id="footer" class="footer">
   <div class="container">
-    <svg class="icon-logo">
-      <use xlink:href="#logo"></use>
-    </svg>
-    <ul>
-      <li>
+    <ul class="footer-nav">
+      <li class="footer-nav-item">
+        <a href="/">
+          <svg class="footer-logo">
+            <use xlink:href="#logo"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="footer-nav-item">
         <a href="#header">Home</a>
       </li>
-      <li>
+      <li class="footer-nav-item">
         <a href="#books">Books</a>
       </li>
-      <li>
+      <li class="footer-nav-item">
         <a href="#feedbacks">Feedback</a>
       </li>
-      <li>
+      <li class="footer-nav-item">
         <a href="#location">Location</a>
       </li>
     </ul>
+    <form class="footer-join-form">
+      <input
+        class="footer-email"
+        name="footer-email"
+        type="email"
+        placeholder="Enter your email"
+      />
+      <button type="submit" class="button-secondary">Sign&nbsp;Up</button>
+    </form>
+    <div id="footer-form-validation" class="footer-form-validation">
+      * Required field
+    </div>
+    <hr class="footer-divider" />
+    <p class="footer-copyright">
+      © <span id="copy-year">2025</span> Booksy. All rights reserved.
+    </p>
   </div>
 </footer>
 
