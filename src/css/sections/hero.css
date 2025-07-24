@@ -1,3 +1,26 @@
 .hero {
   background: blanchedalmond;
 }
+.hero.container {
+  padding-left: 64px;
+  padding-right: 64px;
+}
+.hero-slide-description {
+  position: absolute;
+  top: 155px;
+  left: 56px;
+  width: 390px;
+  font-weight: 600;
+  font-size: 52px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+.hero-btn {
+  position: absolute;
+  top: 299px;
+  left: 56px;
+}
+.title-wrapper {
+  display: flex;
+}
