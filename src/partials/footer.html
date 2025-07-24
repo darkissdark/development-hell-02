@@ -2,7 +2,7 @@
   <div class="container">
     <ul class="footer-nav">
       <li class="footer-nav-item">
-        <a href="/">
+        <a href="/development-hell-02/">
           <svg class="footer-logo">
             <use xlink:href="#logo"></use>
           </svg>
@@ -21,18 +21,21 @@
         <a href="#location">Location</a>
       </li>
     </ul>
-    <form class="footer-join-form">
-      <input
-        class="footer-email"
-        name="footer-email"
-        type="email"
-        placeholder="Enter your email"
-      />
-      <button type="submit" class="button-secondary">Sign&nbsp;Up</button>
+    <form class="footer-join-form" novalidate>
+      <div class="footer-in">
+        <input
+          class="footer-email"
+          name="footer-email"
+          type="email"
+          placeholder="Enter your email"
+          pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+        />
+        <button type="submit" class="button-secondary">Sign&nbsp;Up</button>
+      </div>
+      <div id="footer-form-validation" class="footer-form-validation">
+        * Required field
+      </div>
     </form>
-    <div id="footer-form-validation" class="footer-form-validation">
-      * Required field
-    </div>
     <hr class="footer-divider" />
     <p class="footer-copyright">
       © <span id="copy-year">2025</span> Booksy. All rights reserved.

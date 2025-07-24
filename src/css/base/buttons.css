@@ -34,8 +34,10 @@ button:disabled {
   border-color: #0b0500;
 }
 
-.button-secondary:hover {
-  background-color: #e15d05;
+@media only screen and (min-width: 1440px) {
+  .button-secondary:hover {
+    background-color: #e15d05;
+  }
 }
 
 .button-secondary:active {
@@ -53,9 +55,11 @@ button:disabled {
   color: #fff;
 }
 
-.button-nav:hover {
-  background-color: transparent;
-  color: #0b0500;
+@media only screen and (min-width: 1440px) {
+  .button-nav:hover {
+    background-color: transparent;
+    color: #0b0500;
+  }
 }
 
 .button-nav:active {

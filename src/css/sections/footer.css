@@ -16,9 +16,10 @@
   align-items: center;
 }
 
-.footer-join-form {
+.footer-in {
   display: flex;
   gap: 16px;
+  margin-bottom: 12px;
 }
 
 .footer-email {
@@ -28,7 +29,6 @@
 
 .footer-form-validation {
   font-size: 12px;
-  margin-top: 12px;
 }
 
 .footer-divider {
@@ -58,11 +58,9 @@
   .footer {
     padding: 80px 48px;
   }
-  .footer-join-form,
-  .footer-form-validation {
+  .footer-join-form {
     max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
   }
 }
 /* Styles for Desktop devices */
@@ -75,9 +73,7 @@
   .footer-nav-item:first-child {
     text-align: left;
   }
-  .footer-join-form,
-  .footer-form-validation {
-    margin-left: auto;
+  .footer-join-form {
     margin-right: 0;
   }
 }
