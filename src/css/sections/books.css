@@ -1,3 +1,138 @@
-.books {
+/* .books {
   background: gray;
+} */
+@import 'accordion-js/dist/accordion.min.css';
+
+.books-section {
+  padding: 32px 0;
+  width: 100%;
+  /* width: 375px; */
+  /* height: 6664px; */
+  background: #fceee6;
+}
+.books-categories {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.books-subtitle {
+  /* font-family: 'Rubik', sans-serif; */
+  font-weight: 600;
+  font-size: 20px;
+  /* line-height: 150%; */
+  color: #231e19;
+}
+.number-of-books {
+  /* font-family: 'Rubik', sans-serif;
+  font-weight: 400; */
+  font-size: 14px;
+  /* line-height: 150%; */
+  color: #231e19;
+}
+.books-accordion-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(11, 5, 0, 0.15);
+  border-radius: 4px;
+  padding: 8px 12px;
+  width: 342px;
+  /* height: 43px; */
+  background: rgba(11, 5, 0, 0.05);
+  font-size: 18px;
+  color: #0b0500;
+  margin-bottom: 4px;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  color: #0b0500;
+}
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.accordion-content.open {
+  max-height: 300px; /* Высота, при которой появляется прокрутка */
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+}
+/* Стилизация списка  */
+.books-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 24px;
+}
+.book-list li {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: var(--color-scheme-1-text);
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.book-card-image {
+  border-radius: 8px;
+  width: 343px;
+  height: 488px;
+  margin-bottom: 16px;
+}
+.book-details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.book-title {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: #231e19;
+}
+.book-autor {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #231e19;
+}
+.book-price {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 150%;
+  color: #231e19;
+}
+.book-info-btn {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #231e19;
+  border: 1px solid #231e19;
+  border-radius: 4px;
+  padding: 8px 20px;
+  width: 343px;
+  height: 40px;
+}
+
+.show-more-btn {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #fff;
+  border: 1px solid #e15d05;
+  border-radius: 4px;
+  padding: 12px 24px;
+  width: 342px;
+  height: 48px;
+  background: #e15d05;
 }
