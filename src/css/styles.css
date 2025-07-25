@@ -4,6 +4,8 @@
   | default @import url()
   |============================
 */
+@import url('../../node_modules/accordion-js/dist/accordion.min.css');
+
 /* Common styles */
 @import url('./base/reset.css');
 @import url('./base/base.css');
@@ -30,5 +32,4 @@
 
 /* Modules */
 @import url('../../node_modules/swiper/swiper-bundle.min.css');
-@import url('../../node_modules/accordion-js/dist/accordion.min.css');
 @import url('../../node_modules/izitoast/dist/css/iziToast.min.css');
