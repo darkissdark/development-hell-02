@@ -9,6 +9,13 @@
 .feedbacks-subtitle {
   font-weight: 18;
   margin-bottom: 80px;
+  width: 300px;
+}
+
+@media only screen and (min-width: 768px) {
+  .feedbacks-subtitle {
+    width: auto;
+  }
 }
 
 .feedbacks-slider .swiper-pagination {
@@ -98,4 +105,9 @@ blockquote {
 
 .button-nav {
   border-radius: 0;
+}
+
+.button-nav--disabled {
+  opacity: 0.3;
+  pointer-events: none;
 }

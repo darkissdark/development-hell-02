@@ -47,8 +47,9 @@ function renderFeedbackSlides(data) {
   wrapper.innerHTML = '';
 
   data.forEach(({ text, author, position, avatar }) => {
-    const slide = document.createElement('div');
+    const slide = document.createElement('li');
     slide.className = 'swiper-slide feedback-card';
+    slide.role = 'listitem';
     slide.innerHTML = `
       <blockquote class="feedback-text">${text}</blockquote>
       <div class="feedback-author-wrapper">
@@ -65,16 +66,19 @@ function renderFeedbackSlides(data) {
 
 function initFeedbackSlider() {
   new Swiper('.feedbacks-slider', {
-    loop: false,
     slidesPerView: 1,
     spaceBetween: 24,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
+    pagination: { el: '.swiper-pagination', clickable: true },
     navigation: {
-      nextEl: '.button-nav[aria-label="Next feedback"]',
-      prevEl: '.button-nav[aria-label="Previous feedback"]',
+      prevEl: '.button-nav.prev',
+      nextEl: '.button-nav.next',
+      disabledClass: 'button-nav--disabled',
+    },
+    keyboard: { enabled: true, onlyInViewport: true },
+    a11y: {
+      enabled: true,
+      prevSlideMessage: 'Previous feedback',
+      nextSlideMessage: 'Next feedback',
     },
     breakpoints: {
       768: { slidesPerView: 2, spaceBetween: 24 },
