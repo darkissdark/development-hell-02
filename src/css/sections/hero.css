@@ -1,26 +1,58 @@
 .hero {
   background: blanchedalmond;
 }
-.hero.container {
-  padding-left: 64px;
-  padding-right: 64px;
+.swiper {
+  height: 199px;
+  margin-bottom: 24px;
+}
+.swiper-slide {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.slide-img {
+  height: 100%;
 }
 .hero-slide-description {
   position: absolute;
-  top: 155px;
-  left: 56px;
-  width: 390px;
+  top: 90px;
+  left: 16px;
+  width: 172px;
+}
+
+.swiper-slide:nth-child(3) .hero-slide-description {
+  width: 310px;
+}
+
+.swiper-slide:nth-child(4) .hero-slide-description {
+  width: 228px;
+}
+.slide-button-wrapper {
+  display: flex;
+  justify-content: end;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.hero-title {
   font-weight: 600;
-  font-size: 52px;
+  font-size: 40px;
   line-height: 1.2;
   letter-spacing: -0.01em;
-  color: #fff;
+  padding-bottom: 32px;
 }
 .hero-btn {
   position: absolute;
-  top: 299px;
-  left: 56px;
-}
-.title-wrapper {
+  top: 162px;
+  left: 16px;
+  width: 117px;
+  height: 20px;
+  font-size: 8px;
+  line-height: 1.5;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
