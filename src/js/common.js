@@ -1,4 +1,4 @@
-// import iziToast from 'izitoast';
+import iziToast from 'izitoast';
 
 const windowWidth = window.innerWidth;
 

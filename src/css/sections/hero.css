@@ -33,6 +33,7 @@
 @media screen and (min-width: 1440px) {
   .swiper-slide {
     font-size: 52px;
+    border-radius: 16px;
   }
 }
 

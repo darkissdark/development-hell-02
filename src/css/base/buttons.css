@@ -68,5 +68,6 @@ button:disabled {
 }
 
 .button-nav:disabled {
-  color: #0b0500;
+  background-color: #0b0500;
+  opacity: 0.2;
 }
