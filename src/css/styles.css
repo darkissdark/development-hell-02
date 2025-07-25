@@ -4,7 +4,7 @@
   | default @import url()
   |============================
 */
-@import url('../../node_modules/accordion-js/dist/accordion.min.css');
+/* @import url('../../node_modules/accordion-js/dist/accordion.min.css'); */
 
 /* Common styles */
 @import url('./base/reset.css');

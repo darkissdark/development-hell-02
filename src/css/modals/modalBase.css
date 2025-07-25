@@ -33,7 +33,7 @@ body.modal-open {
 
 .modal-scroll {
   overflow-y: auto;
-  max-height: calc(100vh - 64px * 2 - 64px);
+  max-height: calc(100vh - 64px * 3);
   padding-right: 13px;
 }
 @media screen and (min-width: 768px) {
