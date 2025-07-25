@@ -16,53 +16,28 @@
   transition: all 0.3s ease-in-out;
 } */
 
-/* Прокрутка бек додати в JS*/
-body.modal-open {
-  overflow: hidden;
-}
-
-.modal-books-scroll {
-  overflow-y: auto;
-  max-height: calc(100vh - 64px);
-  padding-right: 0;
-}
-
-.show-modal {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 .modal-books {
-  background-color: #fceee6;
-  border-radius: 16px;
   max-width: 343px;
-  padding: 16px;
   width: 100%;
-  /* overflow: hidden; */
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
-.modal-books-button{
+.modal-books-button {
   display: block;
   margin-left: auto;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
   background-color: transparent;
-  margin-bottom: 16px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
 }
 
-.modal-books-img{
+.modal-books-img {
   margin-bottom: 32px;
-  width: 309px;
-  height: 467px;
   border-radius: 8px;
-
-  /* колір прибрати */
-  background-color: #fff;
 }
 
 .modal-books-text-wrapper {
@@ -72,20 +47,18 @@ body.modal-open {
   margin-bottom: 24px;
 }
 
-.modal-books-title{
+.modal-books-title {
   font-size: 40px;
-  color: #0b0500;
-} 
-.modal-books-text{
+}
+.modal-books-text {
   font-size: 14px;
 }
 
 .modal-books-price {
   font-size: 24px;
-  color: #0b0500;
 }
 
-.modal-books-quantity-selector{
+.modal-books-quantity-selector {
   display: flex;
   gap: 8px;
 }
@@ -100,7 +73,7 @@ body.modal-open {
   align-items: center;
 }
 
-.quantity-selector-quantity-input{
+.quantity-selector-quantity-input {
   border-radius: 8px;
   width: 42px;
   height: 40px;
@@ -109,11 +82,12 @@ body.modal-open {
   background: rgba(11, 5, 0, 0.05);
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
   margin-bottom: 16px;
+  text-align: center;
 }
 
-.modal-books-btn-wrapper{
+.modal-books-btn-wrapper {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -121,17 +95,15 @@ body.modal-open {
 }
 
 @media screen and (min-width: 768px) {
-  
-  .modal-books{ 
+  .modal-books {
     max-width: 704px;
-    padding: 16px 16px 64px 32px;
   }
 
   .modal-books-rows-wrapper {
     display: flex;
   }
 
-  .column-wrapper{
+  .column-wrapper {
     display: flex;
     gap: 24px;
   }
@@ -145,7 +117,6 @@ body.modal-open {
 @media screen and (min-width: 1440px) {
   .modal-books {
     max-width: 1300px;
-    padding: 16px 16px 64px 64px;
   }
 
   .right-column {

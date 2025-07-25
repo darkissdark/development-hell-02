@@ -1,6 +1,6 @@
 <div id="modalContacts" class="modal-backdrop show-modal">
-  <div class="modal modal-books">
-    <div class="scroll modal-books-scroll">
+  <div class="modal-base modal-books">
+    <div class="modal-scroll">
       <button class="modal-books-button" type="button">
         <svg class="modal-books-button-icon" width="32" height="32">
           <use xlink:href="#close"></use>
@@ -8,8 +8,13 @@
       </button>
 
       <div class="column-wrapper">
-        <img src="#" alt="#" class="modal-books-img" />
-
+        <div class="book-photo-wrapper">
+          <img
+            src="https://placehold.co/309x466/png?text=No+image"
+            alt="#"
+            class="modal-books-img"
+          />
+        </div>
         <div class="right-column">
           <div class="modal-books-text-wrapper">
             <h2 class="modal-books-title">Name of a book</h2>
@@ -24,7 +29,12 @@
             >
               -
             </button>
-            <span class="quantity-selector-quantity-input">1</span>
+            <input
+              type="tel"
+              value="1"
+              name="modal-input-quantity"
+              class="quantity-selector-quantity-input"
+            />
             <button
               type="button"
               class="quantity-selector-increase button-secondary"
