@@ -78,7 +78,7 @@
   }
 
   .location-details {
-    width: 336px;
+    max-width: 336px;
     margin-right: 32px;
   }
 
@@ -102,7 +102,7 @@
   }
 
   .location-details {
-    width: 732px;
+    max-width: 732px;
     margin-right: 0;
   }
 
