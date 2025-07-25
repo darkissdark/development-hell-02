@@ -4,6 +4,16 @@
   width: 100%;
 }
 
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.location-details {
+  max-width: 343px;
+}
+
 .location-text {
   margin-bottom: 16px;
   font-weight: 600;
@@ -63,6 +73,8 @@
   .wrapper {
     display: flex;
     gap: 24px;
+    justify-content: center;
+    flex-direction: row;
   }
 
   .location-details {
