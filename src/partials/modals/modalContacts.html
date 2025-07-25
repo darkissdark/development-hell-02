@@ -1,4 +1,4 @@
-<div id="modalContacts" class="modal-backdrop-form is-open">
+<div id="modalContacts" class="modal-backdrop-form">
   <div class="modal-form">
     <button class="modal-form-close" type="button" aria-label="Close form">
       <svg class="form-close-svg" width="32" height="32">
@@ -20,6 +20,7 @@
               class="form-item-input"
               id="name"
               name="user_name"
+              data-name
               type="text"
               placeholder="Ann"
               minlength="3"
@@ -48,7 +49,7 @@
             >
           </label>
         </li>
-        <li class="fprm-list-item">
+        <li class="form-list-item">
           <label class="form-item-label" for="message"
             >Message
             <textarea
@@ -58,15 +59,16 @@
               placeholder="Type your message..."
               minlength="10"
               maxlength="500"
-              required
             ></textarea>
-            <span class="form-area-error color-error-area"
+            <span class="form-area-error color-error"
               >Мінімум десять символів</span
             >
           </label>
         </li>
       </ul>
-      <button class="form-btn-submit" type="submit">Register</button>
+      <button class="button-action form-btn-submit" type="submit">
+        Register
+      </button>
     </form>
   </div>
 </div>
