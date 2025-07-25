@@ -33,6 +33,10 @@ main:has(.back-link) {
   text-align: center;
 }
 
+svg {
+  vertical-align: middle;
+}
+
 h1,
 h2 {
   line-height: 1.2;
