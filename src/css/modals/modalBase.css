@@ -19,17 +19,19 @@
   pointer-events: auto;
 }
 
-.modal {
-  background-color: #fceee6;
-  padding: 64px 32px 64px 64px;
-  max-width: 1300px;
-  border-radius: 16px;
-  flex-grow: 1;
-  margin: 64px 70px;
-}
-
 .scroll {
   overflow-y: auto;
   padding-right: 32px;
   max-height: calc(100vh - 70px * 2 - 64px * 1.5);
 }
+
+@media screen and (min-width: 1440px) {
+  .modal {
+      background-color: #fceee6;
+      padding: 64px 32px 64px 64px;
+      max-width: 1300px;
+      border-radius: 16px;
+      flex-grow: 1;
+      margin: 64px 70px;
+    }
+ }
