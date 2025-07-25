@@ -1,22 +1,3 @@
-.modal-backdrop-form {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  z-index: 999;
-  overflow: auto;
-  pointer-events: none;
-  background-color: rgba(0, 0, 0, 0.25);
-  transition: opacity 250ms ease;
-}
-
-.is-open {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 /* !MOBILE */
 /* ?form window */
 .modal-form {
@@ -29,7 +10,6 @@
   max-width: 343px;
   display: flex;
   flex-direction: column;
-  padding: 64px 16px 64px 16px;
   background-color: rgba(252, 238, 230, 1);
   border-radius: 16px;
 }
@@ -151,7 +131,6 @@
 @media screen and (min-width: 768px) {
   .modal-form {
     min-width: 704px;
-    padding: 64px 32px 64px 32px;
   }
 
   .modal-form .button-action {
@@ -165,6 +144,9 @@
 @media only screen and (min-width: 1440px) {
   .modal-form {
     min-width: 866px;
-    padding: 64px;
+    padding: 64px 32px 64px 64px;
+  }
+  .modal-form .modal-scroll {
+    padding-right: 32px;
   }
 }
