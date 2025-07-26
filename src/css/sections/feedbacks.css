@@ -12,6 +12,11 @@
   width: 300px;
 }
 
+.icon-feedback-star {
+  fill: red;
+  stroke: black;
+}
+
 @media only screen and (min-width: 768px) {
   .feedbacks-subtitle {
     width: auto;

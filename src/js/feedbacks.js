@@ -52,6 +52,11 @@ function renderFeedbackSlides(data) {
     slide.role = 'listitem';
     slide.innerHTML = `
       <blockquote class="feedback-text">${text}</blockquote>
+      <div class="feedback-rating">
+        <svg class="icon-feedback-star" width="24" height="24">
+            <use xlink:href="#star"></use>
+        </svg>
+      </div>
       <div class="feedback-author-wrapper">
         <img src="${avatar}" alt="${author}" width="48" height="48" loading="lazy" />
         <div class="author-details">
