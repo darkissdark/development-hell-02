@@ -122,7 +122,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  scroll-behavior: smooth;
 }
 @media screen and (min-width: 768px) {
   .hero-btn {
@@ -139,38 +138,8 @@
     left: 56px;
     width: 227px;
     height: 40px;
-    font-size: 16px;
   }
 }
 .slide-button-wrapper .button-nav {
   color: #0b0500;
-}
-
-/* додати скрол */
-.scroll-up {
-  position: fixed;
-  bottom: 40px;
-  right: 16px;
-  z-index: 2;
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-@media screen and (min-width: 768px) {
-  .scroll-up {
-    bottom: 70px;
-    right: 32px;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  .scroll-up {
-    bottom: 50px;
-    right: 64px;
-  }
-}
-.scroll-up.show {
-  opacity: 1;
-  pointer-events: all;
 }

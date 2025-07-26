@@ -11,9 +11,10 @@ export function showToast(message, type = 'error') {
 }
 
 const scrollUpBtn = document.querySelector('.scroll-up');
+const SCROLL_UP_MULTIPLIER = 1.5;
 
 window.addEventListener('scroll', () => {
-  const scrollTrigger = window.innerHeight * 1.5;
+  const scrollTrigger = window.innerHeight * SCROLL_UP_MULTIPLIER;
 
   if (window.scrollY > scrollTrigger) {
     scrollUpBtn.classList.add('show');
