@@ -41,7 +41,7 @@ const feedbacksData = [
 ];
 
 function renderFeedbackSlides(data) {
-  const wrapper = document.querySelector('.swiper-wrapper');
+  const wrapper = document.querySelector('.swiper-feedback-wrapper');
   if (!wrapper) return;
 
   wrapper.innerHTML = '';
