@@ -3,9 +3,8 @@
   width: 100%;
 }
 
-.wrapper {
+.location-wrapper {
   display: flex;
-  align-items: center;
   flex-direction: column;
 }
 
@@ -70,9 +69,7 @@
     width: 100%;
   }
 
-  .wrapper {
-    display: flex;
-    justify-content: center;
+  .location-wrapper {
     flex-direction: row;
   }
 
