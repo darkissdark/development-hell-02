@@ -1,6 +1,4 @@
 import Swiper from 'swiper/bundle';
-const nextSlideEl = document.querySelector('.js-hero-slider-forward');
-console.log(nextSlideEl);
 const swiper = new Swiper('.swiper', {
   direction: 'horizontal',
   keyboard: {
@@ -11,8 +9,8 @@ const swiper = new Swiper('.swiper', {
     nextEl: '.js-hero-slider-forward',
     prevEl: '.js-hero-slider-prev',
   },
+  autoplay: {
+    delay: 10000,
+  },
+  spaceBetween: 20,
 });
-console.dir(swiper);
-// if (swiper.activeIndex === swiper.slides.length) {
-//   nextSlideEl.disabled = true;
-// }
