@@ -1,4 +1,4 @@
-#feedbacks {
+.feedbacks-section {
   padding: 64px 0;
 }
 
@@ -43,6 +43,12 @@
 .feedbacks-slider .swiper-pagination-bullet-active {
   opacity: 1;
   background-color: #333333;
+}
+
+.swiper-controls
+  .swiper-pagination-bullets
+  .swiper-pagination-bullet:first-child {
+  margin-left: 1px;
 }
 
 .feedback-card {
@@ -115,4 +121,24 @@ blockquote {
 .button-nav--disabled {
   opacity: 0.3;
   pointer-events: none;
+}
+
+.feedback-rating {
+  display: flex;
+  gap: 4px;
+  padding: 0;
+  margin: 0 0 24px;
+  list-style: none;
+}
+
+.feedback-rating__star {
+}
+
+.icon-feedback-star use {
+  fill: #e15d05;
+}
+.icon-feedback-star {
+  display: block;
+  width: 20px;
+  height: 20px;
 }
