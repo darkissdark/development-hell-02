@@ -1,4 +1,4 @@
-<div id="modalContacts" class="modal-backdrop">
+<div id="modalContacts" class="modal-backdrop modal-books-backdrop show-modal">
   <div class="modal-base modal-books">
     <div class="modal-scroll">
       <button class="modal-books-button" type="button">
@@ -44,10 +44,18 @@
           </div>
 
           <div class="modal-books-btn-wrapper">
-            <button class="modal-books-add button-action" type="button">
+            <button
+              class="modal-books-add button-action"
+              data-action="add-to-cart"
+              type="button"
+            >
               Add to cart
             </button>
-            <button class="modal-books-buy button-secondary" type="submit">
+            <button
+              class="modal-books-buy button-secondary"
+              data-action="buy-now"
+              type="submit"
+            >
               Buy now
             </button>
           </div>
