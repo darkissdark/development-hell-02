@@ -24,6 +24,9 @@
 @import url('./sections/feedbacks.css');
 @import url('./sections/footer.css');
 
+/* Common */
+@import url('./common/scrollToTop.css');
+
 /* Modals style */
 @import url('./modals/modalBase.css');
 @import url('./modals/modalMobileMenu.css');
