@@ -1,18 +1,18 @@
-.swiper {
+.swiper-hero {
   height: 199px;
   margin-bottom: 24px;
 }
 @media screen and (min-width: 768px) {
-  .swiper {
+  .swiper-hero {
     height: 274px;
   }
 }
 @media screen and (min-width: 1400px) {
-  .swiper {
+  .swiper-hero {
     height: 395px;
   }
 }
-.swiper-slide {
+.swiper-hero .swiper-slide {
   font-weight: 600;
   font-size: 20px;
   line-height: 1.4;
@@ -22,13 +22,13 @@
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
-  .swiper-slide {
+  .swiper-hero .swiper-slide {
     font-size: 32px;
     line-height: 1.2;
   }
 }
 @media screen and (min-width: 1440px) {
-  .swiper-slide {
+  .swiper-hero .swiper-slide {
     font-size: 52px;
     border-radius: 16px;
   }
@@ -57,29 +57,29 @@
     width: 392px;
   }
 }
-.swiper-slide:nth-child(3) .hero-slide-description {
+.swiper-hero .swiper-slide:nth-child(3) .hero-slide-description {
   width: 310px;
 }
 @media screen and (min-width: 768px) {
-  .swiper-slide:nth-child(3) .hero-slide-description {
+  .swiper-hero .swiper-slide:nth-child(3) .hero-slide-description {
     width: 380px;
   }
 }
 @media screen and (min-width: 1440px) {
-  .swiper-slide:nth-child(3) .hero-slide-description {
+  .swiper-hero .swiper-slide:nth-child(3) .hero-slide-description {
     width: 561px;
   }
 }
-.swiper-slide:nth-child(4) .hero-slide-description {
+.swiper-hero .swiper-slide:nth-child(4) .hero-slide-description {
   width: 228px;
 }
 @media screen and (min-width: 768px) {
-  .swiper-slide:nth-child(4) .hero-slide-description {
+  .swiper-hero .swiper-slide:nth-child(4) .hero-slide-description {
     width: 380px;
   }
 }
 @media screen and (min-width: 1440px) {
-  .swiper-slide:nth-child(4) .hero-slide-description {
+  .swiper-hero .swiper-slide:nth-child(4) .hero-slide-description {
     width: 561px;
   }
 }
