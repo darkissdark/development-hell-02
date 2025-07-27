@@ -63,6 +63,28 @@
   border: none;
 }
 
+.location-hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.location-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.location-hidden-side {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease-out;
+}
+
+.location-show-side {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media screen and (min-width: 768px) {
   .location {
     padding: 64px 32px;
@@ -85,6 +107,14 @@
   .map-address {
     margin-top: 80px;
     height: 395px;
+  }
+
+  .location-hidden-side {
+    transform: translateX(100px);
+  }
+
+  .location-show-side {
+    transform: translateX(0);
   }
 }
 
