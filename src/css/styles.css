@@ -4,12 +4,15 @@
   | default @import url()
   |============================
 */
+/* @import url('../../node_modules/accordion-js/dist/accordion.min.css'); */
+
 /* Common styles */
 @import url('./base/reset.css');
 @import url('./base/base.css');
 @import url('./base/container.css');
 @import url('./base/buttons.css');
 @import url('./base/form.css');
+@import url('./base/animations.css');
 
 /* Sections style */
 @import url('./sections/header.css');
@@ -21,6 +24,9 @@
 @import url('./sections/feedbacks.css');
 @import url('./sections/footer.css');
 
+/* Common */
+@import url('./common/scrollToTop.css');
+
 /* Modals style */
 @import url('./modals/modalBase.css');
 @import url('./modals/modalMobileMenu.css');
@@ -29,5 +35,4 @@
 
 /* Modules */
 @import url('../../node_modules/swiper/swiper-bundle.min.css');
-@import url('../../node_modules/accordion-js/dist/accordion.min.css');
 @import url('../../node_modules/izitoast/dist/css/iziToast.min.css');
