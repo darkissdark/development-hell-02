@@ -35,14 +35,3 @@ const baseUrl = 'https://books-backend.p.goit.global/';
 // }
 
 // export default getImagesByQuery;
-
-export async function getDataById(bookId) {
-  try {
-    const response = await axios.get(
-      `https://books-backend.p.goit.global/books/${bookId}`
-    );
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-}

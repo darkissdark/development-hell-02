@@ -1,6 +1,6 @@
 import Accordion from 'accordion-js';
 import { showToast } from './common.js';
-import { getDataById } from './books-api.js';
+// import { handleBookDetails } from './books';
 
 const accordion = new Accordion('.modal-books-accordion-container', {
   duration: 400,
@@ -11,6 +11,13 @@ const refs = {
   modal: document.querySelector('.modal-books'),
   backdrop: document.querySelector('.modal-books-backdrop'),
   input: document.querySelector('.quantity-selector-quantity-input'),
+  modalBooksTextWrapper: document.querySelector('.modal-books-text-wrapper'),
+  bookPhotoWrapper: document.querySelector('.book-photo-wrapper'),
+  accordionDetails: document.querySelector('.js-ac-text-details'),
+
+  //якщо ми захочемо динамічно додавати інфу, її немає не сервері
+  accordionShipping: document.querySelector('.js-ac-text-shipping'),
+  accordionReturns: document.querySelector('.js-ac-text-returns'),
 };
 
 const handleModalBookClick = event => {
@@ -18,14 +25,11 @@ const handleModalBookClick = event => {
   const action = target.dataset.action;
 
   // Обробка кнопок
-  if (action === 'buy-now') {
-    showToast('Дякуємо за покупку', 'success');
-    return;
-  }
   if (action === 'add-to-cart') {
     const quantity = parseInt(refs.input.value) || 1;
 
-    // Якщо погратись і буде час то можна динамічно productid змінювати
+    // Якщо погратись і буде час то можна динамічно productid змінювати,
+    // Наразі додаєтся тільки кількість
     const cartData = {
       productId: 'Books',
       quantity: quantity,
@@ -33,6 +37,11 @@ const handleModalBookClick = event => {
 
     localStorage.setItem('cart-item', JSON.stringify(cartData));
     showToast(`Книгу додано у кошик: ${quantity} шт.`, 'success');
+    return;
+  }
+  if (action === 'buy-now') {
+    showToast('Дякуємо за покупку', 'success');
+    localStorage.removeItem('cart-item');
     return;
   }
 
@@ -96,25 +105,35 @@ refs.input.addEventListener('blur', e => {
   e.target.value = Math.max(1, Math.min(10, value));
 });
 
-/// Відмальовка DOM/ Приклад
+/// Відмальовка DOM
+export function fillDataModalBook({
+  book_image: bookImage,
+  title,
+  description,
+  price,
+  author,
+}) {
+  const imageData = `
+    <img
+            src="${
+              bookImage || 'https://placehold.co/309x466/png?text=No+image'
+            }"
+            alt="${title || 'Без назви'}" 
+            class="modal-books-img"
+          />
+  `;
+  // так дані будуть змінюватись, але також видалятся прослуховувачі подій, але таких там немає
+  refs.bookPhotoWrapper.innerHTML = imageData;
 
-export async function fillData(bookId) {
-  const book = await getDataById(bookId);
-  console.log(book);
-  const { book_image: bookImage, title, description, price, author } = book;
+  const modalBookText = `
+            <h2 class="modal-books-title">${title}</h2>
+            <p class="modal-books-text">${author}</p>
+            <p class="modal-books-price">${price}$</p>
+         `;
+  // так дані будуть змінюватись, але також видалятся прослуховувачі подій, але таких там немає
+  refs.modalBooksTextWrapper.innerHTML = modalBookText;
 
-  const modalImage = document.querySelector('.modal-books-img');
-  const modalTitle = document.querySelector('.modal-books-title');
-  const modalAuthor = document.querySelector('.modal-books-text');
-  const modalPrice = document.querySelector('.modal-books-price');
-  const modalDetails = document.querySelector('.js-ac-text-details');
+  refs.accordionDetails.textContent = description || 'No description';
 
-  modalImage.src = bookImage;
-  modalTitle.textContent = title;
-  modalAuthor.textContent = author;
-  modalPrice.textContent = `${price}$`;
-  modalDetails.textContent = description;
+  // в обʼєкті refs є також елементи акордіону, якщо захочему динамічно додавати.
 }
-
-// Приклад передачі айдішніка
-fillData('68680e31ac8a51f74dd6a25b');
