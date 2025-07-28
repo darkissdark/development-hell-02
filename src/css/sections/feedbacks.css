@@ -12,11 +12,6 @@
   width: 300px;
 }
 
-.icon-feedback-star {
-  fill: red;
-  stroke: black;
-}
-
 @media only screen and (min-width: 768px) {
   .feedbacks-subtitle {
     width: auto;
@@ -62,6 +57,22 @@
   min-height: 217px;
 }
 
+.feedback-text {
+  min-height: 135px;
+}
+
+@media only screen and (min-width: 768px) {
+  .feedback-text {
+    min-height: 110px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .feedback-text {
+    min-height: 0;
+  }
+}
+
 blockquote {
   font-size: 18px;
   margin-block-start: 0;
@@ -71,7 +82,7 @@ blockquote {
   margin-bottom: 24px;
 }
 
-.feedback-author-wrapper {
+.feed .feedback-author-wrapper {
   position: relative;
   display: flex;
 }
@@ -123,22 +134,36 @@ blockquote {
   pointer-events: none;
 }
 
-.feedback-rating {
+.feedback-meta {
   display: flex;
-  gap: 4px;
-  padding: 0;
-  margin: 0 0 24px;
-  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
 }
 
-.feedback-rating__star {
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.icon-verified {
+  width: 16px;
+  height: 16px;
 }
 
-.icon-feedback-star use {
-  fill: #e15d05;
+.badge--silver .icon-verified {
+  fill: #c0c0c0;
 }
-.icon-feedback-star {
-  display: block;
-  width: 20px;
-  height: 20px;
+
+.badge--gold .icon-verified {
+  fill: #ffd700;
+}
+
+.icon-verified {
+  stroke: #00000033;
+}
+
+.badge--unverified {
+  color: #00000033;
+  font-style: italic;
 }

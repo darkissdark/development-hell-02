@@ -6,7 +6,12 @@
 */
 /* @import url('../../node_modules/accordion-js/dist/accordion.min.css'); */
 
+/* Modules */
+@import url('../../node_modules/swiper/swiper-bundle.min.css');
+@import url('../../node_modules/izitoast/dist/css/iziToast.min.css');
+
 /* Common styles */
+@import url('modern-normalize/modern-normalize.css');
 @import url('./base/reset.css');
 @import url('./base/base.css');
 @import url('./base/container.css');
@@ -29,10 +34,5 @@
 
 /* Modals style */
 @import url('./modals/modalBase.css');
-@import url('./modals/modalMobileMenu.css');
 @import url('./modals/modalBook.css');
 @import url('./modals/modalContacts.css');
-
-/* Modules */
-@import url('../../node_modules/swiper/swiper-bundle.min.css');
-@import url('../../node_modules/izitoast/dist/css/iziToast.min.css');
