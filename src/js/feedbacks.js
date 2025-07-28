@@ -1,78 +1,90 @@
 import Swiper from 'swiper/bundle';
-import 'swiper/swiper-bundle.css';
+
+import janeDoe from '../images/feedbacks/jane_doe.jpg';
+import johnSmith from '../images/feedbacks/john_smith.jpg';
+import emilyJohnson from '../images/feedbacks/emily_johnson.jpg';
+import sofiaLee from '../images/feedbacks/sofia_lee.jpg';
+import carlosMendez from '../images/feedbacks/carlos_mendez.jpg';
+import natalieBrooks from '../images/feedbacks/natalie_brooks.jpg';
+import davidNguyen from '../images/feedbacks/david_nguyen.jpg';
+import aishaPatel from '../images/feedbacks/aisha_patel.jpg';
+import michaelThompson from '../images/feedbacks/michael_thompson.jpg';
+import elenaGarcia from '../images/feedbacks/elena_garcia.jpg';
+import jamesOconnor from '../images/feedbacks/james_oconnor.jpg';
+import samanthaLee from '../images/feedbacks/samantha_lee.jpg';
 
 const feedbacksData = [
   {
     text: 'Great selection, fast delivery, and beautifully packaged books. My go-to store for weekend reads!',
     author: 'Jane Doe',
     position: 'Book Lover, Reader',
-    avatar: './images/feedbacks/jane_doe.jpg',
+    avatar: janeDoe,
   },
   {
     text: 'Customer service was super helpful, and my order arrived earlier than expected. Highly recommend!',
     author: 'John Smith',
     position: 'Editor, BookMag',
-    avatar: './images/feedbacks/john_smith.jpg',
+    avatar: johnSmith,
   },
   {
     text: 'Love the curated picks and clear descriptions. Makes it easy to find my next favorite book.',
     author: 'Emily Johnson',
     position: 'Author, Novelist',
-    avatar: './images/feedbacks/emily_johnson.jpg',
+    avatar: emilyJohnson,
   },
   {
     text: 'Such a lovely experience shopping here. The recommendations are always on point!',
     author: 'Sofia Lee',
     position: 'Literature Professor',
-    avatar: './images/feedbacks/sofia_lee.jpg',
+    avatar: sofiaLee,
   },
   {
     text: 'I’ve discovered so many hidden gems thanks to this store. The reviews really help!',
     author: 'Carlos Mendez',
     position: 'Blogger, Read & Roam',
-    avatar: './images/feedbacks/carlos_mendez.jpg',
+    avatar: carlosMendez,
   },
   {
     text: 'As a parent, I appreciate the kid-friendly book sections. My son loves everything we order!',
     author: 'Natalie Brooks',
     position: 'Mother & Teacher',
-    avatar: './images/feedbacks/natalie_brooks.jpg',
+    avatar: natalieBrooks,
   },
   {
     text: 'The curated collections are fantastic! I always find exactly what I’m looking for and discover new favorites.',
     author: 'David Nguyen',
     position: 'Graphic Designer',
-    avatar: './images/feedbacks/david_nguyen.jpg',
+    avatar: davidNguyen,
   },
   {
     text: 'Fast shipping and top-notch service, with timely updates throughout delivery. I’ll definitely be back for more!',
     author: 'Aisha Patel',
     position: 'Marketing Specialist',
-    avatar: './images/feedbacks/aisha_patel.jpg',
+    avatar: aishaPatel,
   },
   {
     text: 'Their children’s book selection is unbeatable. My daughter can’t wait for the next delivery!',
     author: 'Michael Thompson',
     position: 'Pediatric Nurse',
-    avatar: './images/feedbacks/michael_thompson.jpg',
+    avatar: michaelThompson,
   },
   {
     text: 'I love the author spotlights and exclusive interviews. It adds so much value to my reading experience!',
     author: 'Elena Garcia',
     position: 'Content Writer',
-    avatar: './images/feedbacks/elena_garcia.jpg',
+    avatar: elenaGarcia,
   },
   {
     text: 'The gift wrapping option was perfect for presents. Such a thoughtful touch and impeccable attention to detail!',
     author: 'James O’Connor',
     position: 'Event Planner',
-    avatar: './images/feedbacks/james_oconnor.jpg',
+    avatar: jamesOconnor,
   },
   {
     text: 'Great loyalty program with real perks and exclusive offers. I’ve saved so much on my orders and truly feel valued!',
     author: 'Samantha Lee',
     position: 'Digital Strategist',
-    avatar: './images/feedbacks/samantha_lee.jpg',
+    avatar: samanthaLee,
   },
 ];
 
