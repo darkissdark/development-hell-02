@@ -10,7 +10,10 @@ const swiper = new Swiper('.swiper-hero', {
     prevEl: '.js-hero-slider-prev',
   },
   autoplay: {
-    delay: 10000,
+    delay: 5000,
+    disableOnInteraction: false,
   },
-  spaceBetween: 20,
+  speed: 1000,
+
+  spaceBetween: 24,
 });
