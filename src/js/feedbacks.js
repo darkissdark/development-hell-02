@@ -36,6 +36,8 @@ const feedbacksData = [
     position: 'Book Lover, Reader',
     avatar1x: janeDoe1x,
     avatar2x: janeDoe2x,
+    rating: 4.8,
+    subscription: 'gold',
   },
   {
     text: 'Customer service was super helpful, and my order arrived earlier than expected. Highly recommend!',
@@ -43,6 +45,8 @@ const feedbacksData = [
     position: 'Editor, BookMag',
     avatar1x: johnSmith1x,
     avatar2x: johnSmith2x,
+    rating: 4.6,
+    subscription: 'silver',
   },
   {
     text: 'Love the curated picks and clear descriptions. Makes it easy to find my next favorite book.',
@@ -50,6 +54,8 @@ const feedbacksData = [
     position: 'Author, Novelist',
     avatar1x: emilyJohnson1x,
     avatar2x: emilyJohnson2x,
+    rating: 4.9,
+    subscription: 'gold',
   },
   {
     text: 'Such a lovely experience shopping here. The recommendations are always on point!',
@@ -57,6 +63,8 @@ const feedbacksData = [
     position: 'Literature Professor',
     avatar1x: sofiaLee1x,
     avatar2x: sofiaLee2x,
+    rating: 4.7,
+    subscription: 'silver',
   },
   {
     text: 'I’ve discovered so many hidden gems thanks to this store. The reviews really help!',
@@ -64,6 +72,8 @@ const feedbacksData = [
     position: 'Blogger, Read & Roam',
     avatar1x: carlosMendez1x,
     avatar2x: carlosMendez2x,
+    rating: 4.5,
+    subscription: 'silver',
   },
   {
     text: 'As a parent, I appreciate the kid-friendly book sections. My son loves everything we order!',
@@ -71,6 +81,8 @@ const feedbacksData = [
     position: 'Mother & Teacher',
     avatar1x: natalieBrooks1x,
     avatar2x: natalieBrooks2x,
+    rating: 4.6,
+    subscription: 'gold',
   },
   {
     text: 'The curated collections are fantastic! I always find exactly what I’m looking for and discover new favorites.',
@@ -78,6 +90,8 @@ const feedbacksData = [
     position: 'Graphic Designer',
     avatar1x: davidNguyen1x,
     avatar2x: davidNguyen2x,
+    rating: 4.7,
+    subscription: 'silver',
   },
   {
     text: 'Fast shipping and top-notch service, with timely updates throughout delivery. I’ll definitely be back for more!',
@@ -85,6 +99,8 @@ const feedbacksData = [
     position: 'Marketing Specialist',
     avatar1x: aishaPatel1x,
     avatar2x: aishaPatel2x,
+    rating: 4.8,
+    subscription: 'gold',
   },
   {
     text: 'Their children’s book selection is unbeatable. My daughter can’t wait for the next delivery!',
@@ -92,6 +108,8 @@ const feedbacksData = [
     position: 'Pediatric Nurse',
     avatar1x: michaelThompson1x,
     avatar2x: michaelThompson2x,
+    rating: 4.5,
+    subscription: 'silver',
   },
   {
     text: 'I love the author spotlights and exclusive interviews. It adds so much value to my reading experience!',
@@ -99,6 +117,8 @@ const feedbacksData = [
     position: 'Content Writer',
     avatar1x: elenaGarcia1x,
     avatar2x: elenaGarcia2x,
+    rating: 4.9,
+    subscription: 'gold',
   },
   {
     text: 'The gift wrapping option was perfect for presents. Such a thoughtful touch and impeccable attention to detail!',
@@ -106,6 +126,8 @@ const feedbacksData = [
     position: 'Event Planner',
     avatar1x: jamesOconnor1x,
     avatar2x: jamesOconnor2x,
+    rating: 4.6,
+    subscription: 'silver',
   },
   {
     text: 'Great loyalty program with real perks and exclusive offers. I’ve saved so much on my orders and truly feel valued!',
@@ -113,6 +135,8 @@ const feedbacksData = [
     position: 'Digital Strategist',
     avatar1x: samanthaLee1x,
     avatar2x: samanthaLee2x,
+    rating: 5.0,
+    subscription: 'gold',
   },
 ];
 
@@ -121,15 +145,18 @@ function renderFeedbackSlides(data) {
   if (!wrapper) return;
   wrapper.innerHTML = '';
 
-  data.forEach(({ text, author, position, avatar1x, avatar2x }) => {
-    let rating = Math.random() * (5 - 4.3) + 4.3;
-    rating = Math.round(rating * 10) / 10;
-
-    const slide = document.createElement('li');
-    slide.className = 'swiper-slide feedback-card';
-    slide.innerHTML = `
+  data.forEach(
+    ({ text, author, position, avatar1x, avatar2x, rating, subscription }) => {
+      const slide = document.createElement('li');
+      slide.className = 'swiper-slide feedback-card';
+      slide.innerHTML = `
       <blockquote class="feedback-text">${text}</blockquote>
-      <div class="feedback-rating" data-rating="${rating}"></div>
+      <div class="feedback-meta">
+        <div class="feedback-rating" data-rating="${rating}"></div>
+        <div class="badge badge--${subscription}">
+          ${subscription === 'gold' ? 'Gold' : 'Silver'} Verified
+        </div>
+      </div>
       <div class="feedback-author-wrapper">
         <img
           src="${avatar1x}"
@@ -145,8 +172,9 @@ function renderFeedbackSlides(data) {
         </div>
       </div>
     `;
-    wrapper.appendChild(slide);
-  });
+      wrapper.appendChild(slide);
+    }
+  );
 }
 
 function initFeedbackSlider() {
@@ -173,12 +201,11 @@ function initFeedbackSlider() {
   });
 
   document.querySelectorAll('.feedback-rating').forEach(el => {
-    const rating = parseFloat(el.dataset.rating);
     new Rater({
       element: el,
       max: 5,
       step: 0.1,
-      rating,
+      rating: parseFloat(el.dataset.rating),
       readOnly: true,
       starSize: 20,
       showToolTip: false,
