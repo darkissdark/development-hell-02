@@ -1,4 +1,5 @@
 import iziToast from 'izitoast';
+import { postDataToBot } from './backend-api';
 
 const refs = {
   openFormModal: document.querySelectorAll('.register-btn'),
@@ -112,6 +113,14 @@ loadFromLocalStorage();
 refs.formList.addEventListener('submit', e => {
   e.preventDefault();
   closeModal();
+
+  const formData = {
+    name: refs.inputName.value.trim(),
+    email: refs.inputEmail.value.trim(),
+    message: refs.inputArea.value.trim() || 'No messege typed', // required on backend
+  };
+
+  postDataToBot(formData);
   localStorage.removeItem('contactFormData');
   refs.formList.reset();
 
