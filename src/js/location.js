@@ -1,31 +1,33 @@
 console.log('Location script loaded');
 
-const hiddenEl = document.querySelectorAll('.location-hidden');
-const hiddenSideEl = document.querySelectorAll('.location-hidden-side');
+const hiddenEls = document.querySelectorAll('.location-hidden, .location-hidden-side');
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    const el = entry.target;
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      const el = entry.target;
 
-    if (entry.isIntersecting) {
-      if (el.classList.contains('location-hidden')) {
-        el.classList.add('location-show');
+      if (entry.intersectionRatio > 0.5) {
+        if (el.classList.contains('location-hidden')) {
+          el.classList.add('location-show');
+        }
+        if (el.classList.contains('location-hidden-side')) {
+          el.classList.add('location-show-side');
+        }
+      } else {
+        if (el.classList.contains('location-hidden')) {
+          el.classList.remove('location-show');
+        }
+        if (el.classList.contains('location-hidden-side')) {
+          el.classList.remove('location-show-side');
+        }
       }
-      if (el.classList.contains('location-hidden-side')) {
-        el.classList.add('location-show-side');
-      }
-    } else {
-      if (el.classList.contains('location-hidden')) {
-        el.classList.remove('location-show');
-      }
-      if (el.classList.contains('location-hidden-side')) {
-        el.classList.remove('location-show-side');
-      }
-    }
-  });
-});
+    });
+  },
+  {
+    threshold: 0.5,
+  }
+);
 
-hiddenEl.forEach(el => observer.observe(el));
-hiddenSideEl.forEach(el => observer.observe(el));
-
+hiddenEls.forEach((el) => observer.observe(el));
 
