@@ -141,6 +141,9 @@
     height: 40px;
   }
 }
-.slide-button-wrapper .button-nav {
+.js-hero-slider-prev {
+  color: #0b0500;
+}
+.js-hero-slider-forward {
   color: #0b0500;
 }
