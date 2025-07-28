@@ -47,7 +47,7 @@ export default defineConfig(({ command }) => {
       {
         name: 'critical-css-inject',
         transformIndexHtml: {
-          enforce: 'pre',
+          order: 'pre',
           handler(html) {
             const criticalCss = fs.readFileSync(
               './src/css/critical.css',
