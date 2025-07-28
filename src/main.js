@@ -1,6 +1,3 @@
-import 'modern-normalize/modern-normalize.css';
-
-import './js/article.js';
 import './js/books.js';
 import './js/books-modal.js';
 import './js/events.js';

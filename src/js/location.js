@@ -1,10 +1,10 @@
-console.log('Location script loaded');
-
-const hiddenEls = document.querySelectorAll('.location-hidden, .location-hidden-side');
+const hiddenEls = document.querySelectorAll(
+  '.location-hidden, .location-hidden-side'
+);
 
 const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
+  entries => {
+    entries.forEach(entry => {
       const el = entry.target;
 
       if (entry.intersectionRatio > 0.5) {
@@ -29,5 +29,4 @@ const observer = new IntersectionObserver(
   }
 );
 
-hiddenEls.forEach((el) => observer.observe(el));
-
+hiddenEls.forEach(el => observer.observe(el));
