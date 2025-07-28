@@ -183,16 +183,6 @@
   .right-column {
     width: 307px;
   }
-
-  /* .modal-book-photo-wrapper {
-    position: relative;
-  }
-
-  .modal-books-img {
-    position: absolute;
-    left: 0;
-    top: 0;
-  } */
 }
 
 @media screen and (min-width: 1440px) {

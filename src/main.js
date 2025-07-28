@@ -8,3 +8,4 @@ import './js/hero.js';
 import './js/location.js';
 import './js/books-api.js';
 import './js/backend-api.js';
+import './js/contacts-modal.js';

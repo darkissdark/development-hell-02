@@ -34,6 +34,5 @@
 
 /* Modals style */
 @import url('./modals/modalBase.css');
-@import url('./modals/modalMobileMenu.css');
 @import url('./modals/modalBook.css');
 @import url('./modals/modalContacts.css');
