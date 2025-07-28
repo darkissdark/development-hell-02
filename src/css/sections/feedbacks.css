@@ -12,11 +12,6 @@
   width: 300px;
 }
 
-.icon-feedback-star {
-  fill: red;
-  stroke: black;
-}
-
 @media only screen and (min-width: 768px) {
   .feedbacks-subtitle {
     width: auto;
@@ -121,24 +116,4 @@ blockquote {
 .button-nav--disabled {
   opacity: 0.3;
   pointer-events: none;
-}
-
-.feedback-rating {
-  display: flex;
-  gap: 4px;
-  padding: 0;
-  margin: 0 0 24px;
-  list-style: none;
-}
-
-.feedback-rating__star {
-}
-
-.icon-feedback-star use {
-  fill: #e15d05;
-}
-.icon-feedback-star {
-  display: block;
-  width: 20px;
-  height: 20px;
 }
