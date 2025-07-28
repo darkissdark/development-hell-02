@@ -1,3 +1,139 @@
 .location {
-  background: lightgreen;
+  padding: 64px 16px;
+  width: 100%;
+}
+
+.location-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.location-details {
+  max-width: 343px;
+}
+
+.location-text {
+  margin-bottom: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.location-title {
+  font-size: 48px;
+  margin-bottom: 24px;
+}
+
+.location-description {
+  font-size: 18px;
+  margin-bottom: 32px;
+}
+
+.location-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.location-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.location-label {
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.underline {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.map-address {
+  margin-top: 32px;
+  width: 100%;
+  height: 395px;
+  border: none;
+}
+
+.location-hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.location-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.location-hidden-side {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease-out;
+}
+
+.location-show-side {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media screen and (min-width: 768px) {
+  .location {
+    padding: 64px 32px;
+    width: 100%;
+  }
+
+  .location-wrapper {
+    flex-direction: row;
+  }
+
+  .location-details {
+    max-width: 336px;
+    margin-right: 32px;
+  }
+
+  .location-description {
+    margin: 0;
+  }
+
+  .map-address {
+    margin-top: 80px;
+    height: 395px;
+  }
+
+  .location-hidden-side {
+    transform: translateX(100px);
+  }
+
+  .location-show-side {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .location {
+    padding: 64px;
+    width: 100%;
+  }
+  .wrapper {
+    gap: 80px;
+    justify-content: left;
+  }
+
+  .location-details {
+    max-width: 732px;
+    margin-right: 0;
+  }
+
+  .map-address {
+    height: 738px;
+  }
 }

@@ -1,3 +1,157 @@
 .events {
-  background: yellow;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  width: 100%;
+  background: var(--color-scheme-1-background);
+}
+
+@media screen and (min-width: 1440px) {
+  .events {
+    padding: 64px;
+  }
+}
+
+.section-label {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  text-transform: capitalize;
+  margin-bottom: 16px;
+}
+
+.events-heading {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  max-width: 100%;
+  padding-bottom: 16px;
+}
+
+@media screen and (min-width: 1440px) {
+  .events-heading {
+    font-size: 48px;
+  }
+}
+.intro-text {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .intro-text {
+    max-width: 560px;
+  }
+}
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .event-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+}
+
+.event-item {
+  max-width: 343px;
+  margin-bottom: 56px;
+}
+
+@media screen and (min-width: 768px) {
+  .event-item {
+    max-width: 340px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .event-item {
+    max-width: 421px;
+  }
+}
+
+.event-item img {
+  border-radius: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .event-item img {
+    height: 277px;
+    object-fit: cover;
+  }
+}
+
+.event-subhead {
+  margin-top: 24px;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.event-meta {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.event-dscr {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.register-btn {
+  position: absolute;
+  padding: 0;
+  left: 0;
+  bottom: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: var(--color-neutral-darkest);
+}
+
+.event-card {
+  position: relative;
+  padding-bottom: 48px;
+  height: 100%;
+}
+
+.icon-register {
+  transform: rotate(-90deg);
+}
+
+.swiper-controls .swiper-pagination-bullet {
+  opacity: 0.5;
+  width: 10px;
+  height: 10px;
+  margin: 0 6px;
+  border-radius: 50%;
+  background-color: #999999;
+  transition: opacity 0.3s ease;
+}
+
+.swiper-controls .swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: #333333;
+}
+
+.events-pagination {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: 1440px) {
+  .events-contrl.swiper-controls {
+    display: none;
+  }
 }
