@@ -1,5 +1,4 @@
 import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
 
 const refs = {
   openFormModal: document.querySelectorAll('.register-btn'),
@@ -13,36 +12,6 @@ const refs = {
   titleEventSection: document.querySelectorAll('.event-subhead'),
   titleEventModal: document.querySelector('.modal-form-subscription'),
 };
-
-// ! TITLE
-const originalTitles = [];
-
-function transferEventTitle(btn) {
-  const eventCard = btn.closest('.event-card');
-  const titleElement = eventCard
-    ? eventCard.querySelector('.event-subhead')
-    : null;
-
-  if (titleElement) {
-    const titleText = titleElement.textContent;
-
-    if (!originalTitles.includes(titleText)) {
-      originalTitles.push(titleText);
-    }
-
-    refs.titleEventModal.textContent = titleText;
-  }
-}
-
-function resetEventTitle() {
-  document.querySelectorAll('.event-subhead').forEach((titleElement, index) => {
-    if (originalTitles[index]) {
-      titleElement.textContent = originalTitles[index];
-    }
-  });
-
-  refs.titleEventModal.textContent = 'Cozy Book Club — "The Midnight Library"';
-}
 
 // ! OPEN / CLOSE MODAL
 const closeBtn = () => {
@@ -65,36 +34,29 @@ function addEventListeners() {
   refs.closeBtnModal.addEventListener('click', closeModal);
   refs.formBackdrop.addEventListener('click', closeBackdrop);
   document.addEventListener('keydown', closeEscape);
-
-  refs.formList.addEventListener('input', handleInput);
-  refs.formList.addEventListener('submit', handleSubmit);
 }
 
 function removeEventListeners() {
   refs.closeBtnModal.removeEventListener('click', closeModal);
   refs.formBackdrop.removeEventListener('click', closeBackdrop);
   document.removeEventListener('keydown', closeEscape);
-
-  refs.formList.removeEventListener('input', handleInput);
-  refs.formList.removeEventListener('submit', handleSubmit);
 }
 
 function openModal(e) {
   const btn = e.currentTarget;
   transferEventTitle(btn);
-  refs.formBackdrop.classList.add('is-open');
-  document.body.classList.add('no-scroll');
+  refs.formBackdrop.classList.add('show-modal');
+  document.body.classList.add('modal-open');
   addEventListeners();
 }
 
-function closeModal(e) {
-  refs.formBackdrop.classList.remove('is-open');
-  document.body.classList.remove('no-scroll');
+function closeModal() {
+  refs.formBackdrop.classList.remove('show-modal');
+  document.body.classList.remove('modal-open');
   removeEventListeners();
-  resetEventTitle();
 }
 
-// !!! LISRENER
+// !!! LISTENER
 refs.openFormModal.forEach(btn => {
   btn.addEventListener('click', openModal);
 });
@@ -105,7 +67,19 @@ document.addEventListener('keydown', closeEscape);
 
 document.addEventListener('click', closeBackdrop);
 
-// ! VALIDATION
+// ! TITLE
+function transferEventTitle(btn) {
+  const eventCard = btn.closest('.event-card');
+  const titleElement = eventCard
+    ? eventCard.querySelector('.event-subhead')
+    : null;
+
+  if (titleElement) {
+    const titleText = titleElement.textContent;
+
+    refs.titleEventModal.textContent = titleText;
+  }
+}
 
 // ! LOCAL STORAGE
 
@@ -134,15 +108,15 @@ function loadFromLocalStorage() {
 refs.formList.addEventListener('input', saveToLocalStorage);
 loadFromLocalStorage();
 
+// !! SUBMIT BTN
 refs.formList.addEventListener('submit', e => {
   e.preventDefault();
-
+  closeModal();
   localStorage.removeItem('contactFormData');
   refs.formList.reset();
 
   return iziToast.info({
-    title: 'Дякуємо!',
-    message: 'Ми відправили Вам на пошту лист з паролем!',
+    message: 'Thank you!',
     position: 'center',
   });
 });
