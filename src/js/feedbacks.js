@@ -22,12 +22,6 @@ import aishaPatel1x from '../images/feedbacks/aisha_patel.jpg';
 import aishaPatel2x from '../images/feedbacks/aisha_patel@2x.jpg';
 import michaelThompson1x from '../images/feedbacks/michael_thompson.jpg';
 import michaelThompson2x from '../images/feedbacks/michael_thompson@2x.jpg';
-import elenaGarcia1x from '../images/feedbacks/elena_garcia.jpg';
-import elenaGarcia2x from '../images/feedbacks/elena_garcia@2x.jpg';
-import jamesOconnor1x from '../images/feedbacks/james_oconnor.jpg';
-import jamesOconnor2x from '../images/feedbacks/james_oconnor@2x.jpg';
-import samanthaLee1x from '../images/feedbacks/samantha_lee.jpg';
-import samanthaLee2x from '../images/feedbacks/samantha_lee@2x.jpg';
 
 const feedbacksData = [
   {
@@ -46,7 +40,7 @@ const feedbacksData = [
     avatar1x: johnSmith1x,
     avatar2x: johnSmith2x,
     rating: 4.6,
-    subscription: 'silver',
+    subscription: null,
   },
   {
     text: 'Love the curated picks and clear descriptions. Makes it easy to find my next favorite book.',
@@ -64,7 +58,7 @@ const feedbacksData = [
     avatar1x: sofiaLee1x,
     avatar2x: sofiaLee2x,
     rating: 4.7,
-    subscription: 'silver',
+    subscription: null,
   },
   {
     text: 'I’ve discovered so many hidden gems thanks to this store. The reviews really help!',
@@ -82,7 +76,7 @@ const feedbacksData = [
     avatar1x: natalieBrooks1x,
     avatar2x: natalieBrooks2x,
     rating: 4.6,
-    subscription: 'gold',
+    subscription: null,
   },
   {
     text: 'The curated collections are fantastic! I always find exactly what I’m looking for and discover new favorites.',
@@ -91,7 +85,7 @@ const feedbacksData = [
     avatar1x: davidNguyen1x,
     avatar2x: davidNguyen2x,
     rating: 4.7,
-    subscription: 'silver',
+    subscription: null,
   },
   {
     text: 'Fast shipping and top-notch service, with timely updates throughout delivery. I’ll definitely be back for more!',
@@ -111,33 +105,6 @@ const feedbacksData = [
     rating: 4.5,
     subscription: 'silver',
   },
-  {
-    text: 'I love the author spotlights and exclusive interviews. It adds so much value to my reading experience!',
-    author: 'Elena Garcia',
-    position: 'Content Writer',
-    avatar1x: elenaGarcia1x,
-    avatar2x: elenaGarcia2x,
-    rating: 4.9,
-    subscription: 'gold',
-  },
-  {
-    text: 'The gift wrapping option was perfect for presents. Such a thoughtful touch and impeccable attention to detail!',
-    author: 'James O’Connor',
-    position: 'Event Planner',
-    avatar1x: jamesOconnor1x,
-    avatar2x: jamesOconnor2x,
-    rating: 4.6,
-    subscription: 'silver',
-  },
-  {
-    text: 'Great loyalty program with real perks and exclusive offers. I’ve saved so much on my orders and truly feel valued!',
-    author: 'Samantha Lee',
-    position: 'Digital Strategist',
-    avatar1x: samanthaLee1x,
-    avatar2x: samanthaLee2x,
-    rating: 5.0,
-    subscription: 'gold',
-  },
 ];
 
 function renderFeedbackSlides(data) {
@@ -148,28 +115,32 @@ function renderFeedbackSlides(data) {
       const slide = document.createElement('li');
       slide.className = 'swiper-slide feedback-card';
       slide.innerHTML = `
-      <blockquote class="feedback-text">${text}</blockquote>
-      <div class="feedback-meta">
-        <div class="feedback-rating" data-rating="${rating}"></div>
-        <div class="badge badge--${subscription}">
-          <svg class="icon-verified"><use xlink:href="#icon-verified"/></svg>
-          Verified
-        </div>
-      </div>
-      <div class="feedback-author-wrapper">
-        <img
-          src="${avatar1x}"
-          srcset="${avatar1x} 1x, ${avatar2x} 2x"
-          alt="${author}"
-          width="48" height="48"
-          loading="lazy"
-        />
-        <div class="author-details">
-          <h3 class="author-name">${author}</h3>
-          <p>${position}</p>
-        </div>
-      </div>
-    `;
+  <blockquote class="feedback-text">${text}</blockquote>
+  <div class="feedback-meta">
+    <div class="feedback-rating" data-rating="${rating}"></div>
+    ${
+      subscription
+        ? `<div class="badge badge--${subscription}">
+             <svg class="icon-verified"><use xlink:href="#icon-verified"/></svg>
+             Verified
+           </div>`
+        : `<div class="badge badge--unverified">Unverified</div>`
+    }
+  </div>
+  <div class="feedback-author-wrapper">
+    <img
+      src="${avatar1x}"
+      srcset="${avatar1x} 1x, ${avatar2x} 2x"
+      alt="${author}"
+      width="48" height="48"
+      loading="lazy"
+    />
+    <div class="author-details">
+      <h3 class="author-name">${author}</h3>
+      <p>${position}</p>
+    </div>
+  </div>
+`;
       wrapper.appendChild(slide);
     }
   );
@@ -205,7 +176,7 @@ function initFeedbackSlider() {
       step: 0.1,
       rating: parseFloat(el.dataset.rating),
       readOnly: true,
-      starSize: 20,
+      starSize: 14,
       showToolTip: false,
     });
   });

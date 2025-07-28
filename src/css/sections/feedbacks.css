@@ -57,6 +57,22 @@
   min-height: 217px;
 }
 
+.feedback-text {
+  min-height: 135px;
+}
+
+@media only screen and (min-width: 768px) {
+  .feedback-text {
+    min-height: 110px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .feedback-text {
+    min-height: 0;
+  }
+}
+
 blockquote {
   font-size: 18px;
   margin-block-start: 0;
@@ -66,7 +82,7 @@ blockquote {
   margin-bottom: 24px;
 }
 
-.feedback-author-wrapper {
+.feed .feedback-author-wrapper {
   position: relative;
   display: flex;
 }
@@ -144,5 +160,10 @@ blockquote {
 }
 
 .icon-verified {
-  stroke: #0000004d;
+  stroke: #00000033;
+}
+
+.badge--unverified {
+  color: #00000033;
+  font-style: italic;
 }
