@@ -1,54 +1,65 @@
 <section id="books" class="books-section">
   <div class="container books-container">
-    <div class="books-categories">
-      <h2 class="books-title visually-hidden">Trending books</h2>
-      <p class="books-subtitle">Books</p>
-      <p class="number-of-books">Showing 24 of 100</p>
-    </div>
-    <div class="books-categories-accordion">
-      <!-- <div class="category-btn"> -->
-      <button class="books-accordion-btn" type="button">
-        Categories
-        <svg class="icon">
-          <use xlink:href="#chevron-down"></use>
-        </svg>
-      </button>
-      <!-- </div> -->
-      <div class="accordion-content">
-        <ul class="book-list">
-          <li class="categories-item">All categories</li>
-          <li class="categories-item">Lorem ipsum dolor sit amet.</li>
-          <li class="categories-item">Lorem, ipsum.</li>
-          <li class="categories-item">Lorem ipsum dolor sit.</li>
-          <li class="categories-item">
-            Lorem ipsum dolor sit amet consectetur adipisicing.
-          </li>
-          <li class="categories-item">
-            Lorem ipsum dolor sit amet consectetur.
-          </li>
-          <li class="categories-item">Lorem ipsum dolor sit amet.</li>
-          <li class="categories-item">Lorem ipsum dolor sit.</li>
-          <!-- добавь ещё, чтобы появилась прокрутка -->
-        </ul>
+    <div class="books-section-header">
+      <div class="books-categories">
+        <h2 class="books-title visually-hidden">Trending books</h2>
+        <p class="books-subtitle">Books</p>
+        <p class="books-per-page js-books-per-page">Showing 24 of 100</p>
+      </div>
+      <div class="books-acc-container js-accordion-container">
+        <!-- category-btn -->
+        <div class="ac">
+          <h3 class="ac-header">
+            <button class="ac-trigger books-acc-btn" type="button">
+              Categories
+              <svg class="icon">
+                <use xlink:href="#chevron-down"></use>
+              </svg>
+            </button>
+          </h3>
+          <div class="acc-content ac-panel">
+            <ul class="categories-list js-categories-list">
+              <li class="category-item js-category-item">All categories</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-    <ul class="books-list">
-      <li class="book-card">
-        <img
-          src="https://storage.googleapis.com/du-prd/books/images/9780670785933.jpg"
-          alt="THE BODY KEEPS THE SCORE"
-          class="book-card-image"
-        />
-        <div class="book-details">
-          <div class="book-info">
-            <h3 class="book-title">THE BODY KEEPS THE SCORE</h3>
-            <p class="book-autor">Bessel van der Kolk</p>
+    <div class="books-card">
+      <ul class="books-list js-books-list">
+        <li class="book-card js-book-card">
+          <img src="${book_image}" alt="${title}" class="book-card-image" />
+          <div class="book-details">
+            <div class="book-info">
+              <h4 class="book-title">${title}</h4>
+              <p class="book-author">${author}</p>
+            </div>
+            <p class="book-price">$${price}</p>
           </div>
-          <p class="book-price">$0.00</p>
-        </div>
-        <button class="book-info-btn">Learn More</button>
-      </li>
-    </ul>
-    <button class="show-more-btn" type="button">Show More</button>
+          <button class="book-info-btn js-book-info-btn" data-id="${_id}">
+            Learn More
+          </button>
+        </li>
+
+        <li class="book-card js-book-card">
+          <img src="${book_image}" alt="${title}" class="book-card-image" />
+          <div class="book-description">
+            <div class="book-details">
+              <div class="book-info">
+                <h4 class="book-title">${title}</h4>
+                <p class="book-autor">${author}</p>
+              </div>
+              <p class="book-price">$${price}</p>
+            </div>
+            <button class="book-info-btn js-book-info-btn" data-id="${_id}">
+              Learn More
+            </button>
+          </div>
+        </li>
+      </ul>
+      <button class="show-more-btn js-show-more-btn" type="button">
+        Show More
+      </button>
+    </div>
   </div>
 </section>
