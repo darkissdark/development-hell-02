@@ -16,6 +16,10 @@ import Swiper from 'swiper/bundle';
         el: '.events-pagination',
         clickable: true,
       },
+      a11y: {
+        enabled: true,
+        slideRole: '',
+      },
       breakpoints: {
         768: {
           slidesPerView: 2,
