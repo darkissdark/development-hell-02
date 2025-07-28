@@ -1,8 +1,6 @@
 import Swiper from 'swiper/bundle';
-import 'swiper/swiper-bundle.css';
 
 import Rater from 'rater-js';
-import 'rater-js/lib/style.css';
 
 import janeDoe1x from '../images/feedbacks/jane_doe.jpg';
 import janeDoe2x from '../images/feedbacks/jane_doe@2x.jpg';

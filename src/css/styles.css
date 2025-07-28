@@ -7,21 +7,14 @@
 /* @import url('../../node_modules/accordion-js/dist/accordion.min.css'); */
 
 /* Modules */
-@import url('../../node_modules/swiper/swiper-bundle.min.css');
+/* @import url('../../node_modules/swiper/swiper-bundle.min.css'); */
 @import url('../../node_modules/izitoast/dist/css/iziToast.min.css');
 
 /* Common styles */
-@import url('modern-normalize/modern-normalize.css');
-@import url('./base/reset.css');
-@import url('./base/base.css');
-@import url('./base/container.css');
-@import url('./base/buttons.css');
 @import url('./base/form.css');
 @import url('./base/animations.css');
 
 /* Sections style */
-@import url('./sections/header.css');
-@import url('./sections/hero.css');
 @import url('./sections/article.css');
 @import url('./sections/books.css');
 @import url('./sections/events.css');
