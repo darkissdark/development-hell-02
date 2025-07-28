@@ -142,9 +142,7 @@ const feedbacksData = [
 
 function renderFeedbackSlides(data) {
   const wrapper = document.querySelector('.swiper-feedback-wrapper');
-  if (!wrapper) return;
   wrapper.innerHTML = '';
-
   data.forEach(
     ({ text, author, position, avatar1x, avatar2x, rating, subscription }) => {
       const slide = document.createElement('li');
@@ -154,7 +152,8 @@ function renderFeedbackSlides(data) {
       <div class="feedback-meta">
         <div class="feedback-rating" data-rating="${rating}"></div>
         <div class="badge badge--${subscription}">
-          ${subscription === 'gold' ? 'Gold' : 'Silver'} Verified
+          <svg class="icon-verified"><use xlink:href="#icon-verified"/></svg>
+          Verified
         </div>
       </div>
       <div class="feedback-author-wrapper">
@@ -162,8 +161,7 @@ function renderFeedbackSlides(data) {
           src="${avatar1x}"
           srcset="${avatar1x} 1x, ${avatar2x} 2x"
           alt="${author}"
-          width="48"
-          height="48"
+          width="48" height="48"
           loading="lazy"
         />
         <div class="author-details">

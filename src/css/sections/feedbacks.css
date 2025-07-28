@@ -126,19 +126,23 @@ blockquote {
 }
 
 .badge {
-  font-size: 14px;
-  font-weight: 600;
-  padding: 4px 8px;
-  border-radius: 12px;
-  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.icon-verified {
+  width: 16px;
+  height: 16px;
 }
 
-.badge--silver {
-  background-color: #c0c0c0;
-  color: #fff;
+.badge--silver .icon-verified {
+  fill: #c0c0c0;
 }
 
-.badge--gold {
-  background-color: #ffd700;
-  color: #000;
+.badge--gold .icon-verified {
+  fill: #ffd700;
+}
+
+.icon-verified {
+  stroke: #0000004d;
 }
