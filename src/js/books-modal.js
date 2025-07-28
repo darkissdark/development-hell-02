@@ -1,5 +1,6 @@
 import Accordion from 'accordion-js';
 import { showToast } from './common.js';
+import { getDataById } from './books-api.js';
 
 const accordion = new Accordion('.modal-books-accordion-container', {
   duration: 400,
@@ -14,9 +15,9 @@ const refs = {
 
 const handleModalBookClick = event => {
   const target = event.target;
+  const action = target.dataset.action;
 
   // Обробка кнопок
-  const action = target.dataset.action;
   if (action === 'buy-now') {
     showToast('Дякуємо за покупку', 'success');
     return;
@@ -85,7 +86,7 @@ const updateQuantity = change => {
   refs.input.value = newValue;
 };
 
-//Логіка верифікації інпуту по клаві, тут допоміг ШІ
+//Логіка верифікації інпуту по клаві
 refs.input.addEventListener('input', e => {
   e.target.value = e.target.value.replace(/[^0-9]/g, '');
 });
@@ -94,3 +95,26 @@ refs.input.addEventListener('blur', e => {
   const value = parseInt(e.target.value) || 1;
   e.target.value = Math.max(1, Math.min(10, value));
 });
+
+/// Відмальовка DOM/ Приклад
+
+export async function fillData(bookId) {
+  const book = await getDataById(bookId);
+  console.log(book);
+  const { book_image: bookImage, title, description, price, author } = book;
+
+  const modalImage = document.querySelector('.modal-books-img');
+  const modalTitle = document.querySelector('.modal-books-title');
+  const modalAuthor = document.querySelector('.modal-books-text');
+  const modalPrice = document.querySelector('.modal-books-price');
+  const modalDetails = document.querySelector('.js-ac-text-details');
+
+  modalImage.src = bookImage;
+  modalTitle.textContent = title;
+  modalAuthor.textContent = author;
+  modalPrice.textContent = `${price}$`;
+  modalDetails.textContent = description;
+}
+
+// Приклад передачі айдішніка
+fillData('68680e31ac8a51f74dd6a25b');

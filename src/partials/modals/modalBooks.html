@@ -1,4 +1,4 @@
-<div id="modalContacts" class="modal-backdrop modal-books-backdrop show-modal">
+<div id="modalBooks" class="modal-backdrop modal-books-backdrop show-modal">
   <div class="modal-base modal-books">
     <div class="modal-scroll">
       <button class="modal-books-button" type="button">
@@ -60,8 +60,8 @@
             </button>
           </div>
 
-          <div class="modal-books-accordion-container">
-            <div class="ac">
+          <ul class="modal-books-accordion-container">
+            <li class="ac">
               <h3 class="ac-header">
                 <button type="button" class="ac-trigger">
                   Details
@@ -71,11 +71,11 @@
                 </button>
               </h3>
               <div class="ac-panel">
-                <p class="ac-text">Some text</p>
+                <p class="ac-text js-ac-text-details">Some text</p>
               </div>
-            </div>
+            </li>
 
-            <div class="ac">
+            <li class="ac">
               <h3 class="ac-header">
                 <button type="button" class="ac-trigger">
                   Shipping
@@ -85,11 +85,11 @@
                 </button>
               </h3>
               <div class="ac-panel">
-                <p class="ac-text">Some text</p>
+                <p class="ac-text js-ac-text-shipping">Some text</p>
               </div>
-            </div>
+            </li>
 
-            <div class="ac">
+            <li class="ac">
               <h3 class="ac-header">
                 <button type="button" class="ac-trigger">
                   Returns
@@ -99,10 +99,10 @@
                 </button>
               </h3>
               <div class="ac-panel">
-                <p class="ac-text">lorem100</p>
+                <p class="ac-text js-ac-text-returns">lorem100</p>
               </div>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
