@@ -13,7 +13,7 @@ const refs = {
   backdrop: document.querySelector('.modal-books-backdrop'),
   input: document.querySelector('.quantity-selector-quantity-input'),
   modalBooksTextWrapper: document.querySelector('.modal-books-text-wrapper'),
-  bookPhotoWrapper: document.querySelector('.book-photo-wrapper'),
+  bookPhotoWrapper: document.querySelector('.modal-book-photo-wrapper'),
   accordionDetails: document.querySelector('.js-ac-text-details'),
 
   //якщо ми захочемо динамічно додавати інфу, її немає не сервері
@@ -149,5 +149,5 @@ export function fillDataModalBook({
 
   refs.accordionDetails.textContent = description || 'No description';
 
-  // в обʼєкті refs є також елементи акордіону, якщо захочему динамічно додавати.
+  // в обʼєкті refs є також елементи акордіону, якщо захочему ще щось динамічно додавати.
 }
