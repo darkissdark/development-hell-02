@@ -4,4 +4,4 @@ It can be › `+l);return}n||window.innerWidth<=d?m.position=="bottomLeft"||m.po
         rotateZ(${l.rotate?p?-C:C:0}deg)
         scale(${I})
       `;if(l.slideShadows){let P=a.querySelector(".swiper-slide-shadow");P||(P=he("cards",a)),P&&(P.style.opacity=Math.min(Math.max((Math.abs(y)-.5)/.5,0),1))}a.style.zIndex=-Math.abs(Math.round(o))+u.length;const L=Te(l,a);L.style.transform=x}},setTransition:u=>{const f=e.slides.map(p=>ce(p));f.forEach(p=>{p.style.transitionDuration=`${u}ms`,p.querySelectorAll(".swiper-slide-shadow").forEach(l=>{l.style.transitionDuration=`${u}ms`})}),De({swiper:e,duration:u,transformElements:f})},perspective:()=>!0,overwriteParams:()=>({_loopSwapReset:!1,watchSlidesProgress:!0,loopAdditionalSlides:e.params.cardsEffect.rotate?3:2,centeredSlides:!0,virtualTranslate:!e.params.cssMode})})}const oi=[Ds,$s,ks,Bs,Hs,Ns,Gs,Rs,Xs,Fs,Ys,qs,Ws,Vs,_s,js,ei,ti,si,ii,ri,ni,ai];Z.use(oi);export{di as A,Z as S,li as i};
-//# sourceMappingURL=vendor-Da3h-fy1.js.map
+//# sourceMappingURL=vendor-DXhIr5hr.js.map
