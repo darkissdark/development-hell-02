@@ -17,6 +17,10 @@
   pointer-events: auto;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 /* !MOBILE */
 /* ?form window */
 .modal-form {
