@@ -35,6 +35,10 @@
   right: 16px;
 }
 
+.book-photo-wrapper {
+  width: 309px;
+}
+
 .modal-books-img {
   margin-bottom: 32px;
   border-radius: 8px;
@@ -181,9 +185,6 @@
     width: 307px;
   }
 
-  .book-photo-wrapper {
-    width: 309px;
-  }
   .modal-books-img {
     position: absolute;
   }

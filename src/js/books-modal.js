@@ -1,7 +1,7 @@
 import Accordion from 'accordion-js';
 import { showToast } from './common.js';
 // import { document } from 'postcss';
-// import { handleBookDetails } from './books';
+import { handleBookDetails } from './books';
 
 const accordion = new Accordion('.modal-books-accordion-container', {
   duration: 400,
@@ -77,8 +77,9 @@ const handleEscKey = e => {
   }
 };
 
-//todo - Модалка відкриття, наразі не реалізована !
-const openModal = () => {
+// Модалка відкриття
+export const openModal = () => {
+  accordion.closeAll();
   refs.backdrop.classList.add('show-modal');
   document.body.classList.add('modal-open');
   // Додавання лісенерів
@@ -137,9 +138,11 @@ export function fillDataModalBook({
   refs.bookPhotoWrapper.innerHTML = imageData;
 
   const modalBookText = `
-            <h2 class="modal-books-title">${title}</h2>
-            <p class="modal-books-text">${author}</p>
-            <p class="modal-books-price">${price}$</p>
+            <h2 class="modal-books-title">${title || 'Без назви'}</h2>
+            <p class="modal-books-text">${author || 'Невідомий автор'}</p>
+            <p class="modal-books-price">${
+              price ? price + '$' : 'Ціна не вказана'
+            }</p>
          `;
   // так дані будуть змінюватись, але також видалятся прослуховувачі подій, але таких там немає
   refs.modalBooksTextWrapper.innerHTML = modalBookText;
