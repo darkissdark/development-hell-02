@@ -60,12 +60,6 @@
   }
 }
 
-@media screen and (min-width: 1440px) {
-  .swiper-wrapper {
-    gap: 24px;
-  }
-}
-
 .event-item {
   max-width: 343px;
   margin-bottom: 56px;
@@ -90,6 +84,7 @@
 @media screen and (min-width: 768px) {
   .event-item img {
     height: 277px;
+    object-fit: cover;
   }
 }
 
@@ -148,4 +143,15 @@
 .swiper-controls .swiper-pagination-bullet-active {
   opacity: 1;
   background-color: #333333;
+}
+
+.events-pagination {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: 1440px) {
+  .events-contrl.swiper-controls {
+    display: none;
+  }
 }
