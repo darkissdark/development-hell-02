@@ -35,6 +35,10 @@
   right: 16px;
 }
 
+.modal-book-photo-wrapper {
+  width: 309px;
+}
+
 .modal-books-img {
   margin-bottom: 32px;
   border-radius: 8px;
@@ -177,16 +181,18 @@
   }
 
   .right-column {
-    /* фіксований розмір */
     width: 307px;
   }
 
-  .book-photo-wrapper {
-    width: 309px;
+  /* .modal-book-photo-wrapper {
+    position: relative;
   }
+
   .modal-books-img {
     position: absolute;
-  }
+    left: 0;
+    top: 0;
+  } */
 }
 
 @media screen and (min-width: 1440px) {
@@ -195,7 +201,6 @@
   }
 
   .right-column {
-    /* фіксований розмір */
     width: 759px;
   }
 
