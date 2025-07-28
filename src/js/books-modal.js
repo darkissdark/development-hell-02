@@ -1,5 +1,6 @@
 import Accordion from 'accordion-js';
 import { showToast } from './common.js';
+// import { document } from 'postcss';
 // import { handleBookDetails } from './books';
 
 const accordion = new Accordion('.modal-books-accordion-container', {
@@ -69,23 +70,33 @@ const handleModalBookClick = event => {
 refs.backdrop.addEventListener('click', handleModalBookClick);
 
 //Модалка закриття по esc
-document.addEventListener('keydown', e => {
+const handleEscKey = e => {
   if (e.key === 'Escape' && refs.backdrop.classList.contains('show-modal')) {
     closeModal();
     return;
   }
-});
+};
 
 //todo - Модалка відкриття, наразі не реалізована !
 const openModal = () => {
   refs.backdrop.classList.add('show-modal');
   document.body.classList.add('modal-open');
+  // Додавання лісенерів
+  document.addEventListener('keydown', handleEscKey);
+  refs.backdrop.addEventListener('click', handleModalBookClick);
+  refs.input.addEventListener('input', handleInputOnlyNumbers);
+  refs.input.addEventListener('blur', handleInputBlur);
 };
 
 //Модалка закриття
 const closeModal = () => {
   refs.backdrop.classList.remove('show-modal');
   document.body.classList.remove('modal-open');
+  // Зняття лісенерів
+  document.removeEventListener('keydown', handleEscKey);
+  refs.backdrop.removeEventListener('click', handleModalBookClick);
+  refs.input.removeEventListener('input', handleInputOnlyNumbers);
+  refs.input.removeEventListener('blur', handleInputBlur);
 };
 
 // Логіка інпуту + -
@@ -96,14 +107,14 @@ const updateQuantity = change => {
 };
 
 //Логіка верифікації інпуту по клаві
-refs.input.addEventListener('input', e => {
+const handleInputOnlyNumbers = e => {
   e.target.value = e.target.value.replace(/[^0-9]/g, '');
-});
+};
 
-refs.input.addEventListener('blur', e => {
+const handleInputBlur = e => {
   const value = parseInt(e.target.value) || 1;
   e.target.value = Math.max(1, Math.min(10, value));
-});
+};
 
 /// Відмальовка DOM
 export function fillDataModalBook({
