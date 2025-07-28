@@ -732,7 +732,7 @@
 </button>
 
 
-    <div id="modalBooks" class="modal-backdrop">
+    <div id="modalBooks" class="modal-backdrop modal-books-backdrop show-modal">
   <div class="modal-base modal-books">
     <div class="modal-scroll">
       <button class="modal-books-button" type="button">
@@ -778,10 +778,18 @@
           </div>
 
           <div class="modal-books-btn-wrapper">
-            <button class="modal-books-add button-action" type="button">
+            <button
+              class="modal-books-add button-action"
+              data-action="add-to-cart"
+              type="button"
+            >
               Add to cart
             </button>
-            <button class="modal-books-buy button-secondary" type="submit">
+            <button
+              class="modal-books-buy button-secondary"
+              data-action="buy-now"
+              type="submit"
+            >
               Buy now
             </button>
           </div>
@@ -797,7 +805,7 @@
                 </button>
               </h3>
               <div class="ac-panel">
-                <p class="ac-text">Some text</p>
+                <p class="ac-text js-ac-text-details">Some text</p>
               </div>
             </li>
 
@@ -811,7 +819,11 @@
                 </button>
               </h3>
               <div class="ac-panel">
-                <p class="ac-text">Some text</p>
+                <p class="ac-text js-ac-text-shipping">
+                  We ship across the United States within 2-5 business days. All
+                  orders are processed through USPS or a reliable courier
+                  service. Enjoy free standard shipping on orders over $50.
+                </p>
               </div>
             </li>
 
@@ -825,7 +837,12 @@
                 </button>
               </h3>
               <div class="ac-panel">
-                <p class="ac-text">lorem100</p>
+                <p class="ac-text js-ac-text-returns">
+                  You can return an item within 14 days of receiving your order,
+                  provided it hasn't been used and is in its original condition.
+                  To start a return, please contact our support team — we'll
+                  guide you through the process quickly and hassle-free.
+                </p>
               </div>
             </li>
           </ul>
