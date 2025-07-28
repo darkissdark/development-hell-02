@@ -10,9 +10,14 @@ export default defineConfig(({ command }) => {
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
+    css: {
+      devSourcemap: true,
+    },
     root: 'src',
     build: {
       sourcemap: true,
+      minify: 'terser',
+      cssMinify: true,
       rollupOptions: {
         input: glob.sync('./src/*.html'),
         output: {
@@ -42,7 +47,7 @@ export default defineConfig(({ command }) => {
       {
         name: 'critical-css-inject',
         transformIndexHtml: {
-          order: 'pre',
+          enforce: 'pre',
           handler(html) {
             const criticalCss = fs.readFileSync(
               './src/css/critical.css',
