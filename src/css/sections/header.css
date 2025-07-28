@@ -8,14 +8,11 @@
   display: none;
 }
 
-.header-container button {
+.mobile-menu button,
+.header button {
   border: none;
   background-color: transparent;
   padding: 0;
-}
-
-.header-container a {
-  line-height: 0;
 }
 
 /* MOBILE (up to 767px) */
