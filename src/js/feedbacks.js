@@ -251,19 +251,20 @@ function attachOverlays() {
       let idx = truncateIdx;
       overlayTextEl.textContent = full.slice(0, idx);
       overlay.style.display = 'block';
+      const delayMs = 50;
 
       function step() {
         if (idx < full.length) {
           idx++;
           overlayTextEl.textContent = full.slice(0, idx);
-          rafId = requestAnimationFrame(step);
+          rafId = setTimeout(step, delayMs);
         }
       }
-      rafId = requestAnimationFrame(step);
+      rafId = setTimeout(step, delayMs);
     }
 
     function stopReveal() {
-      cancelAnimationFrame(rafId);
+      clearTimeout(rafId);
       overlay.style.display = 'none';
     }
 
