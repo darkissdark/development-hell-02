@@ -1,0 +1,44 @@
+# Cache Control Headers for Static Assets
+
+# Images - cache for 1 year
+/assets/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.jpeg
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.gif
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+# Fonts - cache for 1 year
+/assets/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.ttf
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.otf
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS and JavaScript with hash - cache for 1 year
+/assets/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML - cache for 1 hour
+/*.html
+  Cache-Control: public, max-age=3600 

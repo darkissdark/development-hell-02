@@ -23,7 +23,7 @@ import michaelThompson2x from '../images/feedbacks/michael_thompson@2x.jpg';
 
 const feedbacksData = [
   {
-    text: 'Great selection, fast delivery, and beautifully packaged books. My go-to store for weekend reads!',
+    text: 'Great selection, fast delivery, and beautifully packaged books.\nMy go-to store for weekend reads!',
     author: 'Jane Doe',
     position: 'Book Lover, Reader',
     avatar1x: janeDoe1x,
@@ -32,7 +32,7 @@ const feedbacksData = [
     subscription: 'gold',
   },
   {
-    text: 'Customer service was super helpful, and my order arrived earlier than expected. Highly recommend!',
+    text: `This bookstore has become my absolute favorite! The rare editions section alone is worth the visit, and the staff always go above and beyond to recommend the perfect titles based on my interests.\nI love how they support local authors and host engaging events each month.`,
     author: 'John Smith',
     position: 'Editor, BookMag',
     avatar1x: johnSmith1x,
@@ -41,7 +41,7 @@ const feedbacksData = [
     subscription: null,
   },
   {
-    text: 'Love the curated picks and clear descriptions. Makes it easy to find my next favorite book.',
+    text: `I was pleasantly surprised by the personalized touches in my last order—from the hand-written note tucked inside the package to the custom bookmark.\nThe whole experience felt crafted just for me, and I can’t wait to shop again!`,
     author: 'Emily Johnson',
     position: 'Author, Novelist',
     avatar1x: emilyJohnson1x,
@@ -50,7 +50,7 @@ const feedbacksData = [
     subscription: 'gold',
   },
   {
-    text: 'Such a lovely experience shopping here. The recommendations are always on point!',
+    text: `As a literature professor, I’m endlessly impressed by the depth of their catalog.\nThey carry everything from contemporary bestsellers to obscure academic volumes, and their recommendation engine never fails to introduce me to new gems.`,
     author: 'Sofia Lee',
     position: 'Literature Professor',
     avatar1x: sofiaLee1x,
@@ -59,16 +59,16 @@ const feedbacksData = [
     subscription: null,
   },
   {
-    text: 'I’ve discovered so many hidden gems thanks to this store. The reviews really help!',
+    text: 'I’ve discovered so many hidden gems thanks to this store.\nThe reviews really help me find niche titles I wouldn’t have found anywhere else!',
     author: 'Carlos Mendez',
-    position: 'Blogger, Read & Roam',
+    position: 'Blogger',
     avatar1x: carlosMendez1x,
     avatar2x: carlosMendez2x,
     rating: 4.5,
     subscription: 'silver',
   },
   {
-    text: 'As a parent, I appreciate the kid-friendly book sections. My son loves everything we order!',
+    text: 'As a parent, I appreciate the kid-friendly book sections.\nMy son can’t get enough of the colorful picture books and board books we order each month!',
     author: 'Natalie Brooks',
     position: 'Mother & Teacher',
     avatar1x: natalieBrooks1x,
@@ -77,7 +77,7 @@ const feedbacksData = [
     subscription: null,
   },
   {
-    text: 'The curated collections are fantastic! I always find exactly what I’m looking for and discover new favorites.',
+    text: `The curated collections are fantastic! I always find exactly what I’m looking for and discover new favorites.\nThe seasonal reading lists they publish are also a great way to branch out beyond my usual genres.`,
     author: 'David Nguyen',
     position: 'Graphic Designer',
     avatar1x: davidNguyen1x,
@@ -86,7 +86,7 @@ const feedbacksData = [
     subscription: null,
   },
   {
-    text: 'Fast shipping and top-notch service, with timely updates throughout delivery. I’ll definitely be back for more!',
+    text: 'Fast shipping and top-notch service, with timely updates throughout delivery.\nI’ll definitely be back for more, especially during holiday sales!',
     author: 'Aisha Patel',
     position: 'Marketing Specialist',
     avatar1x: aishaPatel1x,
@@ -95,7 +95,7 @@ const feedbacksData = [
     subscription: 'gold',
   },
   {
-    text: 'Their children’s book selection is unbeatable. My daughter can’t wait for the next delivery!',
+    text: 'Their children’s book selection is unbeatable.\nMy daughter devours every story and can’t wait for the next delivery!',
     author: 'Michael Thompson',
     position: 'Pediatric Nurse',
     avatar1x: michaelThompson1x,
@@ -105,6 +105,59 @@ const feedbacksData = [
   },
 ];
 
+let feedbackSwiper;
+
+function initScrollAnimations() {
+  const rightEls = document.querySelectorAll(
+    '#feedbacks-title, .feedbacks-subtitle'
+  );
+
+  const observerOptions = {
+    root: null,
+    threshold: 0.2,
+  };
+
+  const observerCallback = entries => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle('visible', entry.isIntersecting);
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  rightEls.forEach(el => {
+    el.classList.add('animate-slide-in-right');
+    observer.observe(el);
+  });
+}
+
+function getTruncateIndex(block, fullText) {
+  const clone = block.cloneNode();
+  Object.assign(clone.style, {
+    visibility: 'hidden',
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    height: 'auto',
+    webkitLineClamp: 'unset',
+    display: 'block',
+    overflow: 'visible',
+  });
+  block.parentNode.appendChild(clone);
+
+  let low = 0,
+    high = fullText.length;
+  const maxH = block.clientHeight;
+  while (low < high) {
+    const mid = Math.ceil((low + high) / 2);
+    clone.textContent = fullText.slice(0, mid);
+    if (clone.scrollHeight <= maxH) low = mid;
+    else high = mid - 1;
+  }
+  clone.remove();
+  return low;
+}
+
 function renderFeedbackSlides(data) {
   const wrapper = document.querySelector('.swiper-feedback-wrapper');
   wrapper.innerHTML = '';
@@ -113,7 +166,14 @@ function renderFeedbackSlides(data) {
       const slide = document.createElement('li');
       slide.className = 'swiper-slide feedback-card';
       slide.innerHTML = `
-  <blockquote class="feedback-text">${text}</blockquote>
+  <div class="feedback-text-wrapper">
+    <blockquote class="feedback-text">
+      <span class="text-content">${text}</span>
+    </blockquote>
+  </div>
+  <div class="feedback-overlay" aria-hidden="true">
+    <div class="overlay-text"></div>
+  </div>
   <div class="feedback-meta">
     <div class="feedback-rating" data-rating="${rating}"></div>
     ${
@@ -145,10 +205,14 @@ function renderFeedbackSlides(data) {
 }
 
 function initFeedbackSlider() {
-  const swiper = new Swiper('.feedbacks-slider', {
+  feedbackSwiper = new Swiper('.feedbacks-slider', {
     slidesPerView: 1,
     spaceBetween: 24,
     speed: 600,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
     pagination: { el: '.swiper-pagination', clickable: true },
     navigation: {
       prevEl: '.button-nav.prev',
@@ -179,13 +243,160 @@ function initFeedbackSlider() {
     });
   });
 
-  swiper.el.addEventListener('mouseenter', () => swiper.autoplay?.stop());
-  swiper.el.addEventListener('mouseleave', () => swiper.autoplay?.start());
-  swiper.el.addEventListener('focusin', () => swiper.autoplay?.stop());
-  swiper.el.addEventListener('focusout', () => swiper.autoplay?.start());
+  feedbackSwiper.el.addEventListener('mouseenter', () =>
+    feedbackSwiper.autoplay?.stop()
+  );
+  feedbackSwiper.el.addEventListener('mouseleave', () =>
+    feedbackSwiper.autoplay?.start()
+  );
+  feedbackSwiper.el.addEventListener('focusin', () =>
+    feedbackSwiper.autoplay?.stop()
+  );
+  feedbackSwiper.el.addEventListener('focusout', () =>
+    feedbackSwiper.autoplay?.start()
+  );
+}
+
+function attachOverlays() {
+  const mqlTablet = window.matchMedia(
+    '(min-width: 768px) and (max-width: 1439px)'
+  );
+  const mqlDesktop = window.matchMedia('(min-width: 1440px)');
+
+  document.querySelectorAll('.feedback-card').forEach(card => {
+    const wrapper = card.querySelector('.feedback-text-wrapper');
+    const block = wrapper.querySelector('.feedback-text');
+    const textEl = block.querySelector('.text-content');
+    const overlay = card.querySelector('.feedback-overlay');
+    const ovText = overlay.querySelector('.overlay-text');
+    let timer,
+      isOpen = false;
+
+    if (block.scrollHeight <= block.clientHeight) {
+      wrapper.classList.add('full-text');
+      return;
+    }
+
+    function openOverlay() {
+      if (isOpen) return;
+      isOpen = true;
+
+      feedbackSwiper.autoplay?.stop();
+      feedbackSwiper.allowTouchMove = false;
+
+      overlay.setAttribute('aria-hidden', 'false');
+      overlay.style.display = 'block';
+
+      const fullText = textEl.textContent;
+      const idx = getTruncateIndex(block, fullText);
+
+      const measure = block.cloneNode();
+      Object.assign(measure.style, {
+        visibility: 'hidden',
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        height: 'auto',
+        webkitLineClamp: 'unset',
+        display: 'block',
+        overflow: 'visible',
+      });
+      measure.textContent = fullText.slice(0, idx);
+      const marker = document.createElement('span');
+      marker.className = 'text-marker';
+      measure.appendChild(marker);
+      block.parentNode.appendChild(measure);
+
+      const cardRect = card.getBoundingClientRect();
+      const mRect = marker.getBoundingClientRect();
+      overlay.style.setProperty('--text-top', `${mRect.top - cardRect.top}px`);
+      overlay.style.setProperty(
+        '--text-left',
+        `${mRect.left - cardRect.left}px`
+      );
+
+      measure.remove();
+
+      const visiblePart = fullText.slice(0, idx);
+      const hiddenPart = fullText.slice(idx);
+
+      ovText.textContent = visiblePart;
+      ovText.style.display = 'inline-block';
+      ovText.style.whiteSpace = 'pre-wrap';
+      ovText.style.wordBreak = 'break-word';
+
+      let i = 0;
+      (function step() {
+        if (i < hiddenPart.length) {
+          ovText.textContent += hiddenPart[i++];
+          timer = setTimeout(step, 25);
+        }
+      })();
+
+      const totalDelay = hiddenPart.length * 25 + 2000;
+      setTimeout(() => {
+        feedbackSwiper.allowTouchMove = true;
+        feedbackSwiper.autoplay?.start();
+      }, totalDelay);
+    }
+    function closeOverlay(final = false) {
+      clearTimeout(timer);
+      overlay.setAttribute('aria-hidden', 'true');
+      overlay.style.display = 'none';
+      feedbackSwiper.allowTouchMove = true;
+      feedbackSwiper.autoplay?.start();
+      if (final) isOpen = false;
+    }
+
+    function onMobile() {
+      textEl.removeEventListener('click', onTablet);
+      textEl.removeEventListener('focusin', onDesktop);
+      textEl.removeEventListener('blur', onDesktop);
+      textEl.addEventListener('click', () => {
+        isOpen ? closeOverlay(true) : openOverlay();
+      });
+      document.addEventListener('click', e => {
+        if (isOpen && !wrapper.contains(e.target)) closeOverlay(true);
+      });
+    }
+    function onTablet() {
+      textEl.removeEventListener('click', onMobile);
+      textEl.removeEventListener('focusin', onDesktop);
+      textEl.removeEventListener('blur', onDesktop);
+      textEl.addEventListener('click', openOverlay);
+      document.addEventListener('click', e => {
+        if (isOpen && !wrapper.contains(e.target)) closeOverlay(true);
+      });
+    }
+    function onDesktop() {
+      textEl.removeEventListener('click', onMobile);
+      textEl.removeEventListener('click', onTablet);
+
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('focusin', openOverlay);
+      card.addEventListener('focusout', e => {
+        if (!card.contains(e.relatedTarget)) closeOverlay(true);
+      });
+
+      card.addEventListener('mouseenter', openOverlay);
+      card.addEventListener('mouseleave', () => closeOverlay(true));
+    }
+
+    function applyMode() {
+      closeOverlay(true);
+      if (mqlDesktop.matches) onDesktop();
+      else if (mqlTablet.matches) onTablet();
+      else onMobile();
+    }
+    mqlTablet.addListener(applyMode);
+    mqlDesktop.addListener(applyMode);
+    applyMode();
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   renderFeedbackSlides(feedbacksData);
   initFeedbackSlider();
+  attachOverlays();
+  initScrollAnimations();
 });

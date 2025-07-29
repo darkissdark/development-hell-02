@@ -1,37 +1,25 @@
-const openBtn = document.querySelector('.mobile-open-menu-btn');
-const closeBtn = document.querySelector('.mobile-menu-close-btn');
-const mobileMenu = document.querySelector('.mobile-menu');
-const mobileNavLinks = document.querySelectorAll('.mobile-page-menu-link');
-const desktopNavLinks = document.querySelectorAll('.page-menu-link');
-const body = document.body;
+const refs = {
+  openBtn: document.querySelector('.mobile-menu-open-btn'),
+  closeBtn: document.querySelector('.mobile-menu-close-btn'),
+  mobileMenu: document.querySelector('.mobile-menu'),
+  mobileNavLinks: document.querySelectorAll('.mobile-menu-page-link'),
+  desktopNavLinks: document.querySelectorAll('.page-menu-link'),
+  body: document.body,
+};
 
-openBtn.addEventListener('click', () => {
-  mobileMenu.classList.add('is-open');
-  body.classList.add('menu-open');
+refs.openBtn.addEventListener('click', () => {
+  refs.mobileMenu.classList.add('is-open');
+  refs.body.classList.add('modal-open');
 });
 
-closeBtn.addEventListener('click', () => {
-  mobileMenu.classList.remove('is-open');
-  body.classList.remove('menu-open');
+refs.closeBtn.addEventListener('click', () => {
+  refs.mobileMenu.classList.remove('is-open');
+  refs.body.classList.remove('modal-open');
 });
 
-mobileNavLinks.forEach(link => {
+refs.mobileNavLinks.forEach(link => {
   link.addEventListener('click', () => {
-    mobileMenu.classList.remove('is-open');
-    body.classList.remove('menu-open');
-  });
-});
-
-desktopNavLinks.forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const targetId = link.getAttribute('href');
-    const targetSection = document.querySelector(targetId);
-
-    if (targetSection) {
-      setTimeout(() => {
-        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 300);
-    }
+    refs.mobileMenu.classList.remove('is-open');
+    refs.body.classList.remove('modal-open');
   });
 });

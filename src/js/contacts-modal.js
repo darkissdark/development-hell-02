@@ -112,7 +112,6 @@ loadFromLocalStorage();
 // !! SUBMIT BTN
 refs.formList.addEventListener('submit', async e => {
   e.preventDefault();
-  closeModal();
   const formDataId = e.currentTarget.previousElementSibling.textContent;
 
   const formData = {
@@ -121,7 +120,18 @@ refs.formList.addEventListener('submit', async e => {
     message: refs.inputArea.value.trim() || 'No messege typed', // required on backend
   };
 
+  refs.inputName.disabled = true;
+  refs.inputEmail.disabled = true;
+  refs.inputArea.disabled = true;
+  refs.submitBtnModal.disabled = true;
+  refs.submitBtnModal.textContent = 'Sending...';
   await sendDataToBackEnd(formData, formDataId);
+  refs.inputName.disabled = false;
+  refs.inputEmail.disabled = false;
+  refs.inputArea.disabled = false;
+  refs.submitBtnModal.disabled = false;
+  refs.submitBtnModal.textContent = 'Register';
+  closeModal();
   localStorage.removeItem('contactFormData');
   refs.formList.reset();
 

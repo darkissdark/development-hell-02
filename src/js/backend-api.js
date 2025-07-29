@@ -17,3 +17,17 @@ export const sendDataToBackEnd = async (data, dataid) => {
     console.error('Помилка при надсиланні:', error);
   }
 };
+
+export const sendCartDataToBackEnd = async arr => {
+  try {
+    const response = await axios.post(
+      'https://test-server-fortg.onrender.com/cart',
+
+      arr
+    );
+
+    console.log('Відповідь сервера:', response.data);
+  } catch (error) {
+    console.error('Помилка при надсиланні:', error);
+  }
+};
