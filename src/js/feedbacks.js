@@ -23,7 +23,7 @@ import michaelThompson2x from '../images/feedbacks/michael_thompson@2x.jpg';
 
 const feedbacksData = [
   {
-    text: 'Great selection, fast delivery, and beautifully packaged books. My go-to store for weekend reads!',
+    text: 'Great selection, fast delivery, and beautifully packaged books.\nMy go-to store for weekend reads!',
     author: 'Jane Doe',
     position: 'Book Lover, Reader',
     avatar1x: janeDoe1x,
@@ -32,7 +32,7 @@ const feedbacksData = [
     subscription: 'gold',
   },
   {
-    text: 'Customer service was super helpful, and my order arrived earlier than expected. Highly recommend!',
+    text: `This bookstore has become my absolute favorite! The rare editions section alone is worth the visit, and the staff always go above and beyond to recommend the perfect titles based on my interests.\nI love how they support local authors and host engaging events each month.`,
     author: 'John Smith',
     position: 'Editor, BookMag',
     avatar1x: johnSmith1x,
@@ -41,7 +41,7 @@ const feedbacksData = [
     subscription: null,
   },
   {
-    text: 'Love еееееее ееееее ккккккккккккк ккккк  к   к к к к к кк к к к к к к к к к  кк к  к кк к к  к к к к к к к к к к к к к к к к к кк  к к к к к к к к к к кк ыпваыпав прав ав пав авы ыв авы авы аывфа ывп акерпкеу екуп кувп ку екуце куцап вып ке ке ываплтукпотлпь цукруцзшгкруц шкгуш кгруцшз цу й  шуцйкшщуцкшзгукшгцуш уцуц  щзшуцйщшцщшуц щуш щ ш щшщшщшщ шщ ш',
+    text: `I was pleasantly surprised by the personalized touches in my last order—from the hand-written note tucked inside the package to the custom bookmark.\nThe whole experience felt crafted just for me, and I can’t wait to shop again!`,
     author: 'Emily Johnson',
     position: 'Author, Novelist',
     avatar1x: emilyJohnson1x,
@@ -50,7 +50,7 @@ const feedbacksData = [
     subscription: 'gold',
   },
   {
-    text: 'Such a lovely experience shopping here. The recommendations are always on point!',
+    text: `As a literature professor, I’m endlessly impressed by the depth of their catalog.\nThey carry everything from contemporary bestsellers to obscure academic volumes, and their recommendation engine never fails to introduce me to new gems.`,
     author: 'Sofia Lee',
     position: 'Literature Professor',
     avatar1x: sofiaLee1x,
@@ -59,7 +59,7 @@ const feedbacksData = [
     subscription: null,
   },
   {
-    text: 'I’ve discovered so many hidden gems thanks to this store. The reviews really help!',
+    text: 'I’ve discovered so many hidden gems thanks to this store.\nThe reviews really help me find niche titles I wouldn’t have found anywhere else!',
     author: 'Carlos Mendez',
     position: 'Blogger',
     avatar1x: carlosMendez1x,
@@ -68,7 +68,7 @@ const feedbacksData = [
     subscription: 'silver',
   },
   {
-    text: 'As a parent, I appreciate the kid-friendly book sections. My son loves everything we order!',
+    text: 'As a parent, I appreciate the kid-friendly book sections.\nMy son can’t get enough of the colorful picture books and board books we order each month!',
     author: 'Natalie Brooks',
     position: 'Mother & Teacher',
     avatar1x: natalieBrooks1x,
@@ -77,7 +77,7 @@ const feedbacksData = [
     subscription: null,
   },
   {
-    text: 'The curated collections are fantastic! I always find exactly what I’m looking for and discover new favorites.',
+    text: `The curated collections are fantastic! I always find exactly what I’m looking for and discover new favorites.\nThe seasonal reading lists they publish are also a great way to branch out beyond my usual genres.`,
     author: 'David Nguyen',
     position: 'Graphic Designer',
     avatar1x: davidNguyen1x,
@@ -86,7 +86,7 @@ const feedbacksData = [
     subscription: null,
   },
   {
-    text: 'Fast shipping and top-notch service, with timely updates throughout delivery. I’ll definitely be back for more!',
+    text: 'Fast shipping and top-notch service, with timely updates throughout delivery.\nI’ll definitely be back for more, especially during holiday sales!',
     author: 'Aisha Patel',
     position: 'Marketing Specialist',
     avatar1x: aishaPatel1x,
@@ -95,7 +95,7 @@ const feedbacksData = [
     subscription: 'gold',
   },
   {
-    text: 'Their children’s book selection is unbeatable. My daughter can’t wait for the next delivery!',
+    text: 'Their children’s book selection is unbeatable.\nMy daughter devours every story and can’t wait for the next delivery!',
     author: 'Michael Thompson',
     position: 'Pediatric Nurse',
     avatar1x: michaelThompson1x,
