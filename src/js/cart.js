@@ -1,3 +1,5 @@
+import { showToast } from './common';
+
 // ===== КОРЗИНА =====
 const CART_KEY = 'cart-items';
 
@@ -117,16 +119,11 @@ window.addToCart = addToCart;
 ///
 
 // Додаємо обробник на кнопки "До корзини"
-// document.querySelectorAll('.js-book-cart-btn').forEach(btn => {
-//   btn.addEventListener('click', e => {
-//     const { id, title, price } = btn.dataset;
-//     window.addToCart({ id, title, price: Number(price), qty: 1 });
-//     if (window.iziToast) {
-//       iziToast.success({ message: 'Додано до корзини!', position: 'topRight' });
-//     } else {
-//       alert('Додано до корзини!');
-//     }
-//   });
-// });
-
-// <button class="book-cart-btn js-book-cart-btn" data-id="${_id}" data-title="${title}" data-price="${price}">До корзини</button>
+document.querySelectorAll('.modal-books-add').forEach(btn => {
+  btn.addEventListener('click', e => {
+    const { id, title, price, qty } = btn.dataset;
+    console.log(qty);
+    window.addToCart({ id, title, price: Number(price), qty: Number(qty) });
+    showToast(`"${title}" added to cart!`, 'success');
+  });
+});
