@@ -69,5 +69,8 @@ export default defineConfig(({ command }) => {
       injectHTML(),
       FullReload(['./src/**/*.html']),
     ],
+    // optimizeDeps: {
+    //   include: ['swiper', 'izitoast', 'modern-normalize'],
+    // },
   };
 });
