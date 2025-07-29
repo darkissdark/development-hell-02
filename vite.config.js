@@ -4,6 +4,7 @@ import injectHTML from 'vite-plugin-html-inject';
 import FullReload from 'vite-plugin-full-reload';
 import SortCss from 'postcss-sort-media-queries';
 import fs from 'fs';
+import cssnano from 'cssnano';
 
 export default defineConfig(({ command }) => {
   return {
@@ -11,13 +12,17 @@ export default defineConfig(({ command }) => {
       [command === 'serve' ? 'global' : '_global']: {},
     },
     css: {
-      devSourcemap: true,
+      postcss: {
+        plugins: [
+          SortCss({ sort: 'mobile-first' }),
+          ...(command === 'build' ? [cssnano({ preset: 'default' })] : []),
+        ],
+      },
     },
     root: 'src',
     build: {
       sourcemap: true,
       minify: 'terser',
-      cssMinify: true,
       rollupOptions: {
         input: glob.sync('./src/*.html'),
         output: {
@@ -33,7 +38,7 @@ export default defineConfig(({ command }) => {
             return '[name].js';
           },
           assetFileNames: assetInfo => {
-            if (assetInfo.name && assetInfo.name.endsWith('.html')) {
+            if (assetInfo.name?.endsWith('.html')) {
               return '[name].[ext]';
             }
             return 'assets/[name]-[hash][extname]';
@@ -42,6 +47,7 @@ export default defineConfig(({ command }) => {
       },
       outDir: '../dist',
       emptyOutDir: true,
+      assetsInlineLimit: 0,
     },
     plugins: [
       {
@@ -61,10 +67,7 @@ export default defineConfig(({ command }) => {
         },
       },
       injectHTML(),
-      FullReload(['./src/**/**.html']),
-      SortCss({
-        sort: 'mobile-first',
-      }),
+      FullReload(['./src/**/*.html']),
     ],
   };
 });

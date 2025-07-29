@@ -17,6 +17,7 @@
 @media screen and (min-width: 1440px) {
   .books-section {
     max-width: 1440px;
+    min-height: 1400px;
   }
   .books-container {
     display: flex;
@@ -26,6 +27,8 @@
 
 /* ========== Info section ========== */
 .books-section-header {
+  max-width: 100%;
+  /* max-width: 342px; */
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -33,6 +36,7 @@
 }
 @media screen and (min-width: 768px) {
   .books-section-header {
+    /* max-width: 100%; */
     flex-direction: row;
     justify-content: space-between;
     gap: 24px;
@@ -53,7 +57,9 @@
   align-items: center;
 }
 @media screen and (min-width: 768px) {
-  width: 100%;
+  .books-categories {
+    width: 100%;
+  }
 }
 .books-subtitle {
   font-weight: 600;
@@ -66,87 +72,109 @@
 }
 
 /* ========== Accordion ========== */
-.ac-header .books-acc-btn {
+.accordion-wrapper {
+  position: relative;
+  display: block; /*inline-block;  или block, если нужно растянуть */
+  /* width: 100%; */
+}
+
+/* Кнопка */
+.books-acc-btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid rgba(11, 5, 0, 0.15);
-  border-radius: 4px;
-  padding: 8px 12px;
-  max-width: 375px;
-  background: rgba(11, 5, 0, 0.05);
-  font-family: 'Rubik', sans-serif;
-  font-weight: 400;
+  background-color: rgba(11, 5, 0, 0.05);
+  padding: 12px 16px;
+  width: 100%;
   font-size: 18px;
-  line-height: 1.5;
-  color: #0b0500;
+  border: none;
+  cursor: pointer;
+  height: 43px;
 }
-.icon {
-  width: 24px;
-  height: 24px;
-  color: #0b0500;
+@media screen and (min-width: 768px) {
+  .books-acc-btn {
+    width: 249px;
+  }
 }
-.ac {
-  background: #fceee6;
-  position: relative;
-}
-.ac .ac-trigger::after {
-  /* all: unset; */
-  display: none;
-}
-.ac .ac-panel {
-  overflow-y: auto;
 
-  /* position: absolute;
+/* Иконка */
+.books-acc-icon {
+  transition: transform 0.3s ease;
+}
+
+.books-acc-icon.rotate {
+  transform: rotate(180deg);
+}
+
+/* Контентная панель */
+.content {
+  position: absolute;
   top: 100%;
   left: 0;
-  z-index: 10;
+  z-index: 100;
   width: 100%;
-  display: none; по умолчанию скрыт */
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-}
-/* .ac .ac-panel.open {
-  display: block;
-} */
-.acc-content {
-  max-height: 296px;
-  /* overflow-y: auto; */
-  padding-right: 4px;
-  background: #fceee6;
-}
-.ac .ac-panel::-webkit-scrollbar {
-  width: 6px;
-}
-.ac .ac-panel::-webkit-scrollbar-thumb {
-  background-color: rgba(226, 12, 12, 0.7);
-  border-radius: 4px;
-  width: 5px;
-  height: 47px;
-  margin-right: 13px;
-}
-.categories-list {
-  margin-top: 4px;
-  /* height: 296px; */
-  background-color: rgba(11, 5, 0, 0.05);
-  border: 1px solid rgba(11, 5, 0, 0.15);
-  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background-color: rgb(230, 225, 218);
+  /* background-color: rgba(11, 5, 0, 0.05); */
   cursor: pointer;
 }
-.category-item {
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 150%;
-  color: var(--color-scheme-1-text);
-  padding: 8px 12px;
-  border-bottom: 1px solid #eee;
-  border: 1px solid rgba(11, 5, 0, 0.15);
-  border-radius: 4px;
+@media screen and (min-width: 1440px) {
+  .content {
+    width: 308px;
+  }
+}
+.js-category-item:hover,
+.js-category-item:focus {
+  background-color: rgba(11, 5, 0, 0.15);
+}
+
+.content.open {
+  max-height: 296px; /* меняй под нужное значение */
+  overflow-y: auto;
+}
+
+/* Список */
+.categories-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.categories-list li {
+  padding: 10px 16px;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media screen and (min-width: 1440px) {
+  .books-acc-btn {
+    display: none;
+  }
+
+  .content {
+    max-height: none !important;
+    overflow: visible !important;
+  }
 }
 
 /* ========== Book card ========== */
-.books-card {
-  max-width: 980px;
+@media screen and (min-width: 768px) {
+  .books-card {
+    width: 100%;
+    /* max-width: 980px; */
+  }
+}
+@media screen and (min-width: 1440px) {
+  .books-card {
+    /* width: 100%; */
+    max-width: 980px;
+  }
 }
 .books-list {
   display: flex;
@@ -197,13 +225,14 @@
   }
 }
 .book-details {
-  max-width: 342px;
+  max-width: 343px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 16px;
 }
 @media screen and (min-width: 768px) {
   .book-details {
+    max-width: 340px;
     gap: 16px;
   }
 }
@@ -213,16 +242,38 @@
   }
 }
 .book-info {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
-  width: 224px;
+  flex: 1 1 auto; /* <-- ключевой момент */
+  min-width: 0;
 }
 .book-title {
   font-weight: 600;
   text-transform: capitalize;
 }
+.book-title,
+.book-autor {
+  display: block;
+  white-space: nowrap; /* запрет на перенос */
+  overflow: hidden; /* обрезка лишнего */
+  text-overflow: ellipsis; /* троеточие */
+  width: 100%; /* ограничение ширины, если нужно */
+}
+/* .book-title {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.book-autor {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #555;
+} */
 .book-autor {
   font-size: 14px;
 }
@@ -247,7 +298,7 @@
   border-radius: 4px;
   padding: 12px 24px;
   display: block;
-  /* max-width: 342px; */
+  max-width: 342px;
   margin: 0 auto;
   width: 100%;
   height: 48px;

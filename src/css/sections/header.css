@@ -21,7 +21,7 @@
     padding: 8px 12px 8px 20px;
   }
 
-  .mobile-open-menu-btn {
+  .mobile-menu-open-btn {
     line-height: 0;
     padding: 12px;
   }
@@ -68,13 +68,13 @@
     gap: 40px;
   }
 
-  .mobile-page-menu-link {
+  .mobile-menu-page-link {
     font-weight: 500;
     font-size: 20px;
     line-height: 1.5;
   }
 
-  .mobile-page-menu-link:active {
+  .mobile-menu-page-link:active {
     opacity: 0.8;
   }
 }
@@ -85,7 +85,7 @@
     display: none;
   }
 
-  .mobile-open-menu-btn {
+  .mobile-menu-open-btn {
     display: none;
   }
 

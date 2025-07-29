@@ -3,7 +3,8 @@ import { refs } from './refs';
 export function renderCategories(categories) {
   const markup = categories
     .map(({ list_name }) => {
-      const name = list_name.trim() === '' ? 'No Category' : list_name;
+      // const name = list_name.trim() === '' ? 'No Category' : list_name;
+      const name = list_name;
       return `
       <li class="category-item js-category-item">
         ${name}
