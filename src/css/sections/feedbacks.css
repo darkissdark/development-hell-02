@@ -190,13 +190,12 @@ blockquote {
 
 .badge--unverified {
   color: transparent;
-  font-style: italic;
 }
 
 .animate-slide-in-right {
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
 
 .animate-slide-in-right.visible {

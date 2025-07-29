@@ -286,6 +286,19 @@ function initFeedbackSlider() {
       768: { slidesPerView: 2, spaceBetween: 24 },
       1440: { slidesPerView: 3, spaceBetween: 24 },
     },
+    on: {
+      paginationUpdate: () => {
+        document
+          .querySelectorAll('.swiper-pagination-bullet')
+          .forEach(bullet => bullet.removeAttribute('tabindex'));
+      },
+    },
+  });
+
+  requestAnimationFrame(() => {
+    document
+      .querySelectorAll('.swiper-pagination-bullet')
+      .forEach(bullet => bullet.removeAttribute('tabindex'));
   });
 
   document.querySelectorAll('.feedback-rating').forEach(el => {
