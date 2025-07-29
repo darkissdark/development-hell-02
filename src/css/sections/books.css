@@ -290,7 +290,17 @@
   width: 100%;
   height: 40px;
 }
-
+.book-info-btn:hover,
+.book-info-btn:focus {
+  background-color: #ea8d50;
+}
+.book-info-btn:active {
+  background-color: #dad9d8;
+}
+.book-info-btn:disabled {
+  color: #0b0500;
+  opacity: 0.2;
+}
 .show-more-btn {
   line-height: 1.5;
   color: #fff;
@@ -304,6 +314,17 @@
   height: 48px;
   background: #e15d05;
 }
+.show-more-btn:hover {
+  background-color: #0b0500;
+}
+.show-more-btn:active {
+  background-color: #b44a04;
+}
+.show-more-btn:disabled {
+  background-color: #0b0500;
+  opacity: 0.2;
+}
+
 @media screen and (min-width: 1440px) {
   .show-more-btn {
     max-width: 342px;
