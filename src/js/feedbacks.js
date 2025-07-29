@@ -105,6 +105,8 @@ const feedbacksData = [
   },
 ];
 
+let feedbackSwiper;
+
 function getTruncateIndex(block, fullText) {
   const clone = block.cloneNode();
   Object.assign(clone.style, {
@@ -179,12 +181,12 @@ function renderFeedbackSlides(data) {
 }
 
 function initFeedbackSlider() {
-  const swiper = new Swiper('.feedbacks-slider', {
+  feedbackSwiper = new Swiper('.feedbacks-slider', {
     slidesPerView: 1,
     spaceBetween: 24,
     speed: 600,
     autoplay: {
-      delay: 5000,
+      delay: 2000,
       disableOnInteraction: false,
     },
     pagination: { el: '.swiper-pagination', clickable: true },
@@ -217,10 +219,18 @@ function initFeedbackSlider() {
     });
   });
 
-  swiper.el.addEventListener('mouseenter', () => swiper.autoplay?.stop());
-  swiper.el.addEventListener('mouseleave', () => swiper.autoplay?.start());
-  swiper.el.addEventListener('focusin', () => swiper.autoplay?.stop());
-  swiper.el.addEventListener('focusout', () => swiper.autoplay?.start());
+  feedbackSwiper.el.addEventListener('mouseenter', () =>
+    feedbackSwiper.autoplay?.stop()
+  );
+  feedbackSwiper.el.addEventListener('mouseleave', () =>
+    feedbackSwiper.autoplay?.start()
+  );
+  feedbackSwiper.el.addEventListener('focusin', () =>
+    feedbackSwiper.autoplay?.stop()
+  );
+  feedbackSwiper.el.addEventListener('focusout', () =>
+    feedbackSwiper.autoplay?.start()
+  );
 }
 
 function attachOverlays() {
@@ -246,6 +256,9 @@ function attachOverlays() {
     function openOverlay() {
       if (isOpen) return;
       isOpen = true;
+
+      feedbackSwiper.autoplay?.stop();
+      feedbackSwiper.allowTouchMove = false;
 
       overlay.setAttribute('aria-hidden', 'false');
       overlay.style.display = 'block';
@@ -292,14 +305,22 @@ function attachOverlays() {
       (function step() {
         if (i < hiddenPart.length) {
           ovText.textContent += hiddenPart[i++];
-          timer = setTimeout(step, 50);
+          timer = setTimeout(step, 25);
         }
       })();
+
+      const totalDelay = hiddenPart.length * 25 + 2000;
+      setTimeout(() => {
+        feedbackSwiper.allowTouchMove = true;
+        feedbackSwiper.autoplay?.start();
+      }, totalDelay);
     }
     function closeOverlay(final = false) {
       clearTimeout(timer);
       overlay.setAttribute('aria-hidden', 'true');
       overlay.style.display = 'none';
+      feedbackSwiper.allowTouchMove = true;
+      feedbackSwiper.autoplay?.start();
       if (final) isOpen = false;
     }
 
@@ -326,9 +347,15 @@ function attachOverlays() {
     function onDesktop() {
       textEl.removeEventListener('click', onMobile);
       textEl.removeEventListener('click', onTablet);
-      textEl.setAttribute('tabindex', '0');
-      textEl.addEventListener('focusin', openOverlay);
-      textEl.addEventListener('focusout', () => closeOverlay(true));
+
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('focusin', openOverlay);
+      card.addEventListener('focusout', e => {
+        if (!card.contains(e.relatedTarget)) closeOverlay(true);
+      });
+
+      card.addEventListener('mouseenter', openOverlay);
+      card.addEventListener('mouseleave', () => closeOverlay(true));
     }
 
     function applyMode() {

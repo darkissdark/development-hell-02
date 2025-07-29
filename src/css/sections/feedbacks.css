@@ -114,6 +114,7 @@ blockquote {
   z-index: 5;
   padding: 32px;
   font-size: 18px;
+  overflow-y: auto;
 }
 
 .feedback-author-wrapper {
