@@ -2,6 +2,10 @@
   padding: 64px 0;
 }
 
+.feedbacks-section .container {
+  overflow: hidden;
+}
+
 .feedbacks-title {
   margin-bottom: 24px;
 }

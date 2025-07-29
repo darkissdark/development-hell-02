@@ -1,7 +1,7 @@
 <div id="modalBooks" class="modal-backdrop modal-books-backdrop">
   <div class="modal-base modal-books">
     <div class="modal-scroll">
-      <button class="modal-books-button" type="button">
+      <button class="modal-books-button" type="button" aria-label="Close modal">
         <svg class="modal-books-button-icon" width="32" height="32">
           <use xlink:href="#close"></use>
         </svg>
@@ -29,12 +29,14 @@
             >
               -
             </button>
-            <input
-              type="tel"
-              value="1"
-              name="modal-input-quantity"
-              class="quantity-selector-quantity-input"
-            />
+            <label>
+              <input
+                type="tel"
+                value="1"
+                name="modal-input-quantity"
+                class="quantity-selector-quantity-input"
+              />
+            </label>
             <button
               type="button"
               class="quantity-selector-increase button-secondary"

@@ -15,6 +15,9 @@
   pointer-events: none;
   transition: all 0.3s ease-in-out;
 } */
+.modal-input-quantity {
+  padding: 8px;
+}
 
 .modal-books {
   max-width: 343px;

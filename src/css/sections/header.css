@@ -23,12 +23,13 @@
   margin-left: 24px;
 }
 
+.header-actions {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
 /* MOBILE (up to 767px) */
 @media screen and (max-width: 767px) {
-  .header-actions {
-    display: flex;
-    gap: 24px;
-  }
   .header-container {
     padding: 8px 12px 8px 20px;
   }
@@ -36,6 +37,7 @@
   .mobile-menu-open-btn {
     line-height: 0;
     padding: 12px;
+    background: none;
   }
 
   .mobile-menu {

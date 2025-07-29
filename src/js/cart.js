@@ -122,7 +122,6 @@ window.addToCart = addToCart;
 document.querySelectorAll('.modal-books-add').forEach(btn => {
   btn.addEventListener('click', e => {
     const { id, title, price, qty } = btn.dataset;
-    console.log(qty);
     window.addToCart({ id, title, price: Number(price), qty: Number(qty) });
     showToast(`"${title}" added to cart!`, 'success');
   });
