@@ -1,5 +1,5 @@
 import iziToast from 'izitoast';
-import { postDataToBot } from './backend-api';
+import { sendDataToBackEnd } from './backend-api';
 
 const refs = {
   openFormModal: document.querySelectorAll('.register-btn'),
@@ -110,9 +110,10 @@ refs.formList.addEventListener('input', saveToLocalStorage);
 loadFromLocalStorage();
 
 // !! SUBMIT BTN
-refs.formList.addEventListener('submit', e => {
+refs.formList.addEventListener('submit', async e => {
   e.preventDefault();
   closeModal();
+  const formDataId = e.currentTarget.previousElementSibling.textContent;
 
   const formData = {
     name: refs.inputName.value.trim(),
@@ -120,12 +121,12 @@ refs.formList.addEventListener('submit', e => {
     message: refs.inputArea.value.trim() || 'No messege typed', // required on backend
   };
 
-  postDataToBot(formData);
+  await sendDataToBackEnd(formData, formDataId);
   localStorage.removeItem('contactFormData');
   refs.formList.reset();
 
   return iziToast.info({
-    message: 'Thank you!',
+    message: 'Thank you, our manager will contact you!',
     position: 'center',
   });
 });
