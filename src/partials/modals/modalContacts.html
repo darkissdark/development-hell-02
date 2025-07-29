@@ -1,32 +1,78 @@
 <div id="modalContacts" class="modal-backdrop">
-  <div class="modal">
-    <div class="scroll">
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
-      <div>modal vmodal modal modal</div>
+  <div class="modal-base modal-form">
+    <div class="modal-scroll">
+      <button class="modal-form-close" type="button" aria-label="Close form">
+        <svg class="form-close-svg" width="32" height="32">
+          <use xlink:href="#close"></use>
+        </svg>
+      </button>
+
+      <h2 class="modal-form-title">Register</h2>
+      <p class="modal-form-subscription">
+        Cozy Book Club — “The Midnight Library”
+      </p>
+
+      <form class="form-box">
+        <ul class="form-list">
+          <li class="form-list-item">
+            <label class="form-item-label" for="name"
+              >Name*
+              <input
+                class="form-item-input"
+                id="name"
+                name="user_name"
+                data-name
+                type="text"
+                placeholder="Ann"
+                minlength="3"
+                maxlength="64"
+                required
+              />
+              <span class="form-input-error color-error"
+                >Мінімум три символи</span
+              >
+            </label>
+          </li>
+          <li class="form-list-item">
+            <label class="form-item-label" for="email"
+              >Email*
+              <input
+                class="form-item-input"
+                id="email"
+                name="user_email"
+                data-email
+                type="email"
+                placeholder="hello@booksy.com"
+                pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+                required
+              />
+              <span class="form-input-error color-error"
+                >Неправильно введений емейл</span
+              >
+            </label>
+          </li>
+          <li class="form-list-item">
+            <label class="form-item-label" for="message"
+              >Message
+              <textarea
+                class="form-item-area"
+                name="user_message"
+                data-area
+                id="message"
+                placeholder="Type your message..."
+                minlength="10"
+                maxlength="500"
+              ></textarea>
+              <span class="form-area-error color-error"
+                >Мінімум десять символів</span
+              >
+            </label>
+          </li>
+        </ul>
+        <button class="button-action form-btn-submit" type="submit">
+          Register
+        </button>
+      </form>
     </div>
   </div>
 </div>

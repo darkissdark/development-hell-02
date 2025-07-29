@@ -61,6 +61,7 @@
   width: 100%;
   height: 395px;
   border: none;
+  filter: grayscale(100%) contrast(105%) brightness(90%) saturate(80%);
 }
 
 .location-hidden {

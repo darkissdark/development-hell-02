@@ -11,6 +11,7 @@ import {
   showLoadMoreButton,
   hideLoadMoreButton,
 } from './render-functions';
+import { openModal, fillDataModalBook } from './books-modal';
 
 /* ===== аккордион ===== */
 // const acc = new Accordion('.js-accordion-container', {
@@ -178,21 +179,14 @@ function paginateBooks(rawBooksData) {
 export async function handleBookDetails(event) {
   const btn = event.target.closest('.js-book-info-btn');
   if (!btn) return;
-  console.log('click');
 
   const bookId = btn.dataset.id;
   if (!bookId) return;
   const bookById = `books/${bookId}`;
-  console.log(bookById);
-
   try {
     const bookData = await getDataOnRequest(bookById);
-
-    console.log(bookData);
-
-    // const modal = document.querySelector('.js-book-modal');
-    // modal.classList.add('is-open');
-    // document.body.style.overflow = 'hidden';
+    fillDataModalBook(bookData);
+    openModal();
   } catch (error) {
     console.error('Ошибка загрузки книги по ID:', error.message);
   }
