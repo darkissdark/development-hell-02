@@ -153,7 +153,6 @@ blockquote {
 .swiper-nav {
   display: flex;
   gap: 16px;
-  margin-left: 0 auto;
 }
 
 .swiper-feedback-wrapper {
