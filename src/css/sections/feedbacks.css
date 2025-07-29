@@ -28,26 +28,11 @@
   position: relative;
 }
 
-.feedbacks-slider .swiper-pagination-bullet {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  padding: 0 6px;
-  border-radius: 50%;
-  background-color: #999999;
-  opacity: 0.5;
-  transition: opacity 0.3s ease;
-}
-
-.feedbacks-slider .swiper-pagination-bullet-active {
-  opacity: 1;
-  background-color: #333333;
-}
-
 .swiper-controls
   .swiper-pagination-bullets
   .swiper-pagination-bullet:first-child {
   padding-left: 1px;
+  margin-left: 0;
 }
 
 .feedback-card {
