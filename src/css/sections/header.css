@@ -8,15 +8,27 @@
   display: none;
 }
 
-.mobile-menu button,
-.header button {
+.mobile-menu .mobile-menu-close-btn,
+.header .mobile-open-menu-btn {
   border: none;
   background-color: transparent;
   padding: 0;
 }
 
+.header-cart .button-secondary {
+  padding: 5px 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: 24px;
+}
+
 /* MOBILE (up to 767px) */
 @media screen and (max-width: 767px) {
+  .header-actions {
+    display: flex;
+    gap: 24px;
+  }
   .header-container {
     padding: 8px 12px 8px 20px;
   }
@@ -105,6 +117,7 @@
   .page-menu {
     display: flex;
     gap: 32px;
+    align-items: center;
   }
 
   .page-menu-link {

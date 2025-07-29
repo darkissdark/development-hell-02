@@ -13,6 +13,7 @@ const refs = {
   modalBooksTextWrapper: document.querySelector('.modal-books-text-wrapper'),
   bookPhotoWrapper: document.querySelector('.modal-book-photo-wrapper'),
   accordionDetails: document.querySelector('.js-ac-text-details'),
+  addToCartBtn: document.querySelector('[data-action="add-to-cart"]'),
 };
 
 const handleModalBookClick = event => {
@@ -28,11 +29,13 @@ const handleModalBookClick = event => {
     };
 
     localStorage.setItem('cart-item', JSON.stringify(cartData));
-    showToast(`Книгу додано у кошик: ${quantity} шт.`, 'success');
+    closeModal();
+    // showToast(`Книгу додано у кошик: ${quantity} шт.`, 'success');
     return;
   }
   if (action === 'buy-now') {
-    showToast('Дякуємо за покупку', 'success');
+    showToast('Manager will contact you soon', 'success');
+    closeModal();
     localStorage.removeItem('cart-item');
     return;
   }
@@ -67,6 +70,7 @@ const handleEscKey = e => {
 
 export const openModal = () => {
   refs.input.value = '1';
+  refs.addToCartBtn.dataset.qty = '1';
   accordion.closeAll();
   refs.backdrop.classList.add('show-modal');
   document.body.classList.add('modal-open');
@@ -89,8 +93,9 @@ const closeModal = () => {
 
 const updateQuantity = change => {
   const currentValue = parseInt(refs.input.value) || 1;
-  const newValue = Math.max(1, Math.min(10, currentValue + change));
+  const newValue = Math.max(1, Math.min(99, currentValue + change));
   refs.input.value = newValue;
+  refs.addToCartBtn.dataset.qty = newValue;
 };
 
 const handleInputOnlyNumbers = e => {
@@ -99,7 +104,9 @@ const handleInputOnlyNumbers = e => {
 
 const handleInputBlur = e => {
   const value = parseInt(e.target.value) || 1;
-  e.target.value = Math.max(1, Math.min(10, value));
+  const newValue = Math.max(1, Math.min(99, value));
+  e.target.value = newValue;
+  refs.addToCartBtn.dataset.qty = newValue;
 };
 
 export function fillDataModalBook({
@@ -108,6 +115,7 @@ export function fillDataModalBook({
   description,
   price,
   author,
+  _id: id,
 }) {
   const imageData = `
     <img
@@ -132,4 +140,8 @@ export function fillDataModalBook({
   refs.modalBooksTextWrapper.innerHTML = modalBookText;
 
   refs.accordionDetails.textContent = description || 'No description';
+
+  refs.addToCartBtn.dataset.id = id;
+  refs.addToCartBtn.dataset.title = title;
+  refs.addToCartBtn.dataset.price = price;
 }
