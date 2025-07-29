@@ -1,5 +1,5 @@
 /* ===== Импорт библиотек ===== */
-import Accordion from 'accordion-js';
+// import Accordion from 'accordion-js';
 import iziToast from 'izitoast';
 
 /* ===== импорт именных переменных ===== */
@@ -14,10 +14,13 @@ import {
 import { openModal, fillDataModalBook } from './books-modal';
 
 /* ===== аккордион ===== */
-const acc = new Accordion('.js-accordion-container', {
-  duration: 1000,
-  showMultiple: true,
-});
+// const acc = new Accordion('.js-accordion-container', {
+//   duration: 1000,
+//   showMultiple: true,
+// });
+const accBtn = document.querySelector('.js-accordion-btn');
+const accContent = document.querySelector('.js-accordion-content');
+const accIcon = refs.accBtn.querySelector('.books-acc-icon');
 
 /* ===== Переменные для API ===== */
 const allBookCategories = 'books/category-list/';
@@ -28,7 +31,8 @@ const booksAllCategory = 'books/category/';
 let originalBooks = []; // основной массив (оригинальные данные после фильтрации)
 let visibleBooks = []; // массив для текущей порции на рендер
 let page = 1;
-let booksPerPage = 10; // по умолчанию, можно менять в зависимости от ширины
+let totalPages = null;
+let booksPerPage = 10;
 let totalCards = null;
 let loadedCards = null;
 
@@ -78,6 +82,7 @@ window.addEventListener('resize', () => {
   if (booksPerPage !== prev && originalBooks.length > 0) {
     page = 1;
     visibleBooks = [];
+    loadedCards = null;
     paginateBooks(originalBooks);
   }
 });
@@ -115,23 +120,26 @@ function paginateBooks(rawBooksData) {
     // при первоначальной загрузке массива
     originalBooks = rawBooksData;
     totalCards = originalBooks.length;
+    totalPages = Math.ceil((originalBooks.length - booksPerPage) / 4) + 1;
+    if (totalPages < 1) totalPages = 1;
   }
 
-  const totalPages = Math.ceil(originalBooks.length / booksPerPage);
-  if (loadedCards % booksPerPage != 0) {
-    page = 1;
-    loadedCards = 0;
-    visibleBooks = [];
-    clearBooks();
-  }
+  let start = null;
+  let end = null;
 
   if (totalPages > page) {
-    const start = (page - 1) * booksPerPage;
-    const end = start + booksPerPage;
+    if (page === 1) {
+      start = (page - 1) * booksPerPage;
+      end = start + booksPerPage;
+    } else {
+      start = loadedCards;
+      end = start + 4;
+    }
     visibleBooks = originalBooks.slice(start, end);
   } else {
-    const start = (page - 1) * booksPerPage;
-    const end = originalBooks.length;
+    // const start = (page - 1) * booksPerPage;
+    start = loadedCards;
+    end = originalBooks.length;
     visibleBooks = originalBooks.slice(start, end);
     originalBooks = [];
   }
@@ -139,11 +147,15 @@ function paginateBooks(rawBooksData) {
   loadedCards += visibleBooks.length;
 
   refs.pageEl.textContent = `Showing ${loadedCards} of ${totalCards}`;
-  if (visibleBooks.length < booksPerPage || originalBooks.length === 0) {
+  if (originalBooks.length === 0) {
+    //visibleBooks.length < booksPerPage ||
     scrollByUp();
     renderBooks(visibleBooks);
     visibleBooks = [];
     page = 1;
+    totalPages = null;
+    totalCards = null;
+    loadedCards = null;
     iziToast.info({
       message:
         'Sorry, all books in this category are displayed. Please look at books in another category.',
@@ -171,7 +183,6 @@ export async function handleBookDetails(event) {
   const bookId = btn.dataset.id;
   if (!bookId) return;
   const bookById = `books/${bookId}`;
-
   try {
     const bookData = await getDataOnRequest(bookById);
     fillDataModalBook(bookData);
@@ -205,7 +216,7 @@ const selectCategory = async event => {
   let books = null;
 
   booksCategories = li.textContent.trim();
-
+  // console.log(booksCategories);
   if (booksCategories === 'All categories') {
     const booksData = await getDataOnRequest(categoriesOfTopBooks);
     books = extractBooks(booksData);
@@ -216,16 +227,36 @@ const selectCategory = async event => {
     );
     books = removeDuplicateBooks(booksData);
   }
-  console.log(books.length);
+  // console.log(books.length);
 
   page = 1;
+  totalPages = null;
   originalBooks = [];
   visibleBooks = [];
+  totalCards = null;
+  loadedCards = null;
   refs.bookCard.innerHTML = '';
 
-  acc.close(0);
+  // acc.close(0);
+  accContent.classList.remove('open');
+  accIcon.classList.remove('rotate');
   paginateBooks(books);
 };
+// Открытие/закрытие аккордиона по кнопке
+accBtn.addEventListener('click', () => {
+  accContent.classList.toggle('open');
+  accIcon.classList.toggle('rotate');
+});
+
+// Закрытие аккордиона при клике вне него
+document.addEventListener('click', event => {
+  const isClickInside =
+    accContent.contains(event.target) || accBtn.contains(event.target);
+  if (!isClickInside && accContent.classList.contains('open')) {
+    accContent.classList.remove('open');
+    accIcon.classList.remove('rotate');
+  }
+});
 
 /* ===== Очищение экрана с карточками ===== */
 function clearBooks() {
