@@ -107,6 +107,30 @@ const feedbacksData = [
 
 let feedbackSwiper;
 
+function initScrollAnimations() {
+  const rightEls = document.querySelectorAll(
+    '#feedbacks-title, .feedbacks-subtitle'
+  );
+
+  const observerOptions = {
+    root: null,
+    threshold: 0.2,
+  };
+
+  const observerCallback = entries => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle('visible', entry.isIntersecting);
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  rightEls.forEach(el => {
+    el.classList.add('animate-slide-in-right');
+    observer.observe(el);
+  });
+}
+
 function getTruncateIndex(block, fullText) {
   const clone = block.cloneNode();
   Object.assign(clone.style, {
@@ -374,4 +398,5 @@ document.addEventListener('DOMContentLoaded', () => {
   renderFeedbackSlides(feedbacksData);
   initFeedbackSlider();
   attachOverlays();
+  initScrollAnimations();
 });
