@@ -1,5 +1,5 @@
 import { showToast } from './common';
-// import { sendCartDataToBackEnd } from './backend-api';
+import { sendCartDataToBackEnd } from './backend-api';
 
 // ===== КОРЗИНА =====
 const CART_KEY = 'cart-items';
@@ -87,7 +87,7 @@ function clearCart() {
 }
 async function orderCart() {
   const cartItems = getCart();
-  // await sendCartDataToBackEnd(cartItems);
+  await sendCartDataToBackEnd(cartItems);
   clearCart();
   updateCartModal();
   closeCartModal();
