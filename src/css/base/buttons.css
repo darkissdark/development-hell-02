@@ -13,8 +13,8 @@ button:disabled {
 
 .button-action {
   padding: 11px 23px;
-  background-color: #e15d05;
-  border-color: #e15d05;
+  background-color: #b84700;
+  border-color: #b84700;
   color: #fff;
 }
 
@@ -36,7 +36,7 @@ button:disabled {
 
 @media only screen and (min-width: 1440px) {
   .button-secondary:hover {
-    background-color: #e15d05;
+    background-color: #b84700;
   }
 }
 
@@ -50,7 +50,7 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e15d05;
+  background-color: #b84700;
   border: 1px solid rgba(11, 5, 0, 0.15);
   color: #fff;
 }

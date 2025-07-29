@@ -28,7 +28,7 @@ export function renderBooks(books) {
         <div class="book-description">
           <div class="book-details">
             <div class="book-info">
-              <h4 class="book-title">${title}</h4>
+              <p class="book-title">${title}</p>
               <p class="book-autor">${author}</p>
             </div>
             <p class="book-price">$${price}</p>
