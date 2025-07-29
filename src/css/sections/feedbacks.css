@@ -28,7 +28,7 @@
   display: inline-block;
   width: 10px;
   height: 10px;
-  margin: 0 6px;
+  padding: 0 6px;
   border-radius: 50%;
   background-color: #999999;
   opacity: 0.5;
@@ -43,7 +43,7 @@
 .swiper-controls
   .swiper-pagination-bullets
   .swiper-pagination-bullet:first-child {
-  margin-left: 1px;
+  padding-left: 1px;
 }
 
 .feedback-card {
