@@ -1733,8 +1733,8 @@ body.modal-open {
     <noscript>
     </noscript>
     <script type="module" crossorigin src="/development-hell-02/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/development-hell-02/assets/vendor-0loOnMRA.js">
-    <link rel="stylesheet" crossorigin href="/development-hell-02/assets/index-Icm9W0YE.css">
+    <link rel="modulepreload" crossorigin href="/development-hell-02/assets/vendor-EE8R5gjl.js">
+    <link rel="stylesheet" crossorigin href="/development-hell-02/assets/index-DyeyXMxN.css">
   </head>
   <body>
     <svg width="0" height="0" class="hidden">
@@ -2145,57 +2145,22 @@ body.modal-open {
         <p class="books-subtitle">Books</p>
         <p class="books-per-page js-books-per-page">Showing 24 of 100</p>
       </div>
-      <div class="books-acc-container js-accordion-container">
-        <!-- category-btn -->
-        <div class="ac">
-          <h3 class="ac-header">
-            <button class="ac-trigger books-acc-btn" type="button">
-              Categories
-              <svg class="icon">
-                <use xlink:href="#chevron-down"></use>
-              </svg>
-            </button>
-          </h3>
-          <div class="acc-content ac-panel">
-            <ul class="categories-list js-categories-list">
-              <li class="category-item js-category-item">All categories</li>
-            </ul>
-          </div>
+      <div class="accordion-wrapper js-accordion-container">
+        <button class="books-acc-btn js-accordion-btn">
+          Categories
+          <svg class="books-acc-icon" width="24" height="24">
+            <use xlink:href="#chevron-down"></use>
+          </svg>
+        </button>
+        <div class="content js-accordion-content">
+          <ul class="categories-list js-categories-list">
+            <li class="category-item js-category-item">All categories</li>
+          </ul>
         </div>
       </div>
     </div>
     <div class="books-card">
-      <ul class="books-list js-books-list">
-        <li class="book-card js-book-card">
-          <img src="${book_image}" alt="${title}" class="book-card-image" />
-          <div class="book-details">
-            <div class="book-info">
-              <h4 class="book-title">${title}</h4>
-              <p class="book-author">${author}</p>
-            </div>
-            <p class="book-price">${price}</p>
-          </div>
-          <button class="book-info-btn js-book-info-btn" data-id="${_id}">
-            Learn More
-          </button>
-        </li>
-
-        <li class="book-card js-book-card">
-          <img src="${book_image}" alt="${title}" class="book-card-image" />
-          <div class="book-description">
-            <div class="book-details">
-              <div class="book-info">
-                <h4 class="book-title">${title}</h4>
-                <p class="book-autor">${author}</p>
-              </div>
-              <p class="book-price">${price}</p>
-            </div>
-            <button class="book-info-btn js-book-info-btn" data-id="${_id}">
-              Learn More
-            </button>
-          </div>
-        </li>
-      </ul>
+      <ul class="books-list js-books-list"></ul>
       <button class="show-more-btn js-show-more-btn" type="button">
         Show More
       </button>
