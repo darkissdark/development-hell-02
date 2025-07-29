@@ -16,14 +16,10 @@
 
 /* Sections style */
 @import url('./sections/article.css');
-@import url('./sections/books.css');
 @import url('./sections/events.css');
 @import url('./sections/location.css');
 @import url('./sections/feedbacks.css');
 @import url('./sections/footer.css');
-
-/* Common */
-@import url('./common/scrollToTop.css');
 
 /* Modals style */
 @import url('./modals/modalBase.css');

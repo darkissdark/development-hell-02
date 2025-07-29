@@ -4,7 +4,14 @@
 @import url('css/base/base.css');
 @import url('css/base/container.css');
 @import url('css/base/buttons.css');
+@import url('css/sections/books.css');
 
 @import url('css/sections/header.css');
 @import url('css/sections/hero.css');
 @import url('css/modals/modalBase.css');
+/* Common */
+@import url('css/common/scrollToTop.css');
+
+.js-books-list {
+  min-height: 300px;
+}

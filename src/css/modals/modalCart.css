@@ -23,18 +23,15 @@
 }
 
 .modal-cart-list {
-  display: table;
+  border-top: 1px solid #fff;
   width: 100%;
   margin-bottom: 16px;
 }
 .modal-cart-item {
-  display: table-row;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #fff;
 }
 .modal-cart-item > span {
-  display: table-cell;
-  padding: 8px;
+  padding: 8px 8px 0;
 }
 .modal-cart-item > span:not(:first-child) {
   white-space: nowrap;
@@ -45,11 +42,6 @@
 .modal-cart-item-title {
   font-weight: 500;
   flex: 1 1 auto;
-  margin-right: 8px;
-}
-.modal-cart-item-qty {
-  margin: 0 8px;
-  font-size: 16px;
 }
 
 .modal-cart-footer {
@@ -61,7 +53,29 @@
   bottom: 0;
   background-color: #fceee6;
 }
+.modal-cart-item-title {
+  display: block;
+}
+.modal-cart-item > span:not(.modal-cart-item-title) {
+  display: inline-flex;
+  width: calc(33.3% - 8px);
+}
 @media screen and (min-width: 768px) {
+  .modal-cart-item > span:not(.modal-cart-item-title) {
+    display: table-cell;
+    width: auto;
+  }
+  .modal-cart-item > span {
+    display: table-cell;
+    padding: 8px;
+    border-bottom: 1px solid #fff;
+  }
+  .modal-cart-list {
+    display: table;
+  }
+  .modal-cart-item {
+    display: table-row;
+  }
   .modal-cart-footer {
     flex-direction: row;
     align-items: center;
