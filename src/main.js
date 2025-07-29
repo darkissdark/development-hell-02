@@ -9,3 +9,4 @@ import './js/location.js';
 import './js/books-api.js';
 import './js/backend-api.js';
 import './js/contacts-modal.js';
+import './js/cart.js';
