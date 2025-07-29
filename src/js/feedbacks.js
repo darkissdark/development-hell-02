@@ -61,7 +61,7 @@ const feedbacksData = [
   {
     text: 'I’ve discovered so many hidden gems thanks to this store. The reviews really help!',
     author: 'Carlos Mendez',
-    position: 'Blogger, Read & Roam',
+    position: 'Blogger',
     avatar1x: carlosMendez1x,
     avatar2x: carlosMendez2x,
     rating: 4.5,
@@ -113,7 +113,12 @@ function renderFeedbackSlides(data) {
       const slide = document.createElement('li');
       slide.className = 'swiper-slide feedback-card';
       slide.innerHTML = `
-  <blockquote class="feedback-text">${text}</blockquote>
+  <div class="feedback-text-wrapper">
+    <blockquote class="feedback-text">${text}</blockquote>
+    <div class="feedback-overlay" aria-hidden="true">
+      <div class="overlay-text"></div>
+    </div>
+  </div>
   <div class="feedback-meta">
     <div class="feedback-rating" data-rating="${rating}"></div>
     ${
@@ -185,7 +190,48 @@ function initFeedbackSlider() {
   swiper.el.addEventListener('focusout', () => swiper.autoplay?.start());
 }
 
+function attachOverlays() {
+  document.querySelectorAll('.feedback-text-wrapper').forEach(wrapper => {
+    const txt = wrapper.querySelector('.feedback-text');
+    const overlay = wrapper.querySelector('.feedback-overlay');
+
+    if (txt.scrollHeight > txt.clientHeight + 1) {
+      wrapper.classList.add('overflow');
+
+      let rafId, idx, full, wrapperH;
+
+      function startReveal() {
+        full = txt.textContent;
+        idx = 0;
+        const overlayTextEl = overlay.querySelector('.overlay-text');
+        overlayTextEl.textContent = '';
+        overlay.style.display = 'block';
+
+        function step() {
+          if (idx <= full.length) {
+            overlayTextEl.textContent = full.slice(0, idx);
+            idx++;
+            rafId = requestAnimationFrame(step);
+          }
+        }
+        rafId = requestAnimationFrame(step);
+      }
+
+      function stopReveal() {
+        cancelAnimationFrame(rafId);
+        overlay.style.display = 'none';
+      }
+
+      wrapper.addEventListener('mouseenter', startReveal);
+      wrapper.addEventListener('focusin', startReveal);
+      wrapper.addEventListener('mouseleave', stopReveal);
+      wrapper.addEventListener('focusout', stopReveal);
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderFeedbackSlides(feedbacksData);
   initFeedbackSlider();
+  attachOverlays();
 });

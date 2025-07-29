@@ -47,6 +47,7 @@
 }
 
 .feedback-card {
+  position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -57,19 +58,25 @@
   min-height: 217px;
 }
 
-.feedback-text {
-  min-height: 135px;
+.feedback-text-wrapper {
+  position: relative;
 }
 
-@media only screen and (min-width: 768px) {
-  .feedback-text {
-    min-height: 110px;
-  }
+.feedback-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 4;
+  line-height: 1.5em;
+  max-height: calc(1.5em * 4);
+  min-height: calc(1.5em * 4);
 }
 
 @media only screen and (min-width: 1440px) {
   .feedback-text {
-    min-height: 0;
+    -webkit-line-clamp: 3;
+    max-height: calc(1.5em * 3);
+    min-height: calc(1.5em * 3);
   }
 }
 
@@ -82,7 +89,29 @@ blockquote {
   margin-bottom: 24px;
 }
 
-.feed .feedback-author-wrapper {
+.feedback-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  padding: 0;
+  border-radius: 0;
+  background: #fceee6;
+  box-sizing: border-box;
+  overflow: visible;
+  display: none;
+  z-index: 10;
+}
+
+.overlay-text {
+  font-size: 18px;
+  line-height: 1.5em;
+  white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.feedback-author-wrapper {
   position: relative;
   display: flex;
 }
@@ -137,6 +166,7 @@ blockquote {
 .feedback-meta {
   display: flex;
   justify-content: space-between;
+  width: 100%;
   align-items: center;
   margin-bottom: 24px;
 }
@@ -164,6 +194,6 @@ blockquote {
 }
 
 .badge--unverified {
-  color: #00000033;
+  color: transparent;
   font-style: italic;
 }
