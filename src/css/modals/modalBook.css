@@ -181,6 +181,7 @@
 
   .right-column {
     width: 307px;
+    flex-shrink: 0;
   }
 }
 

@@ -27,7 +27,10 @@ function handleSubmit(e) {
   }
 
   clearError('* Required field');
-  showToast(`Thank you for subscribing with <b>${email}</b>`, 'success');
+  showToast(
+    `You have been registered as <b>${email}</b>. All information has been sent to your email.`,
+    'success'
+  );
   form.reset();
   input.removeEventListener('input', handleInputValidation);
 }
