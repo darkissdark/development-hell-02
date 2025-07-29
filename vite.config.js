@@ -24,7 +24,10 @@ export default defineConfig(({ command }) => {
       sourcemap: true,
       minify: 'terser',
       rollupOptions: {
-        input: glob.sync('./src/*.html'),
+        input: {
+          main: './src/index.html',
+          styles: './src/css/index.css',
+        },
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
@@ -40,6 +43,9 @@ export default defineConfig(({ command }) => {
           assetFileNames: assetInfo => {
             if (assetInfo.name?.endsWith('.html')) {
               return '[name].[ext]';
+            }
+            if (assetInfo.name?.endsWith('.css')) {
+              return 'assets/index.css';
             }
             return 'assets/[name]-[hash][extname]';
           },
@@ -63,6 +69,29 @@ export default defineConfig(({ command }) => {
               '<!-- inject:critical -->',
               `<style>${criticalCss}</style>`
             );
+          },
+        },
+      },
+      {
+        name: 'async-css-inject',
+        transformIndexHtml: {
+          order: 'post',
+          handler(html, { path }) {
+            const isDev = command === 'serve';
+            const cssPath = isDev
+              ? './css/index.css'
+              : '/development-hell-02/assets/index.css';
+            const asyncCssLink = `
+            <link
+              rel="stylesheet"
+              href="${cssPath}"
+              media="print"
+              onload="this.media='all'"
+            />
+            <noscript>
+              <link rel="stylesheet" href="${cssPath}" />
+            </noscript>`;
+            return html.replace('</head>', `${asyncCssLink}\n  </head>`);
           },
         },
       },
