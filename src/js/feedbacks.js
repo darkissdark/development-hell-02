@@ -4,22 +4,48 @@ import Rater from 'rater-js';
 
 import janeDoe1x from '../images/feedbacks/jane_doe.jpg';
 import janeDoe2x from '../images/feedbacks/jane_doe@2x.jpg';
+import janeDoeWebp1x from '../images/feedbacks/jane_doe.webp';
+import janeDoeWebp2x from '../images/feedbacks/jane_doe@2x.webp';
+
 import johnSmith1x from '../images/feedbacks/john_smith.jpg';
 import johnSmith2x from '../images/feedbacks/john_smith@2x.jpg';
+import johnSmithWebp1x from '../images/feedbacks/john_smith.webp';
+import johnSmithWebp2x from '../images/feedbacks/john_smith@2x.webp';
+
 import emilyJohnson1x from '../images/feedbacks/emily_johnson.jpg';
 import emilyJohnson2x from '../images/feedbacks/emily_johnson@2x.jpg';
+import emilyJohnsonWebp1x from '../images/feedbacks/emily_johnson.webp';
+import emilyJohnsonWebp2x from '../images/feedbacks/emily_johnson@2x.webp';
+
 import sofiaLee1x from '../images/feedbacks/sofia_lee.jpg';
 import sofiaLee2x from '../images/feedbacks/sofia_lee@2x.jpg';
+import sofiaLeeWebp1x from '../images/feedbacks/sofia_lee.webp';
+import sofiaLeeWebp2x from '../images/feedbacks/sofia_lee@2x.webp';
+
 import carlosMendez1x from '../images/feedbacks/carlos_mendez.jpg';
 import carlosMendez2x from '../images/feedbacks/carlos_mendez@2x.jpg';
+import carlosMendezWebp1x from '../images/feedbacks/carlos_mendez.webp';
+import carlosMendezWebp2x from '../images/feedbacks/carlos_mendez@2x.webp';
+
 import natalieBrooks1x from '../images/feedbacks/natalie_brooks.jpg';
 import natalieBrooks2x from '../images/feedbacks/natalie_brooks@2x.jpg';
+import natalieBrooksWebp1x from '../images/feedbacks/natalie_brooks.webp';
+import natalieBrooksWebp2x from '../images/feedbacks/natalie_brooks@2x.webp';
+
 import davidNguyen1x from '../images/feedbacks/david_nguyen.jpg';
 import davidNguyen2x from '../images/feedbacks/david_nguyen@2x.jpg';
+import davidNguyenWebp1x from '../images/feedbacks/david_nguyen.webp';
+import davidNguyenWebp2x from '../images/feedbacks/david_nguyen@2x.webp';
+
 import aishaPatel1x from '../images/feedbacks/aisha_patel.jpg';
 import aishaPatel2x from '../images/feedbacks/aisha_patel@2x.jpg';
+import aishaPatelWebp1x from '../images/feedbacks/aisha_patel.webp';
+import aishaPatelWebp2x from '../images/feedbacks/aisha_patel@2x.webp';
+
 import michaelThompson1x from '../images/feedbacks/michael_thompson.jpg';
 import michaelThompson2x from '../images/feedbacks/michael_thompson@2x.jpg';
+import michaelThompsonWebp1x from '../images/feedbacks/michael_thompson.webp';
+import michaelThompsonWebp2x from '../images/feedbacks/michael_thompson@2x.webp';
 
 const feedbacksData = [
   {
@@ -28,6 +54,8 @@ const feedbacksData = [
     position: 'Book Lover, Reader',
     avatar1x: janeDoe1x,
     avatar2x: janeDoe2x,
+    avatarWebp1x: janeDoeWebp1x,
+    avatarWebp2x: janeDoeWebp2x,
     rating: 4.8,
     subscription: 'gold',
   },
@@ -37,6 +65,8 @@ const feedbacksData = [
     position: 'Editor, BookMag',
     avatar1x: johnSmith1x,
     avatar2x: johnSmith2x,
+    avatarWebp1x: johnSmithWebp1x,
+    avatarWebp2x: johnSmithWebp2x,
     rating: 4.6,
     subscription: null,
   },
@@ -46,6 +76,8 @@ const feedbacksData = [
     position: 'Author, Novelist',
     avatar1x: emilyJohnson1x,
     avatar2x: emilyJohnson2x,
+    avatarWebp1x: emilyJohnsonWebp1x,
+    avatarWebp2x: emilyJohnsonWebp2x,
     rating: 4.9,
     subscription: 'gold',
   },
@@ -55,6 +87,8 @@ const feedbacksData = [
     position: 'Literature Professor',
     avatar1x: sofiaLee1x,
     avatar2x: sofiaLee2x,
+    avatarWebp1x: sofiaLeeWebp1x,
+    avatarWebp2x: sofiaLeeWebp2x,
     rating: 4.7,
     subscription: null,
   },
@@ -64,6 +98,8 @@ const feedbacksData = [
     position: 'Blogger',
     avatar1x: carlosMendez1x,
     avatar2x: carlosMendez2x,
+    avatarWebp1x: carlosMendezWebp1x,
+    avatarWebp2x: carlosMendezWebp2x,
     rating: 4.5,
     subscription: 'silver',
   },
@@ -73,6 +109,8 @@ const feedbacksData = [
     position: 'Mother & Teacher',
     avatar1x: natalieBrooks1x,
     avatar2x: natalieBrooks2x,
+    avatarWebp1x: natalieBrooksWebp1x,
+    avatarWebp2x: natalieBrooksWebp2x,
     rating: 4.6,
     subscription: null,
   },
@@ -82,6 +120,8 @@ const feedbacksData = [
     position: 'Graphic Designer',
     avatar1x: davidNguyen1x,
     avatar2x: davidNguyen2x,
+    avatarWebp1x: davidNguyenWebp1x,
+    avatarWebp2x: davidNguyenWebp2x,
     rating: 4.7,
     subscription: null,
   },
@@ -91,6 +131,8 @@ const feedbacksData = [
     position: 'Marketing Specialist',
     avatar1x: aishaPatel1x,
     avatar2x: aishaPatel2x,
+    avatarWebp1x: aishaPatelWebp1x,
+    avatarWebp2x: aishaPatelWebp2x,
     rating: 4.8,
     subscription: 'gold',
   },
@@ -100,6 +142,8 @@ const feedbacksData = [
     position: 'Pediatric Nurse',
     avatar1x: michaelThompson1x,
     avatar2x: michaelThompson2x,
+    avatarWebp1x: michaelThompsonWebp1x,
+    avatarWebp2x: michaelThompsonWebp2x,
     rating: 4.5,
     subscription: 'silver',
   },
@@ -162,7 +206,17 @@ function renderFeedbackSlides(data) {
   const wrapper = document.querySelector('.swiper-feedback-wrapper');
   wrapper.innerHTML = '';
   data.forEach(
-    ({ text, author, position, avatar1x, avatar2x, rating, subscription }) => {
+    ({
+      text,
+      author,
+      position,
+      avatar1x,
+      avatar2x,
+      avatarWebp1x,
+      avatarWebp2x,
+      rating,
+      subscription,
+    }) => {
       const slide = document.createElement('li');
       slide.className = 'swiper-slide feedback-card';
       slide.innerHTML = `
@@ -186,13 +240,16 @@ function renderFeedbackSlides(data) {
     }
   </div>
   <div class="feedback-author-wrapper">
-    <img
-      src="${avatar1x}"
-      srcset="${avatar1x} 1x, ${avatar2x} 2x"
-      alt="${author}"
-      width="48" height="48"
-      loading="lazy"
-    />
+    <picture>
+      <source type="image/webp" srcset="${avatarWebp1x} 1x, ${avatarWebp2x} 2x">
+      <source type="image/jpeg" srcset="${avatar1x} 1x, ${avatar2x} 2x">
+      <img
+        src="${avatar1x}"
+        alt="${author}"
+        width="48" height="48"
+        loading="lazy"
+      />
+    </picture>
     <div class="author-details">
       <h3 class="author-name">${author}</h3>
       <p>${position}</p>
