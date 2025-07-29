@@ -29,11 +29,13 @@ const handleModalBookClick = event => {
     };
 
     localStorage.setItem('cart-item', JSON.stringify(cartData));
-    showToast(`Книгу додано у кошик: ${quantity} шт.`, 'success');
+    closeModal();
+    // showToast(`Книгу додано у кошик: ${quantity} шт.`, 'success');
     return;
   }
   if (action === 'buy-now') {
-    showToast('Дякуємо за покупку', 'success');
+    showToast('Manager will contact you soon', 'success');
+    closeModal();
     localStorage.removeItem('cart-item');
     return;
   }

@@ -1,5 +1,5 @@
 import { showToast } from './common';
-import { sendCartDataToBackEnd } from './backend-api';
+// import { sendCartDataToBackEnd } from './backend-api';
 
 // ===== КОРЗИНА =====
 const CART_KEY = 'cart-items';
@@ -32,7 +32,7 @@ function updateCartModal() {
   let total = 0;
   if (items.length === 0) {
     cartList.innerHTML =
-      '<li style="text-align:center;color:#ea8d50;">Корзина порожня</li>';
+      '<li style="text-align:center;">The cart is empty</li>';
   } else {
     items.forEach(item => {
       total += item.price * item.qty;
@@ -40,14 +40,18 @@ function updateCartModal() {
       li.className = 'modal-cart-item';
       li.innerHTML = `
         <span class="modal-cart-item-title">${item.title}</span>
-        <span class="modal-cart-item-qty">x${item.qty}</span>
+        <span class="modal-cart-item-qty">  ${item.qty} ${
+        item.qty > 1 ? 'items' : 'item'
+      }</span>
         <span class="modal-cart-item-price">${item.price} $</span>
-        <button class="modal-cart-item-remove" data-id="${item.id}" title="Видалити">&times;</button>
+        <span><button class="modal-cart-item-remove" data-id="${
+          item.id
+        }" title="Remove">Remove</button></span>
       `;
       cartList.appendChild(li);
     });
   }
-  cartTotalSum.textContent = total + ' грн';
+  cartTotalSum.textContent = total + ' $';
 }
 function openCartModal() {
   cartModalBackdrop.classList.add('show');
@@ -83,18 +87,11 @@ function clearCart() {
 }
 async function orderCart() {
   const cartItems = getCart();
-  await sendCartDataToBackEnd(cartItems);
+  // await sendCartDataToBackEnd(cartItems);
   clearCart();
   updateCartModal();
   closeCartModal();
-  if (window.iziToast) {
-    iziToast.success({
-      message: 'Замовлення оформлено! Дякуємо!',
-      position: 'topRight',
-    });
-  } else {
-    alert('Замовлення оформлено! Дякуємо!');
-  }
+  showToast('Order is complete, thank you!', 'success');
 }
 // ====== EVENTS ======
 cartBtn.addEventListener('click', openCartModal);
