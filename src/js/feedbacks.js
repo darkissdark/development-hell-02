@@ -41,7 +41,7 @@ const feedbacksData = [
     subscription: null,
   },
   {
-    text: 'Love the curated picks and clear descriptions. Makes it easy to find my next favorite book.',
+    text: 'Love еееееее ееееее ккккккккккккк ккккк  к   к к к к к кк к к к к к к к к к  кк к  к кк к к  к к к к к к к к к к к к к к к к к кк  к к к к к к к к к к кк ыпваыпав прав ав пав авы ыв авы авы аывфа ывп акерпкеу екуп кувп ку екуце куцап вып ке ке ываплтукпотлпь цукруцзшгкруц шкгуш кгруцшз цу й  шуцйкшщуцкшзгукшгцуш уцуц  щзшуцйщшцщшуц щуш щ ш щшщшщшщ шщ ш',
     author: 'Emily Johnson',
     position: 'Author, Novelist',
     avatar1x: emilyJohnson1x,
@@ -105,8 +105,8 @@ const feedbacksData = [
   },
 ];
 
-function getTruncateIndex(txtEl, fullText) {
-  const clone = txtEl.cloneNode();
+function getTruncateIndex(block, fullText) {
+  const clone = block.cloneNode();
   Object.assign(clone.style, {
     visibility: 'hidden',
     position: 'absolute',
@@ -117,11 +117,11 @@ function getTruncateIndex(txtEl, fullText) {
     display: 'block',
     overflow: 'visible',
   });
-  txtEl.parentNode.appendChild(clone);
+  block.parentNode.appendChild(clone);
 
   let low = 0,
     high = fullText.length;
-  const maxH = txtEl.clientHeight;
+  const maxH = block.clientHeight;
   while (low < high) {
     const mid = Math.ceil((low + high) / 2);
     clone.textContent = fullText.slice(0, mid);
@@ -141,10 +141,12 @@ function renderFeedbackSlides(data) {
       slide.className = 'swiper-slide feedback-card';
       slide.innerHTML = `
   <div class="feedback-text-wrapper">
-    <blockquote class="feedback-text">${text}</blockquote>
-    <div class="feedback-overlay" aria-hidden="true">
-      <div class="overlay-text"></div>
-    </div>
+    <blockquote class="feedback-text">
+      <span class="text-content">${text}</span>
+    </blockquote>
+  </div>
+  <div class="feedback-overlay" aria-hidden="true">
+    <div class="overlay-text"></div>
   </div>
   <div class="feedback-meta">
     <div class="feedback-rating" data-rating="${rating}"></div>
@@ -181,6 +183,10 @@ function initFeedbackSlider() {
     slidesPerView: 1,
     spaceBetween: 24,
     speed: 600,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
     pagination: { el: '.swiper-pagination', clickable: true },
     navigation: {
       prevEl: '.button-nav.prev',
@@ -196,23 +202,6 @@ function initFeedbackSlider() {
     breakpoints: {
       768: { slidesPerView: 2, spaceBetween: 24 },
       1440: { slidesPerView: 3, spaceBetween: 24 },
-    },
-    on: {
-      init() {
-        const first = document.querySelectorAll('.feedback-text-wrapper')[
-          this.activeIndex
-        ];
-        first && first.dispatchEvent(new Event('mouseenter'));
-      },
-      slideChange() {
-        document
-          .querySelectorAll('.feedback-text-wrapper')
-          .forEach((wrapper, idx) => {
-            wrapper.dispatchEvent(
-              new Event(idx === this.activeIndex ? 'mouseenter' : 'mouseleave')
-            );
-          });
-      },
     },
   });
 
@@ -235,51 +224,124 @@ function initFeedbackSlider() {
 }
 
 function attachOverlays() {
-  document.querySelectorAll('.feedback-text-wrapper').forEach(wrapper => {
-    const txt = wrapper.querySelector('.feedback-text');
-    const overlay = wrapper.querySelector('.feedback-overlay');
-    if (txt.scrollHeight <= txt.clientHeight + 1) return;
+  const mqlTablet = window.matchMedia(
+    '(min-width: 768px) and (max-width: 1439px)'
+  );
+  const mqlDesktop = window.matchMedia('(min-width: 1440px)');
 
-    wrapper.classList.add('overflow');
-    let rafId;
+  document.querySelectorAll('.feedback-card').forEach(card => {
+    const wrapper = card.querySelector('.feedback-text-wrapper');
+    const block = wrapper.querySelector('.feedback-text');
+    const textEl = block.querySelector('.text-content');
+    const overlay = card.querySelector('.feedback-overlay');
+    const ovText = overlay.querySelector('.overlay-text');
+    let timer,
+      isOpen = false;
 
-    function startReveal() {
-      const full = txt.textContent;
-      const overlayTextEl = overlay.querySelector('.overlay-text');
-      const truncateIdx = getTruncateIndex(txt, full);
+    if (block.scrollHeight <= block.clientHeight) {
+      wrapper.classList.add('full-text');
+      return;
+    }
 
-      let idx = truncateIdx;
-      overlayTextEl.textContent = full.slice(0, idx);
+    function openOverlay() {
+      if (isOpen) return;
+      isOpen = true;
+
+      overlay.setAttribute('aria-hidden', 'false');
       overlay.style.display = 'block';
-      const delayMs = 50;
 
-      function step() {
-        if (idx < full.length) {
-          idx++;
-          overlayTextEl.textContent = full.slice(0, idx);
-          rafId = setTimeout(step, delayMs);
+      const fullText = textEl.textContent;
+      const idx = getTruncateIndex(block, fullText);
+
+      const measure = block.cloneNode();
+      Object.assign(measure.style, {
+        visibility: 'hidden',
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        height: 'auto',
+        webkitLineClamp: 'unset',
+        display: 'block',
+        overflow: 'visible',
+      });
+      measure.textContent = fullText.slice(0, idx);
+      const marker = document.createElement('span');
+      marker.className = 'text-marker';
+      measure.appendChild(marker);
+      block.parentNode.appendChild(measure);
+
+      const cardRect = card.getBoundingClientRect();
+      const mRect = marker.getBoundingClientRect();
+      overlay.style.setProperty('--text-top', `${mRect.top - cardRect.top}px`);
+      overlay.style.setProperty(
+        '--text-left',
+        `${mRect.left - cardRect.left}px`
+      );
+
+      measure.remove();
+
+      const visiblePart = fullText.slice(0, idx);
+      const hiddenPart = fullText.slice(idx);
+
+      ovText.textContent = visiblePart;
+      ovText.style.display = 'inline-block';
+      ovText.style.whiteSpace = 'pre-wrap';
+      ovText.style.wordBreak = 'break-word';
+
+      let i = 0;
+      (function step() {
+        if (i < hiddenPart.length) {
+          ovText.textContent += hiddenPart[i++];
+          timer = setTimeout(step, 50);
         }
-      }
-      rafId = setTimeout(step, delayMs);
+      })();
     }
-
-    function stopReveal() {
-      clearTimeout(rafId);
+    function closeOverlay(final = false) {
+      clearTimeout(timer);
+      overlay.setAttribute('aria-hidden', 'true');
       overlay.style.display = 'none';
+      if (final) isOpen = false;
     }
 
-    wrapper.addEventListener('mouseenter', startReveal);
-    wrapper.addEventListener('focusin', startReveal);
-    wrapper.addEventListener('mouseleave', stopReveal);
-    wrapper.addEventListener('focusout', stopReveal);
+    function onMobile() {
+      textEl.removeEventListener('click', onTablet);
+      textEl.removeEventListener('focusin', onDesktop);
+      textEl.removeEventListener('blur', onDesktop);
+      textEl.addEventListener('click', () => {
+        isOpen ? closeOverlay(true) : openOverlay();
+      });
+      document.addEventListener('click', e => {
+        if (isOpen && !wrapper.contains(e.target)) closeOverlay(true);
+      });
+    }
+    function onTablet() {
+      textEl.removeEventListener('click', onMobile);
+      textEl.removeEventListener('focusin', onDesktop);
+      textEl.removeEventListener('blur', onDesktop);
+      textEl.addEventListener('click', openOverlay);
+      document.addEventListener('click', e => {
+        if (isOpen && !wrapper.contains(e.target)) closeOverlay(true);
+      });
+    }
+    function onDesktop() {
+      textEl.removeEventListener('click', onMobile);
+      textEl.removeEventListener('click', onTablet);
+      textEl.setAttribute('tabindex', '0');
+      textEl.addEventListener('focusin', openOverlay);
+      textEl.addEventListener('focusout', () => closeOverlay(true));
+    }
+
+    function applyMode() {
+      closeOverlay(true);
+      if (mqlDesktop.matches) onDesktop();
+      else if (mqlTablet.matches) onTablet();
+      else onMobile();
+    }
+    mqlTablet.addListener(applyMode);
+    mqlDesktop.addListener(applyMode);
+    applyMode();
   });
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  renderFeedbackSlides(feedbacksData);
-  initFeedbackSlider();
-  attachOverlays();
-});
 
 document.addEventListener('DOMContentLoaded', () => {
   renderFeedbackSlides(feedbacksData);
