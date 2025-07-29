@@ -40,7 +40,7 @@ function updateCartModal() {
       li.innerHTML = `
         <span class="modal-cart-item-title">${item.title}</span>
         <span class="modal-cart-item-qty">x${item.qty}</span>
-        <span class="modal-cart-item-price">${item.price} грн</span>
+        <span class="modal-cart-item-price">${item.price} $</span>
         <button class="modal-cart-item-remove" data-id="${item.id}" title="Видалити">&times;</button>
       `;
       cartList.appendChild(li);
