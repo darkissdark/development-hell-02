@@ -1,4 +1,5 @@
 import { showToast } from './common';
+import { sendCartDataToBackEnd } from './backend-api';
 
 // ===== КОРЗИНА =====
 const CART_KEY = 'cart-items';
@@ -80,7 +81,9 @@ function clearCart() {
   updateCartCount();
   updateCartModal();
 }
-function orderCart() {
+async function orderCart() {
+  const cartItems = getCart();
+  await sendCartDataToBackEnd(cartItems);
   clearCart();
   updateCartModal();
   closeCartModal();
