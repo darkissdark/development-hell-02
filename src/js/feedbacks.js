@@ -105,6 +105,33 @@ const feedbacksData = [
   },
 ];
 
+function getTruncateIndex(txtEl, fullText) {
+  const clone = txtEl.cloneNode();
+  Object.assign(clone.style, {
+    visibility: 'hidden',
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    height: 'auto',
+    webkitLineClamp: 'unset',
+    display: 'block',
+    overflow: 'visible',
+  });
+  txtEl.parentNode.appendChild(clone);
+
+  let low = 0,
+    high = fullText.length;
+  const maxH = txtEl.clientHeight;
+  while (low < high) {
+    const mid = Math.ceil((low + high) / 2);
+    clone.textContent = fullText.slice(0, mid);
+    if (clone.scrollHeight <= maxH) low = mid;
+    else high = mid - 1;
+  }
+  clone.remove();
+  return low;
+}
+
 function renderFeedbackSlides(data) {
   const wrapper = document.querySelector('.swiper-feedback-wrapper');
   wrapper.innerHTML = '';
@@ -170,6 +197,23 @@ function initFeedbackSlider() {
       768: { slidesPerView: 2, spaceBetween: 24 },
       1440: { slidesPerView: 3, spaceBetween: 24 },
     },
+    on: {
+      init() {
+        const first = document.querySelectorAll('.feedback-text-wrapper')[
+          this.activeIndex
+        ];
+        first && first.dispatchEvent(new Event('mouseenter'));
+      },
+      slideChange() {
+        document
+          .querySelectorAll('.feedback-text-wrapper')
+          .forEach((wrapper, idx) => {
+            wrapper.dispatchEvent(
+              new Event(idx === this.activeIndex ? 'mouseenter' : 'mouseleave')
+            );
+          });
+      },
+    },
   });
 
   document.querySelectorAll('.feedback-rating').forEach(el => {
@@ -194,41 +238,47 @@ function attachOverlays() {
   document.querySelectorAll('.feedback-text-wrapper').forEach(wrapper => {
     const txt = wrapper.querySelector('.feedback-text');
     const overlay = wrapper.querySelector('.feedback-overlay');
+    if (txt.scrollHeight <= txt.clientHeight + 1) return;
 
-    if (txt.scrollHeight > txt.clientHeight + 1) {
-      wrapper.classList.add('overflow');
+    wrapper.classList.add('overflow');
+    let rafId;
 
-      let rafId, idx, full, wrapperH;
+    function startReveal() {
+      const full = txt.textContent;
+      const overlayTextEl = overlay.querySelector('.overlay-text');
+      const truncateIdx = getTruncateIndex(txt, full);
 
-      function startReveal() {
-        full = txt.textContent;
-        idx = 0;
-        const overlayTextEl = overlay.querySelector('.overlay-text');
-        overlayTextEl.textContent = '';
-        overlay.style.display = 'block';
+      let idx = truncateIdx;
+      overlayTextEl.textContent = full.slice(0, idx);
+      overlay.style.display = 'block';
 
-        function step() {
-          if (idx <= full.length) {
-            overlayTextEl.textContent = full.slice(0, idx);
-            idx++;
-            rafId = requestAnimationFrame(step);
-          }
+      function step() {
+        if (idx < full.length) {
+          idx++;
+          overlayTextEl.textContent = full.slice(0, idx);
+          rafId = requestAnimationFrame(step);
         }
-        rafId = requestAnimationFrame(step);
       }
-
-      function stopReveal() {
-        cancelAnimationFrame(rafId);
-        overlay.style.display = 'none';
-      }
-
-      wrapper.addEventListener('mouseenter', startReveal);
-      wrapper.addEventListener('focusin', startReveal);
-      wrapper.addEventListener('mouseleave', stopReveal);
-      wrapper.addEventListener('focusout', stopReveal);
+      rafId = requestAnimationFrame(step);
     }
+
+    function stopReveal() {
+      cancelAnimationFrame(rafId);
+      overlay.style.display = 'none';
+    }
+
+    wrapper.addEventListener('mouseenter', startReveal);
+    wrapper.addEventListener('focusin', startReveal);
+    wrapper.addEventListener('mouseleave', stopReveal);
+    wrapper.addEventListener('focusout', stopReveal);
   });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderFeedbackSlides(feedbacksData);
+  initFeedbackSlider();
+  attachOverlays();
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   renderFeedbackSlides(feedbacksData);
