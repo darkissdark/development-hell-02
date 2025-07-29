@@ -1,0 +1,31 @@
+/**
+  |============================
+  | include css partials with
+  | default @import url()
+  |============================
+*/
+/* @import url('../../node_modules/accordion-js/dist/accordion.min.css'); */
+
+/* Modules */
+/* @import url('../../node_modules/swiper/swiper-bundle.min.css'); */
+@import url('../../node_modules/izitoast/dist/css/iziToast.min.css');
+
+/* Common styles */
+@import url('./base/form.css');
+@import url('./base/animations.css');
+
+/* Sections style */
+@import url('./sections/article.css');
+@import url('./sections/books.css');
+@import url('./sections/events.css');
+@import url('./sections/location.css');
+@import url('./sections/feedbacks.css');
+@import url('./sections/footer.css');
+
+/* Common */
+@import url('./common/scrollToTop.css');
+
+/* Modals style */
+@import url('./modals/modalBase.css');
+@import url('./modals/modalBook.css');
+@import url('./modals/modalContacts.css');
