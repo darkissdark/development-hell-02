@@ -5,6 +5,7 @@ import FullReload from 'vite-plugin-full-reload';
 import SortCss from 'postcss-sort-media-queries';
 import fs from 'fs';
 import cssnano from 'cssnano';
+import path from 'path';
 
 export default defineConfig(({ command }) => {
   return {
@@ -38,16 +39,16 @@ export default defineConfig(({ command }) => {
             if (chunkInfo.name === 'commonHelpers') {
               return 'commonHelpers.js';
             }
-            return '[name].js';
+            return '[name].[hash].js';
           },
           assetFileNames: assetInfo => {
             if (assetInfo.name?.endsWith('.html')) {
               return '[name].[ext]';
             }
             if (assetInfo.name?.endsWith('.css')) {
-              return 'assets/index.css';
+              return 'assets/index.[hash].css';
             }
-            return 'assets/[name]-[hash][extname]';
+            return 'assets/[name].[hash][extname]';
           },
         },
       },
@@ -74,25 +75,86 @@ export default defineConfig(({ command }) => {
       },
       {
         name: 'async-css-inject',
+        writeBundle() {
+          // This runs after the bundle is written
+          const htmlPath = path.join(process.cwd(), 'dist', 'index.html');
+          const assetsDir = path.join(process.cwd(), 'dist', 'assets');
+
+          if (fs.existsSync(htmlPath) && fs.existsSync(assetsDir)) {
+            let html = fs.readFileSync(htmlPath, 'utf8');
+
+            // Find the CSS file with hash
+            const files = fs.readdirSync(assetsDir);
+            const cssFile = files.find(
+              file => file.startsWith('index.') && file.endsWith('.css')
+            );
+
+            if (cssFile) {
+              const cssPath = `/development-hell-02/assets/${cssFile}`;
+              const asyncCssLink = `
+    <link
+      rel="stylesheet"
+      href="${cssPath}"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="${cssPath}" />
+    </noscript>`;
+
+              // Replace the placeholder or add the link
+              if (html.includes('/development-hell-02/assets/index.css')) {
+                html = html.replace(
+                  /href="\/development-hell-02\/assets\/index\.css"/g,
+                  `href="${cssPath}"`
+                );
+              } else {
+                html = html.replace('</head>', `${asyncCssLink}\n  </head>`);
+              }
+
+              fs.writeFileSync(htmlPath, html);
+            }
+          }
+        },
         transformIndexHtml: {
           order: 'post',
           handler(html, { path }) {
             const isDev = command === 'serve';
-            const cssPath = isDev
-              ? './css/index.css'
-              : '/development-hell-02/assets/index.css';
+            let cssPath;
+
+            if (isDev) {
+              cssPath = './css/index.css';
+            } else {
+              // For production, use a placeholder that will be replaced later
+              cssPath = '/development-hell-02/assets/index.css';
+            }
+
             const asyncCssLink = `
-            <link
-              rel="stylesheet"
-              href="${cssPath}"
-              media="print"
-              onload="this.media='all'"
-            />
-            <noscript>
-              <link rel="stylesheet" href="${cssPath}" />
-            </noscript>`;
+    <link
+      rel="stylesheet"
+      href="${cssPath}"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="${cssPath}" />
+    </noscript>`;
             return html.replace('</head>', `${asyncCssLink}\n  </head>`);
           },
+        },
+      },
+      {
+        name: 'copy-cache-files',
+        writeBundle() {
+          // Copy cache configuration files to dist
+          const cacheFiles = ['.htaccess', '_headers', '_redirects'];
+          cacheFiles.forEach(file => {
+            const sourcePath = path.join(process.cwd(), 'public', file);
+            const destPath = path.join(process.cwd(), 'dist', file);
+            if (fs.existsSync(sourcePath)) {
+              fs.copyFileSync(sourcePath, destPath);
+            }
+          });
         },
       },
       injectHTML(),
