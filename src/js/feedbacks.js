@@ -151,30 +151,6 @@ const feedbacksData = [
 
 let feedbackSwiper;
 
-function initScrollAnimations() {
-  const rightEls = document.querySelectorAll(
-    '#feedbacks-title, .feedbacks-subtitle'
-  );
-
-  const observerOptions = {
-    root: null,
-    threshold: 0.2,
-  };
-
-  const observerCallback = entries => {
-    entries.forEach(entry => {
-      entry.target.classList.toggle('visible', entry.isIntersecting);
-    });
-  };
-
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-  rightEls.forEach(el => {
-    el.classList.add('animate-slide-in-right');
-    observer.observe(el);
-  });
-}
-
 function getTruncateIndex(block, fullText) {
   const clone = block.cloneNode();
   Object.assign(clone.style, {
@@ -313,20 +289,38 @@ function initFeedbackSlider() {
     });
   });
 
-  feedbackSwiper.el.addEventListener('mouseenter', () =>
-    feedbackSwiper.autoplay?.stop()
-  );
-  feedbackSwiper.el.addEventListener('mouseleave', () =>
-    feedbackSwiper.autoplay?.start()
-  );
-  feedbackSwiper.el.addEventListener('focusin', () =>
-    feedbackSwiper.autoplay?.stop()
-  );
-  feedbackSwiper.el.addEventListener('focusout', () =>
-    feedbackSwiper.autoplay?.start()
-  );
+  // feedbackSwiper.el.addEventListener('mouseenter', () =>
+  //   feedbackSwiper.autoplay?.stop()
+  // );
+  // feedbackSwiper.el.addEventListener('mouseleave', () =>
+  //   feedbackSwiper.autoplay?.start()
+  // );
+  // feedbackSwiper.el.addEventListener('focusin', () =>
+  //   feedbackSwiper.autoplay?.stop()
+  // );
+  // feedbackSwiper.el.addEventListener('focusout', () =>
+  //   feedbackSwiper.autoplay?.start()
+  // );
 }
 
+function bindCardAutoplayEvents() {
+  const cards = document.querySelectorAll('.feedback-card');
+
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      feedbackSwiper?.autoplay?.stop();
+    });
+    card.addEventListener('mouseleave', () => {
+      feedbackSwiper?.autoplay?.start();
+    });
+    card.addEventListener('focusin', () => {
+      feedbackSwiper?.autoplay?.stop();
+    });
+    card.addEventListener('focusout', () => {
+      feedbackSwiper?.autoplay?.start();
+    });
+  });
+}
 function attachOverlays() {
   const mqlTablet = window.matchMedia(
     '(min-width: 768px) and (max-width: 1439px)'
@@ -406,7 +400,9 @@ function attachOverlays() {
       const totalDelay = hiddenPart.length * 25 + 2000;
       setTimeout(() => {
         feedbackSwiper.allowTouchMove = true;
-        feedbackSwiper.autoplay?.start();
+        if (!card.matches(':hover') && !card.matches(':focus-within')) {
+          feedbackSwiper.autoplay?.start();
+        }
       }, totalDelay);
     }
     function closeOverlay(final = false) {
@@ -464,9 +460,38 @@ function attachOverlays() {
   });
 }
 
+function initScrollAnimations() {
+  const animatedEls = document.querySelectorAll(
+    '.feedbacks-title, .feedbacks-subtitle, .feedback-card'
+  );
+
+  const observerOptions = {
+    root: null,
+    threshold: 0.2,
+  };
+
+  const observerCallback = entries => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle('visible', entry.isIntersecting);
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  animatedEls.forEach(el => {
+    if (el.classList.contains('feedback-card')) {
+      el.classList.add('slide-up-observe');
+    } else {
+      el.classList.add('animate-slide-in-right');
+    }
+    observer.observe(el);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderFeedbackSlides(feedbacksData);
   initFeedbackSlider();
+  bindCardAutoplayEvents();
   attachOverlays();
   initScrollAnimations();
 });
