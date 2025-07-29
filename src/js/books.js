@@ -149,6 +149,12 @@ function paginateBooks(rawBooksData) {
   refs.pageEl.textContent = `Showing ${loadedCards} of ${totalCards}`;
   if (originalBooks.length === 0) {
     //visibleBooks.length < booksPerPage ||
+    if (page > 1) {
+      iziToast.info({
+        message: 'Sorry, you have viewed all the books in this category.',
+        position: 'topRight',
+      });
+    }
     scrollByUp();
     renderBooks(visibleBooks);
     visibleBooks = [];
@@ -156,11 +162,7 @@ function paginateBooks(rawBooksData) {
     totalPages = null;
     totalCards = null;
     loadedCards = null;
-    iziToast.info({
-      message:
-        'Sorry, all books in this category are displayed. Please look at books in another category.',
-      position: 'topRight',
-    });
+
     return;
   }
 
