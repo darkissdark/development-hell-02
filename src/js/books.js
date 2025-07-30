@@ -1,5 +1,4 @@
 /* ===== Импорт библиотек ===== */
-// import Accordion from 'accordion-js';
 import iziToast from 'izitoast';
 
 /* ===== импорт именных переменных ===== */
@@ -13,11 +12,6 @@ import {
 } from './render-functions';
 import { openModal, fillDataModalBook } from './books-modal';
 
-/* ===== аккордион ===== */
-// const acc = new Accordion('.js-accordion-container', {
-//   duration: 1000,
-//   showMultiple: true,
-// });
 const accBtn = document.querySelector('.js-accordion-btn');
 const accContent = document.querySelector('.js-accordion-content');
 const accIcon = refs.accBtn.querySelector('.books-acc-icon');
@@ -28,8 +22,8 @@ const categoriesOfTopBooks = 'books/top-books/';
 const booksAllCategory = 'books/category/';
 
 // ======= Переменные пагинации =======
-let originalBooks = []; // основной массив (оригинальные данные после фильтрации)
-let visibleBooks = []; // массив для текущей порции на рендер
+let originalBooks = [];
+let visibleBooks = [];
 let page = 1;
 let totalPages = null;
 let booksPerPage = 10;
@@ -116,8 +110,8 @@ function removeDuplicateBooks(books) {
 function paginateBooks(rawBooksData) {
   hideLoadMoreButton();
 
+  /* ===== первоначальная загрузка массива ===== */
   if (originalBooks.length === 0) {
-    // при первоначальной загрузке массива
     originalBooks = rawBooksData;
     totalCards = originalBooks.length;
     totalPages = Math.ceil((originalBooks.length - booksPerPage) / 4) + 1;
@@ -137,7 +131,6 @@ function paginateBooks(rawBooksData) {
     }
     visibleBooks = originalBooks.slice(start, end);
   } else {
-    // const start = (page - 1) * booksPerPage;
     start = loadedCards;
     end = originalBooks.length;
     visibleBooks = originalBooks.slice(start, end);
@@ -148,7 +141,6 @@ function paginateBooks(rawBooksData) {
 
   refs.pageEl.textContent = `Showing ${loadedCards} of ${totalCards}`;
   if (originalBooks.length === 0) {
-    //visibleBooks.length < booksPerPage ||
     if (page > 1) {
       iziToast.info({
         message: 'Sorry, you have viewed all the books in this category.',
@@ -202,7 +194,7 @@ function scrollByUp() {
   const lastCard = allCards[allCards.length - 1];
   const rect = lastCard.getBoundingClientRect();
 
-  // Вычисляем абсолютную координату низа карточки
+  // Вычисляем координату низа карточки
   const targetScrollY = rect.top + rect.height + window.scrollY;
 
   window.scrollTo({
@@ -218,7 +210,6 @@ const selectCategory = async event => {
   let books = null;
 
   booksCategories = li.textContent.trim();
-  // console.log(booksCategories);
   if (booksCategories === 'All categories') {
     const booksData = await getDataOnRequest(categoriesOfTopBooks);
     books = extractBooks(booksData);
@@ -229,7 +220,6 @@ const selectCategory = async event => {
     );
     books = removeDuplicateBooks(booksData);
   }
-  // console.log(books.length);
 
   page = 1;
   totalPages = null;
@@ -239,7 +229,6 @@ const selectCategory = async event => {
   loadedCards = null;
   refs.bookCard.innerHTML = '';
 
-  // acc.close(0);
   accContent.classList.remove('open');
   accIcon.classList.remove('rotate');
   paginateBooks(books);
