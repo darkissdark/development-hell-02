@@ -11,10 +11,9 @@
   </header>
   <div class="event-list swiper">
     <ul class="swiper-wrapper event-wrapper">
-      <li class="event-item swiper-slide">
+      <li class="event-item swiper-slide" role="group" aria-label="1 / 3">
         <article class="event-card">
           <picture>
-            <!-- desktop -->
             <source
               srcset="
                 ./images/events/book-club-desk@1x.jpg 1x,
@@ -22,7 +21,6 @@
               "
               media="(min-width: 1440px)"
             />
-            <!-- tablet -->
             <source
               srcset="
                 ./images/events/book-club-tab@1x.jpg 1x,
@@ -30,17 +28,19 @@
               "
               media="(min-width: 768px)"
             />
-            <!-- mobile -->
             <source
               srcset="
                 ./images/events/book-club-mob@1x.jpg 1x,
                 ./images/events/book-club-mob@2x.jpg 2x
               "
-              media="(min-width: 320px)"
+              media="(max-width: 767px)"
             />
             <img
               src="./images/events/book-club-mob@1x.jpg"
               alt="People reading together in a cozy book club setting"
+              width="343"
+              height="278"
+              loading="lazy"
             />
           </picture>
           <h3 class="event-subhead">Cozy Book Club — “The Midnight Library”</h3>
@@ -49,18 +49,29 @@
             Join us for an evening of tea, thoughtful conversation, and shared
             reflections as we dive into Matt Haig’s bestseller.
           </p>
-          <button class="register-btn" data-modal="registerModal">
+          <button
+            class="register-btn"
+            data-modal="registerModal"
+            type="button"
+            aria-label="Register for Cozy Book Club"
+          >
             Register
-            <svg class="icon-register" width="24" height="24">
+            <svg
+              class="icon-register"
+              width="24"
+              height="24"
+              aria-hidden="true"
+              focusable="false"
+            >
               <use xlink:href="#chevron-down"></use>
             </svg>
           </button>
         </article>
       </li>
-      <li class="event-item swiper-slide">
+
+      <li class="event-item swiper-slide" role="group" aria-label="2 / 3">
         <article class="event-card">
           <picture>
-            <!-- desktop -->
             <source
               srcset="
                 ./images/events/book-cover-desk@1x.jpg 1x,
@@ -68,7 +79,6 @@
               "
               media="(min-width: 1440px)"
             />
-            <!-- tablet -->
             <source
               srcset="
                 ./images/events/book-cover-tab@1x.jpg 1x,
@@ -76,7 +86,6 @@
               "
               media="(min-width: 768px)"
             />
-            <!-- mobile -->
             <source
               srcset="
                 ./images/events/book-cover-mob@1x.jpg 1x,
@@ -84,10 +93,12 @@
               "
               media="(max-width: 767px)"
             />
-
             <img
               src="./images/events/book-cover-mob@1x.jpg"
               alt="Group of people working on book cover designs"
+              width="343"
+              height="278"
+              loading="lazy"
             />
           </picture>
           <h3 class="event-subhead">Book Cover Design Workshop</h3>
@@ -96,15 +107,27 @@
             A hands-on session for aspiring designers and curious readers. Learn
             what makes a cover stand out — from concept to print.
           </p>
-          <button class="register-btn" data-modal="registerModal">
+          <button
+            class="register-btn"
+            data-modal="registerModal"
+            type="button"
+            aria-label="Register for Book Cover Workshop"
+          >
             Register
-            <svg class="icon-register" width="24" height="24">
+            <svg
+              class="icon-register"
+              width="24"
+              height="24"
+              aria-hidden="true"
+              focusable="false"
+            >
               <use xlink:href="#chevron-down"></use>
             </svg>
           </button>
         </article>
       </li>
-      <li class="event-item swiper-slide">
+
+      <li class="event-item swiper-slide" role="group" aria-label="3 / 3">
         <article class="event-card">
           <picture>
             <source
@@ -114,7 +137,6 @@
               "
               media="(min-width: 1440px)"
             />
-
             <source
               srcset="
                 ./images/events/child-story-tab@1x.jpg 1x,
@@ -122,7 +144,6 @@
               "
               media="(min-width: 768px)"
             />
-
             <source
               srcset="
                 ./images/events/child-story-mob@1x.jpg 1x,
@@ -133,6 +154,9 @@
             <img
               src="./images/events/child-story-mob@1x.jpg"
               alt="Woman reading to a group of children in a bookstore"
+              width="343"
+              height="278"
+              loading="lazy"
             />
           </picture>
           <h3 class="event-subhead">Children’s Story Hour</h3>
@@ -141,9 +165,20 @@
             A magical morning of stories, games, and imagination for our
             youngest book lovers (ages 4–8).
           </p>
-          <button class="register-btn" data-modal="registerModal">
+          <button
+            class="register-btn"
+            data-modal="registerModal"
+            type="button"
+            aria-label="Register for Children’s Story Hour"
+          >
             Register
-            <svg class="icon-register" width="24" height="24">
+            <svg
+              class="icon-register"
+              width="24"
+              height="24"
+              aria-hidden="true"
+              focusable="false"
+            >
               <use xlink:href="#chevron-down"></use>
             </svg>
           </button>
