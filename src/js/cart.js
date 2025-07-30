@@ -1,4 +1,4 @@
-import { showToast } from './common';
+import { showLoader, showToast, hideLoader } from './common';
 import { sendCartDataToBackEnd } from './backend-api';
 
 // ===== КОРЗИНА =====
@@ -86,11 +86,19 @@ function clearCart() {
   updateCartModal();
 }
 async function orderCart() {
-  const cartItems = getCart();
-  await sendCartDataToBackEnd(cartItems);
-  clearCart();
-  updateCartModal();
-  closeCartModal();
+  try {
+    showLoader();
+    const cartItems = getCart();
+    await sendCartDataToBackEnd(cartItems);
+    clearCart();
+    updateCartModal();
+  } catch (error) {
+    showToast('Something went wrong');
+  } finally {
+    hideLoader();
+    closeCartModal();
+  }
+
   showToast('Order is complete, thank you!', 'success');
 }
 // ====== EVENTS ======

@@ -11,10 +11,9 @@ export const sendDataToBackEnd = async (data, dataid) => {
         message,
       }
     );
-
-    console.log('Відповідь сервера:', response.data);
   } catch (error) {
     console.error('Помилка при надсиланні:', error);
+    throw error;
   }
 };
 
@@ -25,9 +24,8 @@ export const sendCartDataToBackEnd = async arr => {
 
       arr
     );
-
-    console.log('Відповідь сервера:', response.data);
   } catch (error) {
     console.error('Помилка при надсиланні:', error);
+    throw error;
   }
 };

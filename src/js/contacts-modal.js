@@ -1,5 +1,6 @@
 import iziToast from 'izitoast';
 import { sendDataToBackEnd } from './backend-api';
+import { hideLoader, showLoader } from './common';
 
 const refs = {
   openFormModal: document.querySelectorAll('.register-btn'),
@@ -117,26 +118,26 @@ refs.formList.addEventListener('submit', async e => {
   const formData = {
     name: refs.inputName.value.trim(),
     email: refs.inputEmail.value.trim(),
-    message: refs.inputArea.value.trim() || 'No messege typed', // required on backend
+    message: refs.inputArea.value.trim() || 'No message typed', // required on backend
   };
 
-  refs.inputName.disabled = true;
-  refs.inputEmail.disabled = true;
-  refs.inputArea.disabled = true;
-  refs.submitBtnModal.disabled = true;
-  refs.submitBtnModal.textContent = 'Sending...';
-  await sendDataToBackEnd(formData, formDataId);
-  refs.inputName.disabled = false;
-  refs.inputEmail.disabled = false;
-  refs.inputArea.disabled = false;
-  refs.submitBtnModal.disabled = false;
-  refs.submitBtnModal.textContent = 'Register';
-  closeModal();
-  localStorage.removeItem('contactFormData');
-  refs.formList.reset();
+  try {
+    showLoader();
+    await sendDataToBackEnd(formData, formDataId);
 
-  return iziToast.info({
-    message: 'Thank you, our manager will contact you!',
-    position: 'center',
-  });
+    localStorage.removeItem('contactFormData');
+    refs.formList.reset();
+    iziToast.info({
+      message: 'Thank you, our manager will contact you!',
+      position: 'center',
+    });
+  } catch (error) {
+    iziToast.error({
+      message: 'Something went wrong. Please try again later.',
+      position: 'center',
+    });
+  } finally {
+    hideLoader();
+    closeModal();
+  }
 });
