@@ -14,30 +14,50 @@
       <!-- desktop -->
       <source
         srcset="
-          ./images/article/article-desk@1x.jpg 1x,
-          ./images/article/article-desk@2x.jpg 2x
+          ./images/article/article-pc.webp    1x,
+          ./images/article/article-pc@2x.webp 2x
+        "
+        type="image/webp"
+        media="(min-width: 1440px)"
+      />
+      <source
+        srcset="
+          ./images/article/article-pc.jpg    1x,
+          ./images/article/article-pc@2x.jpg 2x
         "
         media="(min-width: 1440px)"
+        type="image/jpeg"
       />
       <!-- tablet -->
       <source
         srcset="
-          ./images/article/article-tab@1x.jpg 1x,
+          ./images/article/article-tab.webp    1x,
+          ./images/article/article-tab@2x.webp 2x
+        "
+        type="image/webp"
+        media="(min-width: 768px)"
+      />
+      <source
+        srcset="
+          ./images/article/article-tab.jpg    1x,
           ./images/article/article-tab@2x.jpg 2x
         "
+        type="image/jpg"
         media="(min-width: 768px)"
       />
       <!-- mobile -->
       <source
         srcset="
-          ./images/article/article-mob@1x.jpg 1x,
-          ./images/article/article-mob@2x.jpg 2x
+          ./images/article/article-mob.web     1x,
+          ./images/article/article-mob@2x.webp 2x
         "
+        type="image/webp"
         media="(min-width: 320px)"
       />
       <img
         class="article-img"
-        src="./images/article/article-mob@1x.jpg"
+        srcset="./images/article/article-mob@2x.jpg 2x"
+        src="./images/article/article-mob.jpg"
         alt="cozy bookstore"
         loading="lazy"
       />

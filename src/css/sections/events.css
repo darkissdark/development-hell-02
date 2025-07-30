@@ -135,9 +135,8 @@
 
 .swiper-controls .swiper-pagination-bullet {
   opacity: 0.5;
-  width: 10px;
-  height: 10px;
-  margin: 0 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background-color: #999999;
   transition: opacity 0.3s ease;
@@ -146,6 +145,10 @@
 .swiper-controls .swiper-pagination-bullet-active {
   opacity: 1;
   background-color: #333333;
+}
+
+.events-pagination .swiper-pagination-bullet:first-child {
+  margin-left: 0;
 }
 
 .events-pagination {

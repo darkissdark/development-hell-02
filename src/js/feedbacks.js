@@ -1,155 +1,16 @@
+import feedbacksData from './feedbacks-data';
 import Swiper from 'swiper/bundle';
-
 import Rater from 'rater-js';
 
-import janeDoe1x from '../images/feedbacks/jane_doe.jpg';
-import janeDoe2x from '../images/feedbacks/jane_doe@2x.jpg';
-import janeDoeWebp1x from '../images/feedbacks/jane_doe.webp';
-import janeDoeWebp2x from '../images/feedbacks/jane_doe@2x.webp';
-
-import johnSmith1x from '../images/feedbacks/john_smith.jpg';
-import johnSmith2x from '../images/feedbacks/john_smith@2x.jpg';
-import johnSmithWebp1x from '../images/feedbacks/john_smith.webp';
-import johnSmithWebp2x from '../images/feedbacks/john_smith@2x.webp';
-
-import emilyJohnson1x from '../images/feedbacks/emily_johnson.jpg';
-import emilyJohnson2x from '../images/feedbacks/emily_johnson@2x.jpg';
-import emilyJohnsonWebp1x from '../images/feedbacks/emily_johnson.webp';
-import emilyJohnsonWebp2x from '../images/feedbacks/emily_johnson@2x.webp';
-
-import sofiaLee1x from '../images/feedbacks/sofia_lee.jpg';
-import sofiaLee2x from '../images/feedbacks/sofia_lee@2x.jpg';
-import sofiaLeeWebp1x from '../images/feedbacks/sofia_lee.webp';
-import sofiaLeeWebp2x from '../images/feedbacks/sofia_lee@2x.webp';
-
-import carlosMendez1x from '../images/feedbacks/carlos_mendez.jpg';
-import carlosMendez2x from '../images/feedbacks/carlos_mendez@2x.jpg';
-import carlosMendezWebp1x from '../images/feedbacks/carlos_mendez.webp';
-import carlosMendezWebp2x from '../images/feedbacks/carlos_mendez@2x.webp';
-
-import natalieBrooks1x from '../images/feedbacks/natalie_brooks.jpg';
-import natalieBrooks2x from '../images/feedbacks/natalie_brooks@2x.jpg';
-import natalieBrooksWebp1x from '../images/feedbacks/natalie_brooks.webp';
-import natalieBrooksWebp2x from '../images/feedbacks/natalie_brooks@2x.webp';
-
-import davidNguyen1x from '../images/feedbacks/david_nguyen.jpg';
-import davidNguyen2x from '../images/feedbacks/david_nguyen@2x.jpg';
-import davidNguyenWebp1x from '../images/feedbacks/david_nguyen.webp';
-import davidNguyenWebp2x from '../images/feedbacks/david_nguyen@2x.webp';
-
-import aishaPatel1x from '../images/feedbacks/aisha_patel.jpg';
-import aishaPatel2x from '../images/feedbacks/aisha_patel@2x.jpg';
-import aishaPatelWebp1x from '../images/feedbacks/aisha_patel.webp';
-import aishaPatelWebp2x from '../images/feedbacks/aisha_patel@2x.webp';
-
-import michaelThompson1x from '../images/feedbacks/michael_thompson.jpg';
-import michaelThompson2x from '../images/feedbacks/michael_thompson@2x.jpg';
-import michaelThompsonWebp1x from '../images/feedbacks/michael_thompson.webp';
-import michaelThompsonWebp2x from '../images/feedbacks/michael_thompson@2x.webp';
-
-const feedbacksData = [
-  {
-    text: 'Great selection, fast delivery, and beautifully packaged books.\nMy go-to store for weekend reads!',
-    author: 'Jane Doe',
-    position: 'Book Lover, Reader',
-    avatar1x: janeDoe1x,
-    avatar2x: janeDoe2x,
-    avatarWebp1x: janeDoeWebp1x,
-    avatarWebp2x: janeDoeWebp2x,
-    rating: 4.8,
-    subscription: 'gold',
-  },
-  {
-    text: `This bookstore has become my absolute favorite! The rare editions section alone is worth the visit, and the staff always go above and beyond to recommend the perfect titles based on my interests.\nI love how they support local authors and host engaging events each month.`,
-    author: 'John Smith',
-    position: 'Editor, BookMag',
-    avatar1x: johnSmith1x,
-    avatar2x: johnSmith2x,
-    avatarWebp1x: johnSmithWebp1x,
-    avatarWebp2x: johnSmithWebp2x,
-    rating: 4.6,
-    subscription: null,
-  },
-  {
-    text: `I was pleasantly surprised by the personalized touches in my last order—from the hand-written note tucked inside the package to the custom bookmark.\nThe whole experience felt crafted just for me, and I can’t wait to shop again!`,
-    author: 'Emily Johnson',
-    position: 'Author, Novelist',
-    avatar1x: emilyJohnson1x,
-    avatar2x: emilyJohnson2x,
-    avatarWebp1x: emilyJohnsonWebp1x,
-    avatarWebp2x: emilyJohnsonWebp2x,
-    rating: 4.9,
-    subscription: 'gold',
-  },
-  {
-    text: `As a literature professor, I’m endlessly impressed by the depth of their catalog.\nThey carry everything from contemporary bestsellers to obscure academic volumes, and their recommendation engine never fails to introduce me to new gems.`,
-    author: 'Sofia Lee',
-    position: 'Literature Professor',
-    avatar1x: sofiaLee1x,
-    avatar2x: sofiaLee2x,
-    avatarWebp1x: sofiaLeeWebp1x,
-    avatarWebp2x: sofiaLeeWebp2x,
-    rating: 4.7,
-    subscription: null,
-  },
-  {
-    text: 'I’ve discovered so many hidden gems thanks to this store.\nThe reviews really help me find niche titles I wouldn’t have found anywhere else!',
-    author: 'Carlos Mendez',
-    position: 'Blogger',
-    avatar1x: carlosMendez1x,
-    avatar2x: carlosMendez2x,
-    avatarWebp1x: carlosMendezWebp1x,
-    avatarWebp2x: carlosMendezWebp2x,
-    rating: 4.5,
-    subscription: 'silver',
-  },
-  {
-    text: 'As a parent, I appreciate the kid-friendly book sections.\nMy son can’t get enough of the colorful picture books and board books we order each month!',
-    author: 'Natalie Brooks',
-    position: 'Mother & Teacher',
-    avatar1x: natalieBrooks1x,
-    avatar2x: natalieBrooks2x,
-    avatarWebp1x: natalieBrooksWebp1x,
-    avatarWebp2x: natalieBrooksWebp2x,
-    rating: 4.6,
-    subscription: null,
-  },
-  {
-    text: `The curated collections are fantastic! I always find exactly what I’m looking for and discover new favorites.\nThe seasonal reading lists they publish are also a great way to branch out beyond my usual genres.`,
-    author: 'David Nguyen',
-    position: 'Graphic Designer',
-    avatar1x: davidNguyen1x,
-    avatar2x: davidNguyen2x,
-    avatarWebp1x: davidNguyenWebp1x,
-    avatarWebp2x: davidNguyenWebp2x,
-    rating: 4.7,
-    subscription: null,
-  },
-  {
-    text: 'Fast shipping and top-notch service, with timely updates throughout delivery.\nI’ll definitely be back for more, especially during holiday sales!',
-    author: 'Aisha Patel',
-    position: 'Marketing Specialist',
-    avatar1x: aishaPatel1x,
-    avatar2x: aishaPatel2x,
-    avatarWebp1x: aishaPatelWebp1x,
-    avatarWebp2x: aishaPatelWebp2x,
-    rating: 4.8,
-    subscription: 'gold',
-  },
-  {
-    text: 'Their children’s book selection is unbeatable.\nMy daughter devours every story and can’t wait for the next delivery!',
-    author: 'Michael Thompson',
-    position: 'Pediatric Nurse',
-    avatar1x: michaelThompson1x,
-    avatar2x: michaelThompson2x,
-    avatarWebp1x: michaelThompsonWebp1x,
-    avatarWebp2x: michaelThompsonWebp2x,
-    rating: 4.5,
-    subscription: 'silver',
-  },
-];
-
 let feedbackSwiper;
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
 function getTruncateIndex(block, fullText) {
   const clone = block.cloneNode();
@@ -246,7 +107,11 @@ function initFeedbackSlider() {
       delay: 2000,
       disableOnInteraction: false,
     },
-    pagination: { el: '.swiper-pagination', clickable: true },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      dynamicBullets: true,
+    },
     navigation: {
       prevEl: '.button-nav.prev',
       nextEl: '.button-nav.next',
@@ -288,19 +153,6 @@ function initFeedbackSlider() {
       showToolTip: false,
     });
   });
-
-  // feedbackSwiper.el.addEventListener('mouseenter', () =>
-  //   feedbackSwiper.autoplay?.stop()
-  // );
-  // feedbackSwiper.el.addEventListener('mouseleave', () =>
-  //   feedbackSwiper.autoplay?.start()
-  // );
-  // feedbackSwiper.el.addEventListener('focusin', () =>
-  //   feedbackSwiper.autoplay?.stop()
-  // );
-  // feedbackSwiper.el.addEventListener('focusout', () =>
-  //   feedbackSwiper.autoplay?.start()
-  // );
 }
 
 function bindCardAutoplayEvents() {
@@ -322,6 +174,7 @@ function bindCardAutoplayEvents() {
   });
 }
 function attachOverlays() {
+  let isUserInteracting = false;
   const mqlTablet = window.matchMedia(
     '(min-width: 768px) and (max-width: 1439px)'
   );
@@ -341,13 +194,32 @@ function attachOverlays() {
       return;
     }
 
+    function markUserInteracting() {
+      isUserInteracting = true;
+      feedbackSwiper?.autoplay?.stop();
+      if (feedbackSwiper) {
+        feedbackSwiper.allowTouchMove = false;
+        feedbackSwiper.allowSlideNext = false;
+        feedbackSwiper.allowSlidePrev = false;
+      }
+    }
+
+    function resetUserInteracting() {
+      isUserInteracting = false;
+      if (feedbackSwiper) {
+        feedbackSwiper.allowTouchMove = true;
+        feedbackSwiper.allowSlideNext = true;
+        feedbackSwiper.allowSlidePrev = true;
+      }
+      feedbackSwiper?.autoplay?.start();
+    }
+
     function openOverlay() {
       if (isOpen) return;
       isOpen = true;
+      markUserInteracting();
 
-      feedbackSwiper.autoplay?.stop();
-      feedbackSwiper.allowTouchMove = false;
-
+      card.classList.add('gradient-overlay');
       overlay.setAttribute('aria-hidden', 'false');
       overlay.style.display = 'block';
 
@@ -400,17 +272,17 @@ function attachOverlays() {
       const totalDelay = hiddenPart.length * 25 + 2000;
       setTimeout(() => {
         feedbackSwiper.allowTouchMove = true;
-        if (!card.matches(':hover') && !card.matches(':focus-within')) {
+        if (!isUserInteracting) {
           feedbackSwiper.autoplay?.start();
         }
       }, totalDelay);
     }
     function closeOverlay(final = false) {
       clearTimeout(timer);
+      card.classList.remove('gradient-overlay');
       overlay.setAttribute('aria-hidden', 'true');
       overlay.style.display = 'none';
-      feedbackSwiper.allowTouchMove = true;
-      feedbackSwiper.autoplay?.start();
+      resetUserInteracting();
       if (final) isOpen = false;
     }
 
@@ -419,19 +291,37 @@ function attachOverlays() {
       textEl.removeEventListener('focusin', onDesktop);
       textEl.removeEventListener('blur', onDesktop);
       textEl.addEventListener('click', () => {
-        isOpen ? closeOverlay(true) : openOverlay();
+        if (isOpen) {
+          resetUserInteracting();
+          closeOverlay(true);
+        } else {
+          openOverlay();
+        }
       });
       document.addEventListener('click', e => {
-        if (isOpen && !wrapper.contains(e.target)) closeOverlay(true);
+        if (isOpen && !wrapper.contains(e.target)) {
+          resetUserInteracting();
+          closeOverlay(true);
+        }
       });
     }
     function onTablet() {
       textEl.removeEventListener('click', onMobile);
       textEl.removeEventListener('focusin', onDesktop);
       textEl.removeEventListener('blur', onDesktop);
-      textEl.addEventListener('click', openOverlay);
+      textEl.addEventListener('click', () => {
+        if (isOpen) {
+          resetUserInteracting();
+          closeOverlay(true);
+        } else {
+          openOverlay();
+        }
+      });
       document.addEventListener('click', e => {
-        if (isOpen && !wrapper.contains(e.target)) closeOverlay(true);
+        if (isOpen && !wrapper.contains(e.target)) {
+          resetUserInteracting();
+          closeOverlay(true);
+        }
       });
     }
     function onDesktop() {
@@ -439,13 +329,25 @@ function attachOverlays() {
       textEl.removeEventListener('click', onTablet);
 
       card.setAttribute('tabindex', '0');
-      card.addEventListener('focusin', openOverlay);
+      card.addEventListener('focusin', () => {
+        isUserInteracting = true;
+        openOverlay();
+      });
       card.addEventListener('focusout', e => {
-        if (!card.contains(e.relatedTarget)) closeOverlay(true);
+        if (!card.contains(e.relatedTarget)) {
+          isUserInteracting = false;
+          closeOverlay(true);
+        }
       });
 
-      card.addEventListener('mouseenter', openOverlay);
-      card.addEventListener('mouseleave', () => closeOverlay(true));
+      card.addEventListener('mouseenter', () => {
+        isUserInteracting = true;
+        openOverlay();
+      });
+      card.addEventListener('mouseleave', () => {
+        isUserInteracting = false;
+        closeOverlay(true);
+      });
     }
 
     function applyMode() {
@@ -460,38 +362,9 @@ function attachOverlays() {
   });
 }
 
-function initScrollAnimations() {
-  const animatedEls = document.querySelectorAll(
-    '.feedbacks-title, .feedbacks-subtitle, .feedback-card'
-  );
-
-  const observerOptions = {
-    root: null,
-    threshold: 0.2,
-  };
-
-  const observerCallback = entries => {
-    entries.forEach(entry => {
-      entry.target.classList.toggle('visible', entry.isIntersecting);
-    });
-  };
-
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-  animatedEls.forEach(el => {
-    if (el.classList.contains('feedback-card')) {
-      el.classList.add('slide-up-observe');
-    } else {
-      el.classList.add('animate-slide-in-right');
-    }
-    observer.observe(el);
-  });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-  renderFeedbackSlides(feedbacksData);
+  renderFeedbackSlides(shuffleArray([...feedbacksData]));
   initFeedbackSlider();
   bindCardAutoplayEvents();
   attachOverlays();
-  initScrollAnimations();
 });
