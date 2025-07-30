@@ -1,4 +1,4 @@
-import { showToast } from './common';
+import { showLoader, showToast, hideLoader } from './common';
 import { sendCartDataToBackEnd } from './backend-api';
 
 // ===== КОРЗИНА =====
@@ -86,12 +86,25 @@ function clearCart() {
   updateCartModal();
 }
 async function orderCart() {
-  const cartItems = getCart();
-  await sendCartDataToBackEnd(cartItems);
-  clearCart();
-  updateCartModal();
-  closeCartModal();
-  showToast('Order is complete, thank you!', 'success');
+  try {
+    cartOrderBtn.disabled = true;
+    const cartItems = getCart();
+    if (cartItems.length === 0) {
+      showToast('Cart is empty', 'info');
+      return;
+    }
+    showLoader();
+    await sendCartDataToBackEnd(cartItems);
+    showToast('Order is complete, thank you!', 'success');
+    clearCart();
+    updateCartModal();
+  } catch (error) {
+    showToast('Something went wrong');
+  } finally {
+    hideLoader();
+    closeCartModal();
+    cartOrderBtn.disabled = false;
+  }
 }
 // ====== EVENTS ======
 cartBtn.addEventListener('click', openCartModal);

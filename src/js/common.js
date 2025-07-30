@@ -29,3 +29,11 @@ scrollUpBtn.addEventListener('click', () => {
     behavior: 'smooth',
   });
 });
+// loader
+const loaderEl = document.querySelector('.loader');
+export function hideLoader() {
+  loaderEl.classList.add('hide-loader');
+}
+export function showLoader() {
+  loaderEl.classList.remove('hide-loader');
+}
