@@ -5,9 +5,9 @@
   z-index: 1000;
   background-color: #fceee6;
 }
-/* .header.hidden {
+.header.hidden {
   top: -100px;
-} */
+}
 
 /* ! */
 .header-container {
