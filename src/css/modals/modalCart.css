@@ -23,9 +23,11 @@
 }
 
 .modal-cart-list {
-  border-top: 1px solid #fff;
   width: 100%;
   margin-bottom: 16px;
+}
+.modal-cart-item:first-child {
+  border-top: 1px solid #fff;
 }
 .modal-cart-item {
   border-bottom: 1px solid #fff;
@@ -64,6 +66,9 @@
   .modal-cart-item > span:not(.modal-cart-item-title) {
     display: table-cell;
     width: auto;
+  }
+  .modal-cart-item:first-child > span {
+    border-top: 1px solid #fff;
   }
   .modal-cart-item > span {
     display: table-cell;
