@@ -1,5 +1,4 @@
 import Swiper from 'swiper/bundle';
-
 import Rater from 'rater-js';
 
 import janeDoe1x from '../images/feedbacks/jane_doe.jpg';
@@ -288,19 +287,6 @@ function initFeedbackSlider() {
       showToolTip: false,
     });
   });
-
-  // feedbackSwiper.el.addEventListener('mouseenter', () =>
-  //   feedbackSwiper.autoplay?.stop()
-  // );
-  // feedbackSwiper.el.addEventListener('mouseleave', () =>
-  //   feedbackSwiper.autoplay?.start()
-  // );
-  // feedbackSwiper.el.addEventListener('focusin', () =>
-  //   feedbackSwiper.autoplay?.stop()
-  // );
-  // feedbackSwiper.el.addEventListener('focusout', () =>
-  //   feedbackSwiper.autoplay?.start()
-  // );
 }
 
 function bindCardAutoplayEvents() {
@@ -457,34 +443,6 @@ function attachOverlays() {
     mqlTablet.addListener(applyMode);
     mqlDesktop.addListener(applyMode);
     applyMode();
-  });
-}
-
-function initScrollAnimations() {
-  const animatedEls = document.querySelectorAll(
-    '.feedbacks-title, .feedbacks-subtitle, .feedback-card'
-  );
-
-  const observerOptions = {
-    root: null,
-    threshold: 0.2,
-  };
-
-  const observerCallback = entries => {
-    entries.forEach(entry => {
-      entry.target.classList.toggle('visible', entry.isIntersecting);
-    });
-  };
-
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-  animatedEls.forEach(el => {
-    if (el.classList.contains('feedback-card')) {
-      el.classList.add('slide-up-observe');
-    } else {
-      el.classList.add('animate-slide-in-right');
-    }
-    observer.observe(el);
   });
 }
 

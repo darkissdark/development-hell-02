@@ -191,24 +191,3 @@ blockquote {
 .badge--unverified {
   color: transparent;
 }
-
-.animate-slide-in-right {
-  opacity: 0;
-  transform: translateX(300px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.animate-slide-in-right.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.slide-up-observe {
-  opacity: 0;
-  transform: translateY(-300px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-.slide-up-observe.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
