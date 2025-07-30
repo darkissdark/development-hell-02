@@ -1,6 +1,6 @@
-import iziToast from 'izitoast';
 import { sendDataToBackEnd } from './backend-api';
 import { hideLoader, showLoader } from './common';
+import { showToast } from './common';
 
 const refs = {
   openFormModal: document.querySelectorAll('.register-btn'),
@@ -128,15 +128,9 @@ refs.formList.addEventListener('submit', async e => {
 
     localStorage.removeItem('contactFormData');
     refs.formList.reset();
-    iziToast.info({
-      message: 'Thank you, our manager will contact you!',
-      position: 'center',
-    });
+    showToast('Thank you, our manager will contact you!', 'success');
   } catch (error) {
-    iziToast.error({
-      message: 'Something went wrong. Please try again later.',
-      position: 'center',
-    });
+    showToast('Something went wrong. Please try again later.');
   } finally {
     hideLoader();
     closeModal();
