@@ -47,15 +47,18 @@ window.addEventListener('scroll', () => {
 
   const scrollPosition = pageYOffset;
   const windowHeight = window.innerHeight;
-  const documentHeight = document.body.scrollHeight;
 
-  if (scrollPosition < 50) {
-    currentSectionId = 'hero';
-    console.log(currentSectionId);
-  } else if (scrollPosition + windowHeight > documentHeight - 50) {
-    const lastSection = refs.sections[refs.sections.length - 1];
+  const firstSection = document.querySelector('#books');
+  const lastSection = document.querySelector('#location');
+
+  const booksTop = firstSection.offsetTop || 0;
+  const locationBottom =
+    (lastSection.offsetTop || 0) + (lastSection.offsetHeight || 0);
+
+  if (scrollPosition < booksTop) {
+    currentSectionId = 'body';
+  } else if (scrollPosition + windowHeight > locationBottom - 50) {
     currentSectionId = lastSection.getAttribute('id') || '';
-    console.log(currentSectionId);
   } else {
     refs.sections.forEach(elem => {
       const elemTop = elem.offsetTop;
@@ -66,16 +69,14 @@ window.addEventListener('scroll', () => {
         scrollPosition < elemTop + elemHeight
       ) {
         currentSectionId = elem.getAttribute('id') || '';
-        console.log(currentSectionId);
       }
     });
   }
 
   refs.desktopNavLinks.forEach(link => {
-    link.classList.remove('active');
-
-    if (link.getAttribute('href') === `#${currentSectionId}`) {
-      link.classList.add('active');
-    }
+    link.classList.toggle(
+      'active',
+      link.getAttribute('href') === `#${currentSectionId}`
+    );
   });
 });
