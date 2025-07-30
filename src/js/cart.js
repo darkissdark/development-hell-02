@@ -87,9 +87,15 @@ function clearCart() {
 }
 async function orderCart() {
   try {
-    showLoader();
+    cartOrderBtn.disabled = true;
     const cartItems = getCart();
+    if (cartItems.length === 0) {
+      showToast('Cart is empty', 'info');
+      return;
+    }
+    showLoader();
     await sendCartDataToBackEnd(cartItems);
+    showToast('Order is complete, thank you!', 'success');
     clearCart();
     updateCartModal();
   } catch (error) {
@@ -97,9 +103,8 @@ async function orderCart() {
   } finally {
     hideLoader();
     closeCartModal();
+    cartOrderBtn.disabled = false;
   }
-
-  showToast('Order is complete, thank you!', 'success');
 }
 // ====== EVENTS ======
 cartBtn.addEventListener('click', openCartModal);

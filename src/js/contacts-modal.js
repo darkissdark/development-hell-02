@@ -122,6 +122,7 @@ refs.formList.addEventListener('submit', async e => {
   };
 
   try {
+    refs.submitBtnModal.disabled = true;
     showLoader();
     await sendDataToBackEnd(formData, formDataId);
 
@@ -139,5 +140,6 @@ refs.formList.addEventListener('submit', async e => {
   } finally {
     hideLoader();
     closeModal();
+    refs.submitBtnModal.disabled = false;
   }
 });
