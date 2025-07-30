@@ -297,7 +297,7 @@ What impresses me most is how consistently they update their stock with emerging
     text: `A thoughtfully designed store with intuitive categories.
 It's my go-to for weekend reads and personal growth.`,
     author: 'Sophia Walker',
-    position: 'Historical Fiction Critic',
+    position: 'Fullstack Developer',
     avatar1x: sophiaWalker1x,
     avatar2x: sophiaWalker2x,
     avatarWebp1x: sophiaWalkerWebp1x,

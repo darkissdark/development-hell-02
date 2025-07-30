@@ -199,6 +199,8 @@ function attachOverlays() {
       feedbackSwiper?.autoplay?.stop();
       if (feedbackSwiper) {
         feedbackSwiper.allowTouchMove = false;
+        feedbackSwiper.allowSlideNext = false;
+        feedbackSwiper.allowSlidePrev = false;
       }
     }
 
@@ -206,6 +208,8 @@ function attachOverlays() {
       isUserInteracting = false;
       if (feedbackSwiper) {
         feedbackSwiper.allowTouchMove = true;
+        feedbackSwiper.allowSlideNext = true;
+        feedbackSwiper.allowSlidePrev = true;
       }
       feedbackSwiper?.autoplay?.start();
     }
