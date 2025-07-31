@@ -140,7 +140,6 @@
     line-height: 1.5;
   }
 
-  .page-menu-link:hover::after,
   .page-menu-link::after {
     content: '';
     position: absolute;
@@ -154,11 +153,9 @@
     transition: opacity 250ms ease;
   }
 
-  .page-menu-link:hover::after,
   .page-menu-link.active::after {
     opacity: 0.5;
   }
-  .page-menu-link:hover:active,
   .page-menu-link:active {
     opacity: 0.8;
   }
@@ -169,5 +166,24 @@
   .header-container {
     padding-left: 64px;
     padding-right: 64px;
+  }
+  .page-menu-link:hover::after {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -5px;
+    width: 80%;
+    border-bottom: 2px solid black;
+    opacity: 0;
+    transition: opacity 250ms ease;
+  }
+
+  .page-menu-link:hover::after {
+    opacity: 0.5;
+  }
+  .page-menu-link:hover:active {
+    opacity: 0.8;
   }
 }
