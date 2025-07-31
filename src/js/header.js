@@ -105,8 +105,6 @@ window.addEventListener('scroll', () => {
 
   if (scrollPosition < booksTop - headerOffset) {
     currentSectionId = 'body';
-  } else if (scrollPosition + windowHeight > locationBottom - 50) {
-    currentSectionId = lastSection.getAttribute('id') || '';
   } else {
     refs.sections.forEach(elem => {
       const elemTop = elem.offsetTop;
@@ -122,6 +120,11 @@ window.addEventListener('scroll', () => {
         currentSectionId = elemId;
       }
     });
+    
+    // Якщо не знайдено активну секцію і ми в кінці сторінки, активуємо останню секцію
+    if (!currentSectionId && scrollPosition + windowHeight >= document.documentElement.scrollHeight - 10) {
+      currentSectionId = lastSection.getAttribute('id') || '';
+    }
   }
 
   refs.desktopNavLinks.forEach(link => {
