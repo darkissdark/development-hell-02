@@ -105,7 +105,7 @@ function initFeedbackSlider() {
     speed: 600,
     autoplay: {
       delay: 2000,
-      disableOnInteraction: false,
+      disableOnInteraction: true,
     },
     pagination: {
       el: '.swiper-pagination',
@@ -135,6 +135,8 @@ function initFeedbackSlider() {
       },
     },
   });
+
+  feedbackSwiper.params.autoplay.disableOnInteraction = true;
 
   requestAnimationFrame(() => {
     document
@@ -175,6 +177,7 @@ function bindCardAutoplayEvents() {
 }
 function attachOverlays() {
   let isUserInteracting = false;
+  let resumeTimer = null;
   const mqlTablet = window.matchMedia(
     '(min-width: 768px) and (max-width: 1439px)'
   );
@@ -201,6 +204,10 @@ function attachOverlays() {
         feedbackSwiper.allowTouchMove = false;
         feedbackSwiper.allowSlideNext = false;
         feedbackSwiper.allowSlidePrev = false;
+      }
+      if (resumeTimer) {
+        clearTimeout(resumeTimer);
+        resumeTimer = null;
       }
     }
 
@@ -270,12 +277,14 @@ function attachOverlays() {
       })();
 
       const totalDelay = hiddenPart.length * 25 + 2000;
-      setTimeout(() => {
-        feedbackSwiper.allowTouchMove = true;
-        if (!isUserInteracting) {
-          feedbackSwiper.autoplay?.start();
-        }
-      }, totalDelay);
+      if (mqlDesktop.matches) {
+        resumeTimer = setTimeout(() => {
+          feedbackSwiper.allowTouchMove = true;
+          if (!isUserInteracting) {
+            feedbackSwiper.autoplay?.start();
+          }
+        }, totalDelay);
+      }
     }
     function closeOverlay(final = false) {
       clearTimeout(timer);
@@ -309,7 +318,20 @@ function attachOverlays() {
       textEl.removeEventListener('click', onMobile);
       textEl.removeEventListener('focusin', onDesktop);
       textEl.removeEventListener('blur', onDesktop);
-      textEl.addEventListener('click', () => {
+      textEl.addEventListener('click', function tabletClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        document
+          .querySelectorAll('.feedback-card.gradient-overlay')
+          .forEach(otherCard => {
+            if (otherCard !== card) {
+              otherCard.classList.remove('gradient-overlay');
+              const otherOverlay = otherCard.querySelector('.feedback-overlay');
+              otherOverlay.setAttribute('aria-hidden', 'true');
+              otherOverlay.style.display = 'none';
+            }
+          });
         if (isOpen) {
           resetUserInteracting();
           closeOverlay(true);
