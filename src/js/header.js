@@ -24,7 +24,11 @@ function smoothScrollToSection(targetId) {
   if (!targetElement) return;
 
   const headerHeight = refs.header.offsetHeight;
-  const targetPosition = targetElement.offsetTop - headerHeight;
+  const currentScrollTop =
+    window.pageYOffset || document.documentElement.scrollTop;
+  const targetTop = targetElement.offsetTop;
+  const headerOffset = targetTop > currentScrollTop ? 0 : headerHeight;
+  const targetPosition = targetTop - headerOffset;
 
   window.scrollTo({
     top: targetPosition,
