@@ -1,12 +1,9 @@
-/* @import 'accordion-js/dist/accordion.min.css'; */
-
 /* ======== Head section Book ======== */
 .books-section {
   padding: 32px 0;
   width: 100%;
   margin: 0 auto;
   max-width: 375px;
-  /* background-color: burlywood; */
   background: #fceee6;
 }
 @media screen and (min-width: 768px) {
@@ -25,10 +22,9 @@
   }
 }
 
-/* ========== Info section ========== */
+/* ===== Info section ===== */
 .books-section-header {
   max-width: 100%;
-  /* max-width: 342px; */
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -36,7 +32,6 @@
 }
 @media screen and (min-width: 768px) {
   .books-section-header {
-    /* max-width: 100%; */
     flex-direction: row;
     justify-content: space-between;
     gap: 24px;
@@ -74,11 +69,10 @@
 /* ========== Accordion ========== */
 .accordion-wrapper {
   position: relative;
-  display: block; /*inline-block;  или block, если нужно растянуть */
-  /* width: 100%; */
+  display: block;
 }
 
-/* Кнопка */
+/*===== Кнопка =====*/
 .books-acc-btn {
   display: flex;
   justify-content: space-between;
@@ -97,7 +91,7 @@
   }
 }
 
-/* Иконка */
+/*===== Иконка =====*/
 .books-acc-icon {
   transition: transform 0.3s ease;
 }
@@ -106,7 +100,7 @@
   transform: rotate(180deg);
 }
 
-/* Контентная панель */
+/*===== Контентная панель =====*/
 .content {
   position: absolute;
   top: 100%;
@@ -120,7 +114,6 @@
   overflow: hidden;
   transition: max-height 0.4s ease;
   background-color: rgb(230, 225, 218);
-  /* background-color: rgba(11, 5, 0, 0.05); */
   cursor: pointer;
 }
 @media screen and (min-width: 1440px) {
@@ -134,7 +127,7 @@
 }
 
 .content.open {
-  max-height: 296px; /* меняй под нужное значение */
+  max-height: 296px;
   overflow-y: auto;
 }
 
@@ -167,12 +160,10 @@
 @media screen and (min-width: 768px) {
   .books-card {
     width: 100%;
-    /* max-width: 980px; */
   }
 }
 @media screen and (min-width: 1440px) {
   .books-card {
-    /* width: 100%; */
     max-width: 980px;
   }
 }
@@ -249,6 +240,7 @@
   font-weight: 600;
   text-transform: capitalize;
 }
+/* ===== обрезка лишнего в строке ===== */
 .book-title,
 .book-autor {
   display: block;
@@ -257,23 +249,6 @@
   text-overflow: ellipsis; /* троеточие */
   width: 100%; /* ограничение ширины, если нужно */
 }
-/* .book-title {
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-}
-
-.book-autor {
-  font-size: 14px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: #555;
-} */
 .book-autor {
   font-size: 14px;
 }

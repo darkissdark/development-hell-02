@@ -6,5 +6,4 @@ export const refs = {
   pageEl: document.querySelector('.js-books-per-page'),
   accBtn: document.querySelector('.js-accordion-btn'),
   accContent: document.querySelector('.js-accordion-content'),
-  // accIcon: accBtn.querySelector('.books-acc-icon'),
 };
