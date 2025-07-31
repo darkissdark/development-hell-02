@@ -1,3 +1,15 @@
+.header {
+  position: sticky;
+  top: 0;
+  transition: top 0.3s;
+  z-index: 1000;
+  background-color: #fceee6;
+}
+.header.hidden {
+  top: -100px;
+}
+
+/* ! */
 .header-container {
   display: flex;
   align-items: center;
@@ -123,10 +135,30 @@
   }
 
   .page-menu-link {
+    position: relative;
     font-size: 16px;
     line-height: 1.5;
   }
 
+  .page-menu-link:hover::after,
+  .page-menu-link::after {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -5px;
+    width: 80%;
+    border-bottom: 2px solid black;
+    opacity: 0;
+    transition: opacity 250ms ease;
+  }
+
+  .page-menu-link:hover::after,
+  .page-menu-link.active::after {
+    opacity: 0.5;
+  }
+  .page-menu-link:hover:active,
   .page-menu-link:active {
     opacity: 0.8;
   }
