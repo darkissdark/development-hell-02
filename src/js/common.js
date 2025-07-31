@@ -7,6 +7,10 @@ export function showToast(message, type = 'error') {
     message,
     position: windowWidth < 768 ? 'center' : 'topRight',
     maxWidth: windowWidth < 432 ? 300 : 400,
+    backgroundColor: type === 'success' ? '#dad9d8' : '#c14a04',
+    titleColor: '#0b0500',
+    messageColor: '#0b0500',
+    iconColor: '#0b0500',
   });
 }
 
