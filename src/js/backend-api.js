@@ -3,7 +3,7 @@ export const sendDataToBackEnd = async (data, dataid) => {
   const { name, email, message } = data;
   try {
     const response = await axios.post(
-      'https://test-server-fortg.onrender.com/send-message',
+      'https://test-server-fortg.onrender.com/event-registration',
       {
         dataid,
         name,
